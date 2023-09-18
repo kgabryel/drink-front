@@ -1,0 +1,20 @@
+export const names = {
+    login: 'login',
+    register: 'register',
+    tags: 'tags',
+    allDrinks: 'allDrinks',
+    drink: 'drink',
+    editDrink: 'editDrink',
+    ingredients: 'ingredients',
+    createDrink: 'createDrink',
+    randomDrink: 'randomDrink',
+    logout: 'logout',
+    fb: 'fb',
+    tagDrinks: 'tagDrinks',
+    ingredientDrinks: 'ingredientDrinks',
+    notFound: 'notFound',
+    account: 'account',
+    publicDrink: 'publicDrink',
+    changePassword: 'changePassword',
+    resetPassword: 'resetPassword'
+};
