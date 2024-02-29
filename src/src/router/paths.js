@@ -1,0 +1,22 @@
+export const paths = {
+    fb: '/fb',
+    login: '/login',
+    register: '/register',
+    main: '',
+    createDrink: 'create-drink',
+    drinks: 'drinks',
+    id: ':id',
+    edit: ':id/edit',
+    ingredients: 'ingredients',
+    tags: 'tags',
+    randomDrink: 'random-drink',
+    logout: 'logout',
+    notFound: '/not-found',
+    all: '/*',
+    ingredientDrinks: 'ingredients/:id/drinks',
+    tagDrinks: 'tags/:id/drinks',
+    account: '/account',
+    publicDrink: '/public/:id',
+    changePassword: '/change-password/:token',
+    resetPassword: '/reset-password'
+};
