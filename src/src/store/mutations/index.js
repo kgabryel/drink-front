@@ -4,6 +4,7 @@ import {drinks} from './drinks';
 import {settings} from './settings';
 import {apiKeys} from './apiKeys';
 import {supplies} from './supplies';
+import {drinksCards} from './drinksCards';
 
 export const mutations = {
     ...tags,
@@ -11,5 +12,6 @@ export const mutations = {
     ...drinks,
     ...settings,
     ...apiKeys,
-    ...supplies
+    ...supplies,
+    ...drinksCards
 };

@@ -4,7 +4,8 @@
     <AddPhoto :drink='drink' />
     <PhotosList
       :drink-id='drink.id'
-      :photos='drink.photos' />
+      :photos='drink.photos'
+    />
   </div>
 </template>
 <script>

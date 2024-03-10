@@ -5,7 +5,8 @@
     :max-width='200'
     :src='photoData'
     :width='200'
-    contain />
+    contain
+  />
 </template>
 <script>
 import axios from 'axios';

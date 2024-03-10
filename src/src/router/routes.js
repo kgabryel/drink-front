@@ -16,12 +16,16 @@ export const routes = {
     apiKeys: process.env.VUE_APP_API_URL + 'api-keys',
     apiKeyById: id => `${process.env.VUE_APP_API_URL}api-keys/${id}`,
     supplies: process.env.VUE_APP_API_URL + 'ingredients/oza-supplies',
-    publicRecipe: id => `${process.env.VUE_APP_API_URL}public/drinks/${id}`,
+    publicDrink: id => `${process.env.VUE_APP_API_URL}public/drinks/${id}`,
     changePasswordSettings: process.env.VUE_APP_API_URL + 'settings/change-password',
     resetPassword: process.env.VUE_APP_API_URL + 'reset-password',
     changePassword: token => `${process.env.VUE_APP_API_URL}change-password/${token}`,
     checkToken: token => `${process.env.VUE_APP_API_URL}check-token/${token}`,
     photos: id => `${process.env.VUE_APP_API_URL}drinks/${id}/photos`,
     photoById: (drinkId, photoId) => `${process.env.VUE_APP_API_URL}drinks/${drinkId}/photos/${photoId}`,
-    getPhoto: (type, drinkId, photoId) => `${process.env.VUE_APP_API_URL}drinks/${drinkId}/photos/${photoId}/${type}`
+    getPhoto: (type, drinkId, photoId) => `${process.env.VUE_APP_API_URL}drinks/${drinkId}/photos/${photoId}/${type}`,
+    drinksCards: process.env.VUE_APP_API_URL + 'drinks-cards',
+    publicCard: id => `${process.env.VUE_APP_API_URL}drinks-cards/${id}`,
+    drinksCardById: id => `${process.env.VUE_APP_API_URL}drinks-cards/${id}`,
+    modifyActivityDrinksCard: (id, status) => `${routes.drinksCardById(id)}/${status}`
 };

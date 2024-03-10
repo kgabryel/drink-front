@@ -5,10 +5,12 @@
         <v-stepper
           v-model='step'
           class='glass-background'
-          vertical>
+          vertical
+        >
           <v-stepper-step
             :complete='step > 1'
-            step='1'>
+            step='1'
+          >
             Składniki
           </v-stepper-step>
           <v-stepper-content step='1'>
@@ -16,31 +18,37 @@
               v-model='onlyAvailable'
               class='ml-3 mt-2'
               color='white'
-              label='Ukryj brakujące składniki' />
+              label='Ukryj brakujące składniki'
+            />
             <v-switch
               v-model='additionalIngredients'
               class='ml-3 mt-0'
               color='white'
-              label='Dodatkowe składniki' />
+              label='Dodatkowe składniki'
+            />
             <div
               v-if='orderedIngredients.length > 10'
-              class='d-flex justify-space-between mt-2 mb-2'>
+              class='d-flex justify-space-between mt-2 mb-2'
+            >
               <v-btn
                 class='glass-background'
                 type='button'
-                @click='clearIngredients'>
+                @click='clearIngredients'
+              >
                 Wyczyść
               </v-btn>
               <v-btn
                 class='glass-background blue-glass'
                 type='button'
-                @click='step = 2'>
+                @click='step = 2'
+              >
                 Dalej
               </v-btn>
               <v-btn
                 class='glass-background small-deselect'
                 type='button'
-                @click='deselectIngredients'>
+                @click='deselectIngredients'
+              >
                 Odznacz wszystkie
               </v-btn>
             </div>
@@ -48,21 +56,25 @@
               block
               class='glass-background big-deselect mb-2'
               type='button'
-              @click='deselectIngredients'>
+              @click='deselectIngredients'
+            >
               Odznacz wszystkie
             </v-btn>
             <v-list-item-group
               v-model='selectedIngredients'
-              multiple>
+              multiple
+            >
               <template v-for='ingredient in orderedIngredients'>
                 <v-list-item
                   :key='ingredient.id'
-                  :class='{hidden: onlyAvailable && !ingredient.available}'>
+                  :class='{hidden: onlyAvailable && !ingredient.available}'
+                >
                   <template #default='{ active }'>
                     <v-list-item-action>
                       <v-switch
                         :input-value='active'
-                        color='white' />
+                        color='white'
+                      />
                     </v-list-item-action>
                     <v-list-item-content>
                       <v-list-item-title>
@@ -72,12 +84,14 @@
                     <v-list-item-action>
                       <v-icon
                         v-if='ingredient.available'
-                        class='available-icon'>
+                        class='available-icon'
+                      >
                         mdi-check-circle
                       </v-icon>
                       <v-icon
                         v-else
-                        class='unavailable-icon'>
+                        class='unavailable-icon'
+                      >
                         mdi-close-circle
                       </v-icon>
                     </v-list-item-action>
@@ -87,26 +101,30 @@
             </v-list-item-group>
             <p
               v-if='availableDrinks !== undefined'
-              class='mt-1'>
+              class='mt-1'
+            >
               Liczba dostępnych drinków: {{ availableDrinks.length }}
             </p>
             <div class='d-flex justify-space-between mt-2 mb-2'>
               <v-btn
                 class='glass-background'
                 type='button'
-                @click='clearIngredients'>
+                @click='clearIngredients'
+              >
                 Wyczyść
               </v-btn>
               <v-btn
                 class='glass-background blue-glass'
                 type='button'
-                @click='step = 2'>
+                @click='step = 2'
+              >
                 Dalej
               </v-btn>
               <v-btn
                 class='glass-background small-deselect'
                 type='button'
-                @click='deselectIngredients'>
+                @click='deselectIngredients'
+              >
                 Odznacz wszystkie
               </v-btn>
             </div>
@@ -114,13 +132,15 @@
               block
               class='glass-background big-deselect'
               type='button'
-              @click='deselectIngredients'>
+              @click='deselectIngredients'
+            >
               Odznacz wszystkie
             </v-btn>
           </v-stepper-content>
           <v-stepper-step
             :complete='step > 2'
-            step='2'>
+            step='2'
+          >
             Tagi
           </v-stepper-step>
           <v-stepper-content step='2'>
@@ -128,40 +148,46 @@
               v-model='anyTag'
               class='ml-3'
               color='white'
-              label='Dowolny tag' />
+              label='Dowolny tag'
+            />
             <v-btn
               v-for='tag in orderedTags'
               :key='tag.id'
-              :class="{ 'blue-glass': selectedTags.includes(tag.id)}"
+              :class='{ "blue-glass": selectedTags.includes(tag.id)}'
               class='mx-1 my-1 glass-background'
               elevation='2'
               type='button'
-              @click='switchTag(tag.id)'>
+              @click='switchTag(tag.id)'
+            >
               {{ tag.name }}
             </v-btn>
             <p
               v-if='availableDrinks !== undefined'
-              class='mt-1'>
+              class='mt-1'
+            >
               Liczba dostępnych drinków: {{ availableDrinks.length }}
             </p>
             <div class='d-flex justify-space-between mt-2 mb-2'>
               <v-btn
                 class='glass-background'
                 type='button'
-                @click='step = 1'>
+                @click='step = 1'
+              >
                 Powrót
               </v-btn>
               <v-btn
                 :disabled='availableDrinks === undefined || availableDrinks.length === 0'
                 class='glass-background blue-glass'
                 type='button'
-                @click='random'>
+                @click='random'
+              >
                 Losuj
               </v-btn>
               <v-btn
                 class='glass-background'
                 type='button'
-                @click='clearTags'>
+                @click='clearTags'
+              >
                 Wyczyść
               </v-btn>
             </div>
@@ -171,19 +197,22 @@
     </div>
     <div
       v-else
-      class='content-container'>
+      class='content-container'
+    >
       <Drink :drink='selectedDrink' />
       <div class='px-2 d-flex justify-lg-space-between'>
         <v-btn
           class='glass-background'
           type='button'
-          @click='step = 2'>
+          @click='step = 2'
+        >
           Powrót
         </v-btn>
         <v-btn
           class='glass-background'
           type='button'
-          @click='random'>
+          @click='random'
+        >
           Losuj następny
         </v-btn>
       </div>

@@ -3,15 +3,18 @@
     <Edit
       v-if='edit && !oza'
       :ingredient='ingredient'
-      @stop-edit='stopEdit' />
+      @stop-edit='stopEdit'
+    />
     <OzaEdit
       v-if='edit && oza'
       :ingredient='ingredient'
-      @stop-edit='stopEdit' />
+      @stop-edit='stopEdit'
+    />
     <Preview
       v-if='!edit'
       :ingredient='ingredient'
-      @start-edit='startEdit($event)' />
+      @start-edit='startEdit'
+    />
   </div>
 </template>
 <script>

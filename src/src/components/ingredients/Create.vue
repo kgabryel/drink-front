@@ -12,13 +12,15 @@
           color='indigo darken-4'
           dense
           label='Nazwa'
-          required />
+          required
+        />
         <v-switch
           v-model='available'
           class='mt-1'
           color='white'
           hide-details
-          label='Dostępne' />
+          label='Dostępne'
+        />
       </div>
       <div>
         <v-textarea
@@ -27,7 +29,8 @@
           color='indigo darken-4'
           hide-details='auto'
           label='Opis'
-          rows='2' />
+          rows='2'
+        />
       </div>
       <div v-if='supplies.length > 0'>
         <v-autocomplete
@@ -38,7 +41,8 @@
           color='indigo darken-4'
           item-text='name'
           item-value='id'
-          label='Zapas' />
+          label='Zapas'
+        />
       </div>
       <div class='px-2'>
         <v-btn
@@ -46,7 +50,8 @@
           block
           class='glass-background'
           type='button'
-          @click='create'>
+          @click='create'
+        >
           Dodaj
         </v-btn>
       </div>

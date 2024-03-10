@@ -2,7 +2,8 @@
   <div
     ref='card'
     :class="{'in-masonry': !fullWidth, 'w-100': fullWidth}"
-    class='px-2 py-2'>
+    class='px-2 py-2'
+  >
     <v-card class='glass-background'>
       <v-app-bar flat>
         <v-toolbar-title>
@@ -19,7 +20,8 @@
               type='button'
               v-bind='attrs'
               @click='copyPath'
-              v-on='on'>
+              v-on='on'
+            >
               <v-icon color='black'>
                 mdi-share-variant
               </v-icon>
@@ -36,15 +38,18 @@
               type='button'
               v-bind='attrs'
               @click='updateFavourite'
-              v-on='on'>
+              v-on='on'
+            >
               <v-icon
                 v-if='!drink.favourite'
-                color='black'>
+                color='black'
+              >
                 fa-star-o
               </v-icon>
               <v-icon
                 v-else
-                color='amber darken-2'>
+                color='amber darken-2'
+              >
                 fa-star
               </v-icon>
             </v-btn>
@@ -55,7 +60,8 @@
         </v-tooltip>
         <v-tooltip
           v-if='previewAvailable'
-          bottom>
+          bottom
+        >
           <template #activator='{ on, attrs }'>
             <router-link :to='{ name : drinkPreview, params: {id: drink.id} }'>
               <v-btn
@@ -63,7 +69,8 @@
                 icon
                 type='button'
                 v-bind='attrs'
-                v-on='on'>
+                v-on='on'
+              >
                 <v-icon>
                   mdi-eye
                 </v-icon>
@@ -74,17 +81,19 @@
             Podgląd
           </span>
         </v-tooltip>
-        <DeleteIcon @remove='remove()' />
+        <DeleteIcon @remove='remove' />
         <v-tooltip bottom>
           <template #activator='{ on, attrs }'>
             <router-link
               :to='{ name : drinkEdit, params: {id: drink.id} }'
-              type='button'>
+              type='button'
+            >
               <v-btn
                 color='black'
                 icon
                 v-bind='attrs'
-                v-on='on'>
+                v-on='on'
+              >
                 <v-icon>
                   mdi-pencil
                 </v-icon>
@@ -102,18 +111,21 @@
           :height='height'
           :show-arrows='drink.photos.length > 1'
           hide-delimiters
-          show-arrows-on-hover>
+          show-arrows-on-hover
+        >
           <CarouselItem
             v-for='photo in drink.photos'
             :key='photo.id'
             :drink-id='drink.id'
-            :photo='photo' />
+            :photo='photo'
+          />
         </v-carousel>
       </div>
       <v-card-text class='pt-0'>
         <p
           v-if="drink.description !== null && drink.description !== ''"
-          class='text--black'>
+          class='text--black'
+        >
           {{ drink.description }}
         </p>
         <div>
@@ -122,26 +134,31 @@
             :key='index'
             :href='tag | tagDrinksHref'
             class='ma-2 glass-background'
-            label>
+            label
+          >
             {{ tag.name }}
           </v-chip>
         </div>
         <div>
           <v-list
             v-if='positions.length > 0'
-            two-line>
+            two-line
+          >
             <v-list-item
               v-for='position in positions'
-              :key='position.id'>
+              :key='position.id'
+            >
               <v-list-item-action>
                 <v-icon
                   v-if='position.ingredient.available'
-                  class='available-icon'>
+                  class='available-icon'
+                >
                   mdi-check-circle
                 </v-icon>
                 <v-icon
                   v-else
-                  class='unavailable-icon'>
+                  class='unavailable-icon'
+                >
                   mdi-close-circle
                 </v-icon>
               </v-list-item-action>
@@ -159,7 +176,8 @@
                     <v-icon
                       v-if="position.ingredient.description !== ''"
                       v-bind='attrs'
-                      v-on='on'>
+                      v-on='on'
+                    >
                       mdi-help-circle
                     </v-icon>
                   </template>

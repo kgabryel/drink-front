@@ -10,13 +10,15 @@
         color='white'
         hide-details
         label='Aktywny'
-        @change='switchKey' />
+        @change='switchKey'
+      />
     </div>
     <div class='d-flex justify-space-between align-center actions'>
       <v-btn
         class='text-center glass-background'
         type='button'
-        @click='copy'>
+        @click='copy'
+      >
         <v-icon class='mr-3 icon '>
           mdi-content-copy
         </v-icon>
@@ -29,9 +31,10 @@
           color='white'
           hide-details
           label='Aktywny'
-          @change='switchKey' />
+          @change='switchKey'
+        />
       </div>
-      <DeleteButton @remove='remove()' />
+      <DeleteButton @remove='remove' />
     </div>
   </div>
 </template>

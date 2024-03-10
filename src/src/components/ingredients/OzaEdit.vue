@@ -4,7 +4,8 @@
       <v-list-item-action @click='stopEdit'>
         <v-btn
           icon
-          type='button'>
+          type='button'
+        >
           <v-icon color='black'>
             fa-times
           </v-icon>
@@ -14,7 +15,8 @@
         <v-btn
           :disabled='ingredient.ozaId === 0 || ingredient.ozaId === null'
           icon
-          type='button'>
+          type='button'
+        >
           <v-icon color='black'>
             mdi-delete
           </v-icon>
@@ -29,13 +31,15 @@
           color='indigo darken-4'
           item-text='name'
           item-value='id'
-          label='Zapas' />
+          label='Zapas'
+        />
       </v-list-item-content>
       <v-list-item-action @click='update'>
         <v-btn
           :disabled='!valid'
           icon
-          type='button'>
+          type='button'
+        >
           <v-icon color='black'>
             fa-floppy-o
           </v-icon>

@@ -25,6 +25,10 @@ export const state = {
         loaded: false,
         success: false,
         data: []
+    },
+    drinksCards: {
+        loaded: false,
+        data: []
     }
 };
 export const clearState = {

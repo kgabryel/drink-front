@@ -3,7 +3,8 @@
     block
     class='text-center glass-background'
     type='button'
-    @click='generateKey'>
+    @click='generateKey'
+  >
     <v-icon class='mr-3 icon '>
       mdi-key
     </v-icon>

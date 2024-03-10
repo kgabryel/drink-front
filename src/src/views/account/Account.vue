@@ -4,10 +4,12 @@
     <Settings />
     <div
       v-if='apiKeys.length > 0'
-      class='glass-background'>
+      class='glass-background'
+    >
       <div
         v-for='apiKey in apiKeys'
-        :key='apiKey.id'>
+        :key='apiKey.id'
+      >
         <ApiKey :api-key='apiKey' />
         <v-divider class='mx-4' />
       </div>

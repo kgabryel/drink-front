@@ -5,7 +5,8 @@
         <v-switch
           :input-value='tag.public'
           color='white'
-          @change='changePublic' />
+          @change='changePublic'
+        />
       </v-list-item-action>
       <v-list-item-content>
         <v-list-item-title>
@@ -21,7 +22,8 @@
               icon
               type='button'
               v-bind='attrs'
-              v-on='on'>
+              v-on='on'
+            >
               <v-icon color='black'>
                 fa-bars
               </v-icon>
@@ -30,7 +32,8 @@
           <v-list class='px-2 py-2 glass-background'>
             <v-list-item
               v-if='tag.drinksCount > 0'
-              :href='tag | tagDrinksHref'>
+              :href='tag | tagDrinksHref'
+            >
               <v-list-item-title>
                 Lista drinków ({{ tag.drinksCount }})
               </v-list-item-title>
@@ -52,7 +55,8 @@
     <DeleteModal
       :showed='showed'
       @cancel='showed = false'
-      @remove='remove()' />
+      @remove='remove'
+    />
   </v-list-item>
 </template>
 <script>

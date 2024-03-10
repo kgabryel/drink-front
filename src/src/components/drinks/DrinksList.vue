@@ -3,11 +3,13 @@
     <masonry-wall
       :column-width='330'
       :items='loaded'
-      :padding='16'>
+      :padding='16'
+    >
       <template #default='{item}'>
         <Drink
           :drink='item'
-          :full-width='false' />
+          :full-width='false'
+        />
       </template>
     </masonry-wall>
     <div v-waypoint='{ active: true, callback: load }' />

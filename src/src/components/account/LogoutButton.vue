@@ -3,7 +3,8 @@
     <v-btn
       block
       class='text-center glass-background'
-      type='button'>
+      type='button'
+    >
       <v-icon class='mr-3 icon '>
         fa-sign-out
       </v-icon>

@@ -12,13 +12,15 @@
           color='indigo darken-4'
           dense
           label='Nazwa'
-          required />
+          required
+        />
         <v-switch
           v-model='publicTag'
           class='mt-1'
           color='white'
           hide-details
-          label='Publiczny' />
+          label='Publiczny'
+        />
       </div>
       <div class='px-2'>
         <v-btn
@@ -26,7 +28,8 @@
           block
           class='glass-background'
           type='button'
-          @click='create'>
+          @click='create'
+        >
           Dodaj
         </v-btn>
       </div>

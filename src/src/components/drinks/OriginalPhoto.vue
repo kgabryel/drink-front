@@ -2,23 +2,27 @@
   <div
     v-if='photo.id'
     class='overlay pa-2 d-flex justify-center align-center'
-    @click.stop='clear()'>
+    @click.stop='clear'
+  >
     <v-img
       :height="'100%'"
       :max-height='photo.height'
       :max-width='photo.width'
       :src='photoData'
       :width="'100%'"
-      contain>
+      contain
+    >
       <template #placeholder>
         <v-row
           align='center'
           class='fill-height ma-0'
-          justify='center'>
+          justify='center'
+        >
           <v-progress-circular
             :size='100'
             color='white'
-            indeterminate />
+            indeterminate
+          />
         </v-row>
       </template>
     </v-img>

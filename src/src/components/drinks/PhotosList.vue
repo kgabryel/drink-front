@@ -4,15 +4,18 @@
       v-model='photosList'
       handle='.handle'
       @end='drag = false'
-      @start='drag = true'>
+      @start='drag = true'
+    >
       <div
         v-for='photo in photosList'
         :key='photo.id'
-        class='glass-background my-2 pa-2 d-flex justify-space-between'>
+        class='glass-background my-2 pa-2 d-flex justify-space-between'
+      >
         <Thumbnail
           :drink-id='drinkId'
           :photo='photo'
-          class='handle c-move' />
+          class='handle c-move'
+        />
         <div class='d-flex flex-column justify-center'>
           <v-tooltip bottom>
             <template #activator='{ on, attrs }'>
@@ -22,7 +25,8 @@
                 type='button'
                 v-bind='attrs'
                 @click='show(photo)'
-                v-on='on'>
+                v-on='on'
+              >
                 <v-icon>
                   mdi-eye
                 </v-icon>

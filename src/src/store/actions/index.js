@@ -4,6 +4,7 @@ import {drinks} from './drinks';
 import {settings} from './settings';
 import {apiKeys} from './apiKeys';
 import {supplies} from './supplies';
+import {drinksCards} from './drinksCards';
 
 export const actions = {
     ...tags,
@@ -11,7 +12,8 @@ export const actions = {
     ...drinks,
     ...settings,
     ...apiKeys,
-    ...supplies
+    ...supplies,
+    ...drinksCards
 };
 
 export const actionsNames = {
@@ -43,5 +45,10 @@ export const actionsNames = {
     changePassword: 'changePassword',
     addPhoto: 'addPhoto',
     photosReorder: 'photosReorder',
-    deletePhoto: 'deletePhoto'
+    deletePhoto: 'deletePhoto',
+    loadDrinksCards: 'loadDrinksCards',
+    addDrinksCard: 'addDrinksCard',
+    deleteDrinksCard: 'deleteDrinksCard',
+    modifyDrinksCardActivity: 'modifyDrinksCardActivity',
+    updateDrinksCard: 'updateDrinksCard'
 };

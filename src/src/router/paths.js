@@ -18,5 +18,8 @@ export const paths = {
     account: '/account',
     publicDrink: '/public/:id',
     changePassword: '/change-password/:token',
-    resetPassword: '/reset-password'
+    resetPassword: '/reset-password',
+    drinksCards: '/drinks-cards',
+    create: 'create',
+    publicCard: '/public/drinks-cards/:id'
 };

@@ -2,7 +2,8 @@
   <v-carousel-item
     :src='photoData'
     class='c-pointer'
-    @click.native='open()' />
+    @click.native='open'
+  />
 </template>
 <script>
 import axios from 'axios';

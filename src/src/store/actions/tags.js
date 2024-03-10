@@ -1,6 +1,5 @@
 import {tagsService} from '../../services/tags.service';
 import {errorHandler} from '../../services/errorHandler';
-import {ingredientsService} from '../../services/ingredients.service';
 
 export const tags = {
     loadTags(context) {
@@ -25,5 +24,5 @@ export const tags = {
         return tagsService.updatePublic(data.id, data.public)
             .then(updated => context.commit('updateTag', updated))
             .catch(error => errorHandler.handle(error));
-    },
+    }
 };

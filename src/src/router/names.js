@@ -16,5 +16,9 @@ export const names = {
     account: 'account',
     publicDrink: 'publicDrink',
     changePassword: 'changePassword',
-    resetPassword: 'resetPassword'
+    resetPassword: 'resetPassword',
+    allDrinksCards: 'allDrinksCards',
+    createDrinksCard: 'createDrinksCard',
+    publicCard: 'publicCard',
+    editDrinksCard: 'editDrinksCard'
 };

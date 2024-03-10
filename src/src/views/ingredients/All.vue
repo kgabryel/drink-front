@@ -4,7 +4,8 @@
     <IngredientsList />
     <v-dialog
       v-model='dialog'
-      :max-width='dialogWidth'>
+      :max-width='dialogWidth'
+    >
       <div class='glass-background pa-2'>
         <Search />
       </div>

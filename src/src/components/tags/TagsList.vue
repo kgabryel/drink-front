@@ -2,13 +2,15 @@
   <div class='content-container px-2 mb-2'>
     <div
       v-if='filteredTags.length > 0'
-      class='glass-background'>
+      class='glass-background'
+    >
       <v-list-item-group multiple>
         <TagContainer
           v-for='tag in filteredTags'
           :key='tag.id'
           :tag='tag'
-          class='pt-2' />
+          class='pt-2'
+        />
       </v-list-item-group>
     </div>
   </div>

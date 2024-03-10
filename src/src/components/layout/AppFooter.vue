@@ -1,25 +1,30 @@
 <template>
   <v-footer
     fixed
-    padless>
+    padless
+  >
     <div class='pt-1 pb-1 white--text d-flex w-100 glass-background rounded-0'>
       <BottomItem
         :href='allDrinks'
         icon='fa-list-ol'
-        name='Drinki' />
+        name='Drinki'
+      />
       <BottomItem
-        :href='createDrink'
-        icon='fa-plus-circle'
-        name='Dodaj' />
+        :href='allDrinksCards'
+        icon='mdi-clipboard-list'
+        name='Karty'
+      />
       <div class='divider' />
       <BottomItem
         :href='ingredients'
         icon='fa-cutlery'
-        name='Składniki' />
+        name='Składniki'
+      />
       <BottomItem
         :href='tags'
         icon='fa-tags'
-        name='Tagi' />
+        name='Tagi'
+      />
     </div>
     <RandomDrinkButton />
   </v-footer>
@@ -34,7 +39,7 @@ export default {
     components: {BottomItem, RandomDrinkButton},
     data: () => ({
         allDrinks: names.allDrinks,
-        createDrink: names.createDrink,
+        allDrinksCards: names.allDrinksCards,
         randomDrink: names.randomDrink,
         ingredients: names.ingredients,
         tags: names.tags

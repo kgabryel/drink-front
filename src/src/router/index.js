@@ -8,10 +8,16 @@ import Drinks from '../views/drinks/Drinks';
 import {paths} from './paths';
 import {actionsNames} from '../store/actions';
 import {dataLoader} from '../services/dataLoader';
+import DrinksCards from '../views/drinksCards/DrinksCards';
 
 Vue.use(VueRouter);
 
 const routes = [
+    {
+        path: paths.publicCard,
+        name: names.publicCard,
+        component: () => import('../views/drinksCards/Public')
+    },
     {
         path: paths.publicDrink,
         name: names.publicDrink,
@@ -174,6 +180,31 @@ const routes = [
                 path: paths.logout,
                 name: names.logout,
                 component: () => import('../views/auth/Logout')
+            },
+            {
+                path: paths.drinksCards,
+                component: DrinksCards,
+                beforeEnter: (to, from, next) => {
+                    const unloadedData = dataLoader.load(true, true, true, true);
+                    Promise.all(unloadedData).then(() => next());
+                },
+                children: [
+                    {
+                        path: paths.main,
+                        name: names.allDrinksCards,
+                        component: () => import('../views/drinksCards/All')
+                    },
+                    {
+                        path: paths.create,
+                        name: names.createDrinksCard,
+                        component: () => import('../views/drinksCards/Create')
+                    },
+                    {
+                        path: paths.edit,
+                        name: names.editDrinksCard,
+                        component: () => import('../views/drinksCards/Edit')
+                    }
+                ]
             }
         ],
         beforeEnter: (to, from, next) => {
@@ -205,10 +236,10 @@ const router = new VueRouter({
     routes,
     scrollBehavior() {
         return { x: 0, y: 0, behavior: 'smooth' };
-    },
+    }
 });
 router.beforeEach(async (to, from, next) => {
-    const unprotectedPaths = [names.login, names.register, names.fb, names.publicDrink, names.changePassword, names.resetPassword];
+    const unprotectedPaths = [names.login, names.register, names.fb, names.publicDrink, names.changePassword, names.resetPassword, names.publicCard];
     if (!unprotectedPaths.includes(to.name) && !(await authService.isLogged())) {
         next({name: names.login});
     } else {

@@ -29,5 +29,8 @@ export const getters = {
     supplies: state => state.supplies.data,
     loadedSuppliesWithSuccess: state => state.supplies.success,
     supplyById: state => id => state.supplies.data.find(supply => supply.id === id),
-    userType: state => state.settings.userType
+    userType: state => state.settings.userType,
+    loadedDrinksCards: state => state.drinksCards.loaded,
+    drinksCards: state => state.drinksCards.data,
+    drinksCardById: state => id => state.drinksCards.data.find(drinksCard => drinksCard.id === id)
 };

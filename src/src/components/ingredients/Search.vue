@@ -4,13 +4,15 @@
       <v-btn
         class='glass-background'
         type='button'
-        @click='clear'>
+        @click='clear'
+      >
         Wyczyść
       </v-btn>
       <v-btn
         class='glass-background mr-2'
         type='button'
-        @click='close'>
+        @click='close'
+      >
         Zamknij
       </v-btn>
     </div>
@@ -23,7 +25,8 @@
         dense
         hide-details
         label='Nazwa'
-        required />
+        required
+      />
     </div>
     <div class='overflow-hidden'>
       <v-select
@@ -32,12 +35,14 @@
         color='indigo darken-4'
         item-text='text'
         item-value='value'
-        label='Dostępne' />
+        label='Dostępne'
+      />
     </div>
     <v-btn
       class='glass-background w-100'
       type='button'
-      @click='search'>
+      @click='search'
+    >
       Szukaj
     </v-btn>
   </div>

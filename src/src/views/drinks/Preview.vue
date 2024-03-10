@@ -3,7 +3,8 @@
     <Drink
       v-if='drink !== undefined'
       :drink='drink'
-      :preview-available='false' />
+      :preview-available='false'
+    />
   </div>
 </template>
 <script>

@@ -4,7 +4,8 @@
       class='mx-2 glass-background'
       fab
       rounded
-      type='button'>
+      type='button'
+    >
       <v-icon class='white--text'>
         fa-glass
       </v-icon>

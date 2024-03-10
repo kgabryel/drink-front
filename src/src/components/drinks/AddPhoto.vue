@@ -4,7 +4,8 @@
       block
       class='text-center glass-background'
       type='button'
-      @click='open()'>
+      @click='open'
+    >
       <v-icon class='mr-3 icon '>
         mdi-upload
       </v-icon>
@@ -12,11 +13,13 @@
     </v-btn>
     <v-dialog
       v-model='showed'
-      :max-width='image.src ? 1000 : 500'>
+      :max-width='image.src ? 1000 : 500'
+    >
       <v-card
         :disabled='loading'
         :loading='loading'
-        class='glass-background'>
+        class='glass-background'
+      >
         <v-card-title>
           <p class='mb-0'>
             Dodawanie
@@ -25,7 +28,8 @@
           <v-btn
             icon
             type='button'
-            @click='showed = false'>
+            @click='showed = false'
+          >
             <v-icon>
               mdi-close
             </v-icon>
@@ -37,21 +41,25 @@
               <v-col
                 class='py-2 py-md-3'
                 cols='12'
-                md='6'>
+                md='6'
+              >
                 <v-btn
                   block
                   class='mt-0 mt-md-3 upload-button glass-background'
                   elevation='2'
                   large
-                  type='button'>
+                  type='button'
+                >
                   <input
                     ref='file'
                     accept='image/*'
                     type='file'
-                    @change='uploadImage($event)'>
+                    @change='uploadImage'
+                  >
                   <v-icon
                     dark
-                    left>
+                    left
+                  >
                     mdi-upload
                   </v-icon>
                   Wybierz zdjęcie
@@ -60,7 +68,8 @@
               <v-col
                 class='py-2 py-md-3'
                 cols='12'
-                md='6'>
+                md='6'
+              >
                 <v-btn
                   :disabled='!cropAvailable'
                   block
@@ -68,10 +77,12 @@
                   elevation='2'
                   large
                   type='button'
-                  @click='crop'>
+                  @click='crop'
+                >
                   <v-icon
                     dark
-                    left>
+                    left
+                  >
                     mdi-content-save
                   </v-icon>
                   Dodaj
@@ -85,7 +96,8 @@
             :src='image.src'
             :stencil-props='{aspectRatio: 4 / 3}'
             class='cropper my-3'
-            @change='change' />
+            @change='change'
+          />
         </div>
       </v-card>
     </v-dialog>

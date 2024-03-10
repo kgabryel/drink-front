@@ -3,7 +3,8 @@
     <v-btn
       class='text-center glass-background red-glass'
       type='button'
-      @click='showed = true'>
+      @click='showed = true'
+    >
       <v-icon class='mr-3 icon '>
         mdi-delete
       </v-icon>
@@ -12,7 +13,8 @@
     <DeleteModal
       :showed='showed'
       @cancel='showed = false'
-      @remove='remove()' />
+      @remove='remove'
+    />
   </div>
 </template>
 <script>

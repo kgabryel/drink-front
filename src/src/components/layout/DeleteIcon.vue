@@ -8,7 +8,8 @@
           type='button'
           v-bind='attrs'
           @click='showed = true'
-          v-on='on'>
+          v-on='on'
+        >
           <v-icon>
             mdi-delete
           </v-icon>
@@ -21,7 +22,8 @@
     <DeleteModal
       :showed='showed'
       @cancel='showed = false'
-      @remove='remove()' />
+      @remove='remove'
+    />
   </div>
 </template>
 <script>

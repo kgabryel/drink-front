@@ -23,7 +23,7 @@ export default {
     mounted() {
         let id = this.$route.params.id ?? '';
         axios
-            .get(routes.publicRecipe(id))
+            .get(routes.publicDrink(id))
             .then(response => {
                 this.drink = response.data;
                 this.loaded = true;

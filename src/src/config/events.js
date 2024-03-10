@@ -12,5 +12,8 @@ export default {
     showPhoto: 'show-photo',
     drinkUpdated: 'drink-updated',
     remove: 'remove',
-    cancel: 'cancel'
+    cancel: 'cancel',
+    drinksCardsSearch: 'drinks-cards-search',
+    drinksCardUpdated: 'drink-card-updated',
+    submitted: 'submitted'
 };

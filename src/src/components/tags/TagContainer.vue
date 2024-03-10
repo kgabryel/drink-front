@@ -3,11 +3,13 @@
     <Edit
       v-if='edit'
       :tag='tag'
-      @stop-edit='edit = false' />
+      @stop-edit='edit = false'
+    />
     <Preview
       v-else
       :tag='tag'
-      @start-edit='edit = true' />
+      @start-edit='edit = true'
+    />
   </div>
 </template>
 <script>

@@ -2,7 +2,8 @@
   <router-link :to='{ name : href }'>
     <v-btn
       class='text-center glass-background d-inline-block'
-      type='button'>
+      type='button'
+    >
       <v-icon class='mr-3 icon '>
         {{ icon }}
       </v-icon>

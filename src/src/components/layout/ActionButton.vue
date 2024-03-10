@@ -1,7 +1,8 @@
 <template>
   <v-btn
     class='text-center white--text glass-background'
-    type='button'>
+    type='button'
+  >
     <v-icon class='mr-3 icon '>
       {{ icon }}
     </v-icon>
@@ -28,13 +29,29 @@ button {
     width: 180px;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 620px) {
+    button {
+        width: 140px;
+    }
+}
+
+@media screen and (max-width: 500px) {
     button .icon {
         display: none;
     }
 
     button {
         width: 120px;
+    }
+}
+
+@media screen and (max-width: 410px) {
+    button .icon {
+        display: none;
+    }
+
+    button {
+        width: 100px;
     }
 }
 </style>

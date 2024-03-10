@@ -2,12 +2,14 @@
   <div class='content-container px-2 mb-2'>
     <div
       v-if='filteredIngredients.length > 0'
-      class='glass-background'>
+      class='glass-background'
+    >
       <IngredientContainer
         v-for='ingredient in filteredIngredients'
         :key='ingredient.id'
         :ingredient='ingredient'
-        class='pt-2' />
+        class='pt-2'
+      />
     </div>
   </div>
 </template>

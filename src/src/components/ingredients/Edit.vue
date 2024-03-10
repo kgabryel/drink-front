@@ -4,7 +4,8 @@
       <v-list-item-action @click='stopEdit'>
         <v-btn
           icon
-          type='button'>
+          type='button'
+        >
           <v-icon color='black'>
             fa-times
           </v-icon>
@@ -21,7 +22,8 @@
             color='indigo darken-4'
             dense
             label='Nazwa'
-            required />
+            required
+          />
         </div>
         <v-textarea
           v-model='description'
@@ -29,13 +31,15 @@
           color='indigo darken-4'
           hide-details='auto'
           label='Opis'
-          rows='2' />
+          rows='2'
+        />
       </v-list-item-content>
       <v-list-item-action @click='update'>
         <v-btn
           :disabled='!valid'
           icon
-          type='button'>
+          type='button'
+        >
           <v-icon color='black'>
             fa-floppy-o
           </v-icon>

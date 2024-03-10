@@ -12,7 +12,8 @@
         color='indigo darken-4'
         hide-details='auto'
         label='Aktualnie hasło'
-        type='password' />
+        type='password'
+      />
       <v-text-field
         v-model='newPassword'
         :counter='maxLength'
@@ -22,7 +23,8 @@
         color='indigo darken-4'
         hide-details='auto'
         label='Nowe hasło'
-        type='password' />
+        type='password'
+      />
       <v-text-field
         v-model='newPasswordRepeat'
         :counter='maxLength'
@@ -33,13 +35,15 @@
         color='indigo darken-4'
         hide-details='auto'
         label='Powtórz hasło'
-        type='password' />
+        type='password'
+      />
       <v-btn
         :disabled='!valid'
         block
         class='text-center glass-background'
         type='button'
-        @click='change'>
+        @click='change'
+      >
         Zmień hasło
       </v-btn>
     </div>

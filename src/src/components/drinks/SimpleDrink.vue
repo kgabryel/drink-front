@@ -1,7 +1,8 @@
 <template>
   <div
     :class="{'in-masonry': !fullWidth, 'w-100': fullWidth}"
-    class='px-2 py-2'>
+    class='px-2 py-2'
+  >
     <v-card class='glass-background'>
       <v-app-bar flat>
         <v-toolbar-title>
@@ -15,10 +16,12 @@
         <div>
           <v-list
             v-if='drink.ingredients.length > 0'
-            two-line>
+            two-line
+          >
             <v-list-item
               v-for='position in drink.ingredients'
-              :key='position.id'>
+              :key='position.id'
+            >
               <v-list-item-content>
                 <v-list-item-title>
                   {{ position.name }}
@@ -33,7 +36,8 @@
                     <v-icon
                       v-if="position.description !== ''"
                       v-bind='attrs'
-                      v-on='on'>
+                      v-on='on'
+                    >
                       mdi-help-circle
                     </v-icon>
                   </template>

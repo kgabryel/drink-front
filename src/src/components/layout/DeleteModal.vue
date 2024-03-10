@@ -1,7 +1,8 @@
 <template>
   <v-dialog
     v-model='visible'
-    :max-width='500'>
+    :max-width='500'
+  >
     <v-card class='glass-background'>
       <v-card-title>
         <p class='mb-0'>
@@ -11,7 +12,8 @@
         <v-btn
           icon
           type='button'
-          @click='cancel()'>
+          @click='cancel'
+        >
           <v-icon>
             mdi-close
           </v-icon>
@@ -20,7 +22,8 @@
       <v-card-text class='text-center pb-0'>
         <v-icon
           class='rotate'
-          color='error'>
+          color='error'
+        >
           mdi-close
         </v-icon>
       </v-card-text>
@@ -29,13 +32,15 @@
         <v-btn
           class='glass-background red-glass action-btn mr-2'
           type='button'
-          @click='remove()'>
+          @click='remove'
+        >
           Tak
         </v-btn>
         <v-btn
           class='glass-background action-btn ml-2'
           type='button'
-          @click='cancel()'>
+          @click='cancel'
+        >
           Nie
         </v-btn>
       </v-card-actions>

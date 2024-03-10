@@ -5,5 +5,6 @@ export default {
     amount: 100,
     key: 128,
     password: 255,
-    email: 180
+    email: 180,
+    drinksCardName: 255
 };

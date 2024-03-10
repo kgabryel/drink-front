@@ -4,13 +4,15 @@
       <v-btn
         class='glass-background'
         type='button'
-        @click='clear'>
+        @click='clear'
+      >
         Wyczyść
       </v-btn>
       <v-btn
         class='glass-background mr-2'
         type='button'
-        @click='close'>
+        @click='close'
+      >
         Zamknij
       </v-btn>
     </div>
@@ -21,11 +23,13 @@
       color='indigo darken-4'
       dense
       label='Nazwa'
-      required />
+      required
+    />
     <v-btn
       class='glass-background w-100'
       type='button'
-      @click='search'>
+      @click='search'
+    >
       Szukaj
     </v-btn>
   </div>

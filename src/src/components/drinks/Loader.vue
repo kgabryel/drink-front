@@ -2,7 +2,8 @@
   <div class='glass-background rounded-0 d-flex align-center justify-center'>
     <v-progress-circular
       color='primary'
-      indeterminate />
+      indeterminate
+    />
   </div>
 </template>
 <script>

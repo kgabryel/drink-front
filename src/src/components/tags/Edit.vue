@@ -4,7 +4,8 @@
       <v-list-item-action @click='stopEdit'>
         <v-btn
           icon
-          type='button'>
+          type='button'
+        >
           <v-icon color='black'>
             fa-times
           </v-icon>
@@ -20,12 +21,14 @@
           color='indigo darken-4'
           dense
           label='Nazwa'
-          required />
+          required
+        />
       </v-list-item-content>
       <v-list-item-action @click='update'>
         <v-btn
           icon
-          type='button'>
+          type='button'
+        >
           <v-icon color='black'>
             fa-floppy-o
           </v-icon>

@@ -8,7 +8,8 @@
       class='mt-0'
       color='white'
       label='Domyślnie tylko dostępne'
-      @change='switchOnlyAvailable' />
+      @change='switchOnlyAvailable'
+    />
     <div class='d-flex'>
       <v-text-field
         v-model='key'
@@ -17,13 +18,16 @@
         class='mb-2 mt-2'
         color='indigo darken-4'
         dense
-        label='Klucz OZA' />
+        label='Klucz OZA'
+      />
       <v-btn
         icon
-        type='button'>
+        type='button'
+      >
         <v-icon
           color='black'
-          @click='updateOzaKey'>
+          @click='updateOzaKey'
+        >
           fa-floppy-o
         </v-icon>
       </v-btn>

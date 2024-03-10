@@ -4,13 +4,15 @@
       <v-btn
         class='glass-background'
         type='button'
-        @click='clear'>
+        @click='clear'
+      >
         Wyczyść
       </v-btn>
       <v-btn
         class='glass-background mr-2'
         type='button'
-        @click='close'>
+        @click='close'
+      >
         Zamknij
       </v-btn>
     </div>
@@ -23,7 +25,8 @@
         dense
         hide-details
         label='Nazwa'
-        required />
+        required
+      />
     </div>
     <div class='d-flex justify-center'>
       <v-switch
@@ -31,13 +34,15 @@
         class='mt-1'
         color='white'
         hide-details
-        label='Tylko ulubione' />
+        label='Tylko ulubione'
+      />
       <v-switch
         v-model='available'
         class='mt-1 ml-3'
         color='white'
         hide-details
-        label='Tylko dostępne' />
+        label='Tylko dostępne'
+      />
     </div>
     <div>
       <v-autocomplete
@@ -53,7 +58,8 @@
         hide-details
         hide-selected
         label='Tagi'
-        multiple>
+        multiple
+      >
         <template #no-data>
           <span class='px-2 py-2'>Brak rezultatów dla: "<strong class='add'>{{ tagsSearch }}</strong>".</span>
         </template>
@@ -62,7 +68,8 @@
             label
             small
             v-bind='attrs'
-            @click='parent.selectItem(item)'>
+            @click='parent.selectItem(item)'
+          >
             {{ item }}
           </v-chip>
         </template>
@@ -81,7 +88,8 @@
         hide-details='auto'
         hide-selected
         label='Składniki'
-        multiple>
+        multiple
+      >
         <template #no-data>
           <span class='px-2 py-2'>Brak rezultatów dla: "<strong class='add'>{{ ingredientsSearch }}</strong>".</span>
         </template>
@@ -98,7 +106,8 @@
     <v-btn
       class='glass-background w-100'
       type='button'
-      @click='search'>
+      @click='search'
+    >
       Szukaj
     </v-btn>
   </div>

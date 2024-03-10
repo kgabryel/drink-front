@@ -15,6 +15,7 @@
     "jwt-decode": "^3.1.2",
     "moment": "^2.29.1",
     "qrcanvas-vue": "2",
+    "qrcode.vue": "1.7.0",
     "register-service-worker": "^1.7.1",
     "rxjs": "^7.0.0",
     "vue": "^2.6.11",

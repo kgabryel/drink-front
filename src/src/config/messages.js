@@ -26,5 +26,10 @@ export default {
     photoAdded: 'Zdjęcie zostało dodane.',
     invalidPhotoDimensions: 'Zdjęcie ma błędne wymiary.',
     photosReorder: 'Kolejność zdjęć została zmodyfikowana.',
-    photoDeleted: 'Zdjęcie zostało usunięte.'
+    photoDeleted: 'Zdjęcie zostało usunięte.',
+    drinksCardAdded: 'Karta drinków została dodana.',
+    urlCopied: 'Adres został skopiowany.',
+    drinksCardUnavailable: 'Karta drinków jest aktualnie niedostępna.',
+    drinksCardDeleted: 'Karta drinków została usunięta.',
+    drinksCardUpdated: 'Karta drinków została zaktualizowana.'
 };

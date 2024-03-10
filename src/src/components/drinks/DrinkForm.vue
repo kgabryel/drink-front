@@ -10,7 +10,8 @@
           color='indigo darken-4'
           dense
           label='Nazwa'
-          required />
+          required
+        />
         <v-tooltip bottom>
           <template #activator='{ on, attrs }'>
             <v-btn
@@ -18,15 +19,18 @@
               type='button'
               v-bind='attrs'
               @click='changeFavourite'
-              v-on='on'>
+              v-on='on'
+            >
               <v-icon
                 v-if='!favourite'
-                color='black'>
+                color='black'
+              >
                 fa-star-o
               </v-icon>
               <v-icon
                 v-else
-                color='amber darken-2'>
+                color='amber darken-2'
+              >
                 fa-star
               </v-icon>
             </v-btn>
@@ -42,15 +46,18 @@
               type='button'
               v-bind='attrs'
               @click='changePublic'
-              v-on='on'>
+              v-on='on'
+            >
               <v-icon
                 v-if='!publicDrink'
-                color='black'>
+                color='black'
+              >
                 mdi-share-variant
               </v-icon>
               <v-icon
                 v-else
-                color='amber darken-2'>
+                color='amber darken-2'
+              >
                 mdi-share-variant
               </v-icon>
             </v-btn>
@@ -65,7 +72,8 @@
         class='mb-2'
         color='indigo darken-4'
         hide-details='auto'
-        label='Opis' />
+        label='Opis'
+      />
       <v-combobox
         v-model='drinkTags'
         :filter='filter'
@@ -80,11 +88,13 @@
         hide-details='auto'
         hide-selected
         label='Tagi'
-        multiple>
+        multiple
+      >
         <template #no-data>
           <span
             v-if='!tagUsed'
-            class='px-2 py-2'>
+            class='px-2 py-2'
+          >
             Brak rezultatów dla: "
             <strong
               class='c-pointer'
@@ -101,7 +111,8 @@
             label
             small
             v-bind='attrs'
-            @click='parent.selectItem(item)'>
+            @click='parent.selectItem(item)'
+          >
             {{ item.toUpperCase() }}
           </v-chip>
         </template>
@@ -109,7 +120,8 @@
       <div
         v-for='(position, counter) in drinkPositions'
         :key='counter'
-        class='mt-0 d-flex align-center'>
+        class='mt-0 d-flex align-center'
+      >
         <v-text-field
           v-model.lazy='position.amount'
           :counter='maxAmountLength'
@@ -118,19 +130,22 @@
           class='mb-2 mr-2'
           color='indigo darken-4'
           label='Ilość'
-          required />
+          required
+        />
         <v-autocomplete
           v-model.lazy='position.ingredient'
           :filter='filter'
           :items='ingredientsNames(position.ingredient)'
           class='mb-2 mx-2'
           color='indigo darken-4'
-          label='Składnik' />
+          label='Składnik'
+        />
         <v-btn
           class='glass-background red-glass'
           icon
           type='button'
-          @click='removePosition(counter)'>
+          @click='removePosition(counter)'
+        >
           <v-icon>
             fa-times
           </v-icon>
@@ -142,7 +157,8 @@
             block
             class='glass-background'
             type='button'
-            @click='addPosition'>
+            @click='addPosition'
+          >
             Dodaj składnik
           </v-btn>
         </v-col>
@@ -152,7 +168,8 @@
             block
             class='glass-background'
             type='button'
-            @click='submit'>
+            @click='submit'
+          >
             {{ btnText }}
           </v-btn>
         </v-col>
