@@ -1,7 +1,7 @@
 services:
   vue:
     build: ./vue
-    container_name: vue
+    container_name: drink_vue
     volumes:
       - ./../src/:/src
     ports:

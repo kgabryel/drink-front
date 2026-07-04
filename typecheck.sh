@@ -1,1 +1,1 @@
-docker exec -it vue sh -c 'npx vue-tsc --noEmit'
+docker exec -it drink_vue sh -c 'npx vue-tsc --noEmit'

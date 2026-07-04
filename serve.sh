@@ -1,1 +1,1 @@
-docker exec -it vue sh -c 'npm run dev'
+docker exec -it drink_vue sh -c 'npm run dev'

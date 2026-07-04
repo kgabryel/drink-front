@@ -1,1 +1,1 @@
-docker exec -it vue sh -c 'npx prettier --write .'
+docker exec -it drink_vue sh -c 'npx prettier --write .'

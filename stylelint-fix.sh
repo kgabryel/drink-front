@@ -1,1 +1,1 @@
-docker exec -it vue sh -c 'npx stylelint "src/**/*.vue" "src/**/*.scss" --fix'
+docker exec -it drink_vue sh -c 'npx stylelint "src/**/*.vue" "src/**/*.scss" --fix'
