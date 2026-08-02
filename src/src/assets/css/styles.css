@@ -1,0 +1,75 @@
+.w-100 {
+    width: 100%;
+}
+
+.w-50 {
+    width: 50%;
+}
+
+.h-100 {
+    height: 100%;
+}
+
+.h-auto {
+    height: auto;
+}
+
+.d-grid {
+    display: grid;
+}
+
+.c-pointer {
+    cursor: pointer;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.content-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.text--black {
+    color: black !important;
+}
+
+.text--white {
+    color: white !important;
+}
+
+.glass-background {
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, .3) !important;
+    backdrop-filter: blur(5px);
+}
+
+.blue-glass {
+    background-color: rgba(42, 212, 248, .6) !important;
+}
+
+.red-glass {
+    background-color: rgba(255, 82, 82, .4) !important;
+}
+
+.green-glass {
+    background-color: rgba(76, 175, 80, .4) !important;
+}
+
+.available-icon {
+    color: rgba(13, 253, 22, 0.8) !important;
+}
+
+.unavailable-icon {
+    color: rgba(255, 49, 0, 0.8) !important;
+}
+
+button.glass-background:hover {
+    background-color: rgba(42, 212, 248, .3) !important;
+}
+
+.v-input--selection-controls__input + label {
+    margin-left: 7px;
+}

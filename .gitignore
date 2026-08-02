@@ -1,0 +1,4 @@
+/.idea
+/docker/logs
+/src/node_modules
+/src/dist

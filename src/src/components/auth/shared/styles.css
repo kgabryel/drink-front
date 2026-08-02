@@ -1,0 +1,57 @@
+img {
+    opacity: 0.6;
+}
+
+form {
+    max-width: 800px;
+}
+
+.vertical {
+    width: 250px;
+    border-radius: 5px;
+}
+
+.horizontal {
+    border-radius: 5px;
+}
+
+hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 600px) {
+    h1 {
+        text-align: center;
+    }
+
+    .vertical {
+        display: none;
+    }
+
+    form div {
+        width: 100%;
+    }
+
+    .v-text-field__details > .v-counter {
+        text-align: right;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .horizontal {
+        display: none;
+    }
+
+    form {
+        display: flex;
+    }
+
+    form > div {
+        padding-top: 50px;
+    }
+}
+
+p {
+    font-weight: bold;
+}
