@@ -1,128 +1,62 @@
+<script setup lang="ts">
+import { useRegisterForm } from '@composables/auth/useRegisterForm';
+import lengths from '@config/lengths';
+
+import loginHorizontal from '@/assets/login-horizontal.jpg';
+import loginVertical from '@/assets/login.jpg';
+import { names } from '@/router/names';
+
+// setup
+const loginPath: string = names.login;
+const emailLength: number = lengths.email;
+const passwordLength: number = lengths.password;
+
+// composables
+const { passwordErrors, state, submit, valid } = useRegisterForm();
+</script>
+
 <template>
-  <div class='w-100 h-100 d-grid justify-center align-content-center'>
-    <v-form class='px-4 py-4 mx-4 my-4 glass-background'>
-      <img
-        :src='require(`@/assets/login.jpg`)'
-        class='vertical h-auto'
-      >
-      <img
-        :src='require(`@/assets/login-horizontal.jpg`)'
-        class='horizontal w-100 h-auto'
-      >
-      <div class='ml-sm-4 form-container'>
-        <h1>
-          Zarejestruj się
-        </h1>
+  <div class="w-100 h-100 d-grid justify-center align-content-center px-4">
+    <v-form class="px-4 py-4 my-4 glass-background">
+      <img :src="loginVertical" class="vertical h-auto" />
+      <img :src="loginHorizontal" class="horizontal w-100 h-auto" />
+      <div class="form-container w-100 px-2">
+        <h1>Zarejestruj się</h1>
         <v-text-field
-          v-model='email'
-          :counter='emailLength'
-          :counter-value='v => v.length'
-          :maxlength='emailLength'
-          color='indigo darken-4'
-          hide-details='auto'
-          label='E-mail'
-          type='email'
+          v-model="state.email"
+          :counter="emailLength"
+          :maxlength="emailLength"
+          label="E-mail"
+          type="email"
         />
         <v-text-field
-          v-model='password'
-          :counter='passwordLength'
-          :counter-value='v => v.length'
-          :maxlength='passwordLength'
-          color='indigo darken-4'
-          hide-details='auto'
-          label='Hasło'
-          type='password'
+          v-model="state.password"
+          :counter="passwordLength"
+          :maxlength="passwordLength"
+          label="Hasło"
+          type="password"
         />
         <v-text-field
-          v-model='passwordRepeat'
-          :counter='passwordLength'
-          :counter-value='v => v.length'
-          :error-messages='passwordErrors'
-          :maxlength='passwordLength'
-          class='mb-2'
-          color='indigo darken-4'
-          hide-details='auto'
-          label='Powtórz hasło'
-          type='password'
+          v-model="state.passwordRepeat"
+          :counter="passwordLength"
+          :error-messages="passwordErrors"
+          :maxlength="passwordLength"
+          class="mb-2"
+          label="Powtórz hasło"
+          type="password"
         />
-        <v-btn
-          :disabled='!valid'
-          block
-          class='glass-background'
-          type='button'
-          @click='submit'
-        >
-          Załóż konto
-        </v-btn>
-        <v-divider />
+        <v-btn :disabled="!valid" block class="glass-background mb-2" type="button" @click="submit">Załóż konto</v-btn>
         <p>
           Masz już konto?
-          <router-link :to='{ name: loginPath}'>
-            <span class='c-pointer text--white'>
-              Zaloguj się
-            </span>
+          <router-link :to="{ name: loginPath }">
+            <span class="c-pointer text-white">Zaloguj się</span>
           </router-link>
         </p>
       </div>
     </v-form>
   </div>
 </template>
-<script>
-import {authService} from '../../services/auth.service';
-import {names} from '../../router/names';
-import lengths from '../../config/lengths';
-import errors from '../../config/errors';
 
-export default {
-    name: 'RegisterForm',
-    data: () => ({
-        email: '',
-        password: '',
-        passwordRepeat: '',
-        passwordValid: true,
-        passwordRepeatValid: true,
-        loginPath: names.login,
-        emailLength: lengths.email,
-        passwordLength: lengths.password,
-        passwordErrors: []
-    }),
-    computed: {
-        valid: function () {
-            return this.email !== '' && this.passwordValid && this.passwordRepeatValid;
-        }
-    },
-    watch: {
-        password: function () {
-            this.passwordValid = true;
-            this.passwordRepeatValid = true;
-            this.passwordErrors = [];
-            if (this.password === '') {
-                this.passwordValid = false;
-                return;
-            }
-            if (this.password === this.passwordRepeat) {
-                return;
-            }
-            this.passwordRepeatValid = false;
-            this.passwordErrors = [errors.passwordDifferent];
-        },
-        passwordRepeat: function () {
-            this.passwordErrors = [];
-            this.passwordRepeatValid = true;
-            if (this.password === this.passwordRepeat) {
-                return;
-            }
-            this.passwordRepeatValid = false;
-            this.passwordErrors = [errors.passwordDifferent];
-        }
-    },
-    methods: {
-        submit: function () {
-            authService.register(this.email, this.password, this.passwordRepeat);
-        }
-    }
-};
-</script>
 <style scoped>
 @import 'shared/styles.css';
 </style>

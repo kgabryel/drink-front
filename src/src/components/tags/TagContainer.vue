@@ -1,34 +1,42 @@
+<script setup lang="ts">
+import type { Tag } from '@models/store/tag';
+import type { Ref } from 'vue';
+
+import { ref } from 'vue';
+
+import TagEditForm from './TagEditForm.vue';
+import TagPreview from './TagPreview.vue';
+
+// interfaces
+interface Props {
+  tag: Tag;
+}
+
+// setup
+defineProps<Props>();
+
+// state
+const edit: Ref<boolean> = ref(false);
+
+// actions
+function startEdit(): void {
+  edit.value = true;
+}
+
+function stopEdit(): void {
+  edit.value = false;
+}
+</script>
+
 <template>
-  <div class='d-flex'>
-    <Edit
-      v-if='edit'
-      :tag='tag'
-      @stop-edit='edit = false'
-    />
-    <Preview
-      v-else
-      :tag='tag'
-      @start-edit='edit = true'
-    />
+  <div>
+    <TagEditForm v-if="edit" :tag="tag" @stop-edit="stopEdit" />
+    <TagPreview v-else :tag="tag" class="pt-0 pb-0" @start-edit="startEdit" />
   </div>
 </template>
-<script>
-import Edit from './Edit';
-import Preview from './Preview';
 
-export default {
-    name: 'TagContainer',
-    components: {Edit, Preview},
-    props: {
-        tag: {
-            type: Object,
-            required: true
-        }
-    },
-    data: () => ({
-        edit: false
-    })
-};
-</script>
 <style scoped>
+div {
+  height: 70px;
+}
 </style>

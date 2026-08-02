@@ -3,20 +3,24 @@ pipeline {
     stages {
         stage('install') {
             steps {
-                sh 'cd src && yarn install'
+                dir('src') {
+                    sh 'npm ci'
+                }
             }
         }
         stage('build'){
             steps {
-                sh 'cd src && yarn build'
+                dir('src') {
+                    sh 'npm run build'
+                }
             }
         }
         stage('deploy') {
             steps {
-                sh 'sudo rm -rf /var/www/html/drink-front'
-                sh 'cp -r src/dist /var/www/html/drink-front'
-                sh 'sudo chmod 755 -R /var/www/html/drink-front'
-                sh 'sudo chown www-data -R /var/www/html/drink-front'
+                sh 'sudo rsync -a --delete src/dist/ /var/www/html/drink-front/'
+                sh 'sudo chown -R www-data:www-data /var/www/html/drink-front'
+                sh 'sudo find /var/www/html/drink-front -type d -exec chmod 755 {} \\;'
+                sh 'sudo find /var/www/html/drink-front -type f -exec chmod 644 {} \\;'
             }
         }
     }

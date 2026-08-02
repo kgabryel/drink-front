@@ -1,0 +1,233 @@
+// ============================================================
+// Variables
+// ============================================================
+
+$glass-color: rgba(255, 255, 255, 0.3);
+$glass-color-light: rgb(255 255 255 / 40%);
+$glass-color-opaque: rgb(255 255 255 / 80%);
+$glass-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+$glass-radius: 5px;
+$blue-glass-color: rgba(42, 212, 248, 0.6);
+$available-color: rgba(13, 253, 22, 0.8);
+$unavailable-color: rgba(255, 49, 0, 0.8);
+$available-color-vivid: rgb(13, 253, 22);
+$unavailable-color-vivid: rgb(255, 49, 0);
+
+// ============================================================
+// Base / Reset
+// ============================================================
+
+html {
+  overflow-y: auto;
+}
+
+body {
+  background: url('../background.jpg') no-repeat fixed !important;
+  background-size: 100% auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s;
+}
+
+// ============================================================
+// Layout utilities
+// ============================================================
+
+.d-grid {
+  display: grid;
+}
+
+.c-pointer {
+  cursor: pointer;
+}
+
+.content-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.square-button {
+  height: 36px;
+  width: 36px;
+  min-width: unset;
+}
+
+.above-content {
+  z-index: 10;
+}
+
+// ============================================================
+// Glass background
+// ============================================================
+
+.glass-background {
+  background-color: $glass-color;
+  backdrop-filter: blur(5px);
+  border-radius: $glass-radius;
+  box-shadow: $glass-shadow;
+}
+
+.glass-background--light {
+  @extend .glass-background;
+  background-color: $glass-color-light;
+}
+
+.glass-background--opaque {
+  @extend .glass-background;
+  background-color: $glass-color-opaque;
+}
+
+.blue-glass {
+  background-color: $blue-glass-color;
+}
+
+.red-glass {
+  background-color: rgba(255, 82, 82, 0.4);
+}
+
+.green-glass {
+  background-color: rgba(76, 175, 80, 0.4);
+}
+
+.glass-background--blur-fix {
+  backdrop-filter: none;
+  position: relative;
+}
+
+.glass-background--blur-fix::before {
+  backdrop-filter: blur(5px);
+  border-radius: inherit;
+  content: '';
+  inset: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.in-waterfall > .v-card.glass-background:hover {
+  background-color: rgb(63 208 239 / 30%);
+}
+
+.in-waterfall > .v-card.glass-background {
+  transition: background-color 0.4s ease-in-out;
+}
+
+// ============================================================
+// Icons
+// ============================================================
+
+.available-icon {
+  color: $available-color;
+}
+
+.available-icon-vivid {
+  color: $available-color-vivid;
+}
+
+.unavailable-icon {
+  color: $unavailable-color;
+}
+
+.unavailable-icon-vivid {
+  color: $unavailable-color-vivid;
+}
+
+// ============================================================
+// Vuetify overrides
+// ============================================================
+
+.v-application {
+  background: transparent;
+}
+
+.v-toolbar {
+  border-radius: 0;
+}
+
+.v-btn.glass-background:hover {
+  background-color: rgba(42, 212, 248, 0.3);
+}
+
+// Dropdown menus (select, autocomplete, combobox)
+
+.v-menu > .v-overlay__content.v-select__content,
+.v-menu > .v-overlay__content.v-autocomplete__content,
+.v-menu > .v-overlay__content.v-combobox__content {
+  backdrop-filter: blur(5px);
+  background-color: $glass-color-light;
+  border-radius: 0 0 $glass-radius $glass-radius;
+  box-shadow: $glass-shadow;
+}
+
+.v-autocomplete__content .v-sheet,
+.v-select__content .v-sheet,
+.v-combobox__content .v-sheet {
+  background: transparent;
+}
+
+.v-select__content .v-list,
+.v-autocomplete__content .v-list,
+.v-combobox__content .v-list {
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+.v-combobox .v-field__input,
+.v-autocomplete .v-field__input {
+  padding-bottom: 5px;
+  padding-top: 15px;
+}
+
+.v-combobox__selection,
+.v-autocomplete__selection {
+  margin-bottom: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+// ============================================================
+// Scrollbars
+// ============================================================
+
+::-webkit-scrollbar,
+.v-autocomplete__content ::-webkit-scrollbar,
+.v-select__content ::-webkit-scrollbar,
+.v-combobox__content ::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.v-autocomplete__content ::-webkit-scrollbar-track,
+.v-select__content ::-webkit-scrollbar-track,
+.v-combobox__content ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb,
+.v-autocomplete__content ::-webkit-scrollbar-thumb,
+.v-select__content ::-webkit-scrollbar-thumb,
+.v-combobox__content ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 4px;
+}

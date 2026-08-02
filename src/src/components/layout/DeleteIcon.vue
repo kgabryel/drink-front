@@ -1,48 +1,28 @@
-<template>
-  <div>
-    <v-tooltip bottom>
-      <template #activator='{ on, attrs }'>
-        <v-btn
-          color='black'
-          icon
-          type='button'
-          v-bind='attrs'
-          @click='showed = true'
-          v-on='on'
-        >
-          <v-icon>
-            mdi-delete
-          </v-icon>
-        </v-btn>
-      </template>
-      <span>
-        Usuń
-      </span>
-    </v-tooltip>
-    <DeleteModal
-      :showed='showed'
-      @cancel='showed = false'
-      @remove='remove'
-    />
-  </div>
-</template>
-<script>
-import events from '../../config/events';
-import DeleteModal from './DeleteModal';
+<script setup lang="ts">
+import { useRemoveConfirm } from '@composables/layout/useRemoveConfirm';
 
-export default {
-    name: 'DeleteIcon',
-    components: {DeleteModal},
-    data: () => ({
-        showed: false
-    }),
-    methods: {
-        remove: function () {
-            this.$emit(events.remove);
-            this.showed = false;
-        }
-    }
-};
+import DeleteModal from './DeleteModal.vue';
+
+// interfaces
+interface Events {
+  (e: 'remove'): void;
+}
+
+// setup
+const emit: Events = defineEmits<Events>();
+
+// composables
+const { remove, showed, showModal } = useRemoveConfirm(emit);
 </script>
-<style scoped>
-</style>
+
+<template>
+  <v-tooltip>
+    <template #activator="{ props: activatorProps }">
+      <v-btn color="black" icon type="button" v-bind="activatorProps" @click="showModal">
+        <v-icon>mdi-delete</v-icon>
+      </v-btn>
+    </template>
+    <span>Usuń</span>
+  </v-tooltip>
+  <DeleteModal v-model="showed" @remove="remove" />
+</template>

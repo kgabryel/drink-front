@@ -1,41 +1,35 @@
-<template>
-  <v-carousel-item
-    :src='photoData'
-    class='c-pointer'
-    @click.native='open'
-  />
-</template>
-<script>
-import axios from 'axios';
-import {routes} from '../../router/routes';
-import {bus} from '../../main';
-import events from '../../config/events';
+<script setup lang="ts">
+import type { Photo } from '@models/store/photo';
+import type { Ref } from 'vue';
 
-export default {
-    name: 'CarouselItem',
-    props: {
-        photo: {
-            type: Object,
-            required: true
-        },
-        drinkId: {
-            type: Number,
-            required: true
-        }
-    },
-    data: () => ({
-        photoData: ''
-    }),
-    mounted() {
-        axios.get(routes.getPhoto('medium', this.drinkId, this.photo.id), {responseType: 'arraybuffer'})
-            .then(response => this.photoData = `data:${this.photo.type};base64,` + Buffer.from(response.data, 'binary').toString('base64'));
-    },
-    methods: {
-        open: function () {
-            bus.$emit(events.showPhoto, this.photo);
-        }
-    }
-};
+import { useOriginalPhoto } from '@composables/drinks/useOriginalPhoto';
+import { PhotoSize } from '@config/photo-size';
+import { photoService } from '@services/photo.service';
+import { ref, watch } from 'vue';
+
+// interfaces
+interface Props {
+  drinkId: number;
+  photo: Photo;
+}
+
+// setup
+const props: Props = defineProps<Props>();
+
+// state
+const photoData: Ref<string> = ref('');
+
+// composables
+const { load } = useOriginalPhoto();
+
+// watch
+watch(
+  () => props.photo.id,
+  async () => (photoData.value = await photoService.loadPhoto(PhotoSize.Medium, props.drinkId, props.photo.id)),
+  { immediate: true },
+);
 </script>
-<style scoped>
-</style>
+
+<template>
+  <v-carousel-item :src="photoData" class="c-pointer" @click="load(photo, drinkId)" />
+</template>

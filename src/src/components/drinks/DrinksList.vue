@@ -1,63 +1,47 @@
+<script setup lang="ts">
+import type { FullDrinkResponse } from '@models/api/full-drink.response';
+import type { Drink } from '@models/store/drink';
+
+import PublicDrink from '@components/drinks/PublicDrink.vue';
+import LoadingSpinner from '@components/layout/LoadingSpinner.vue';
+import 'vue-waterfall-plugin-next/dist/style.css';
+import { useChunkedList } from '@composables/drinks/useChunkedList';
+import waterfallConfig from '@config/waterfall-config';
+import { toRef } from 'vue';
+import { Waterfall } from 'vue-waterfall-plugin-next';
+
+import DrinkPreview from './DrinkPreview.vue';
+
+// interfaces
+interface Props {
+  drinks: Drink[] | FullDrinkResponse[];
+  public?: boolean;
+}
+
+// setup
+const props: Props = withDefaults(defineProps<Props>(), { public: false });
+
+// composables
+const { loaded, ready } = useChunkedList<Drink | FullDrinkResponse>(toRef(props, 'drinks'));
+</script>
+
 <template>
   <div>
-    <masonry-wall
-      :column-width='330'
-      :items='loaded'
-      :padding='16'
+    <LoadingSpinner v-if="!ready" />
+    <Waterfall
+      v-show="ready"
+      :list="loaded"
+      :width="waterfallConfig.width"
+      :breakpoints="waterfallConfig.breakpoints"
+      :gutter="waterfallConfig.gutter"
+      background-color="transparent"
     >
-      <template #default='{item}'>
-        <Drink
-          :drink='item'
-          :full-width='false'
-        />
+      <template #item="{ item }">
+        <slot name="item" :item="item">
+          <PublicDrink v-if="public" :drink="item" :full-width="false" />
+          <DrinkPreview v-else :drink="item" :full-width="false" />
+        </slot>
       </template>
-    </masonry-wall>
-    <div v-waypoint='{ active: true, callback: load }' />
+    </Waterfall>
   </div>
 </template>
-<script>
-import MasonryWall from '@yeger/vue2-masonry-wall';
-import Drink from './Drink';
-
-export default {
-    name: 'DrinksList',
-    components: {Drink, MasonryWall},
-    props: {
-        drinks: {
-            type: Array,
-            required: true
-        }
-    },
-    data: () => ({
-        loaded: [],
-        toLoad: []
-    }),
-    watch: {
-        drinks: function () {
-            this.loaded = [];
-            this.toLoad = [];
-            this.toLoad = [...this.drinks];
-            this.loaded.push(...this.toLoad.splice(0, 15));
-        }
-    },
-    mounted() {
-        this.toLoad = [...this.drinks];
-        this.loaded.push(...this.toLoad.splice(0, 15));
-    },
-    methods: {
-        load: function (e) {
-            if (this.toLoad.length === 0) {
-                return;
-            }
-            if (e.going === 'in') {
-                this.loaded.push(...this.toLoad.splice(0, 15));
-            }
-        }
-    }
-};
-</script>
-<style scoped>
-.masonry-wall {
-    padding: 0 15px;
-}
-</style>

@@ -1,0 +1,1 @@
+docker exec -it vue sh -c 'npm run dev'

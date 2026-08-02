@@ -1,107 +1,70 @@
+<script setup lang="ts">
+import { useLogin } from '@composables/auth/useLogin';
+import lengths from '@config/lengths';
+import { authService } from '@services/auth.service';
+
+import loginHorizontal from '@/assets/login-horizontal.jpg';
+import loginVertical from '@/assets/login.jpg';
+import { names } from '@/router/names';
+
+// setup
+const registerPath: string = names.register;
+const resetPasswordPath: string = names.resetPassword;
+const emailLength: number = lengths.email;
+const passwordLength: number = lengths.password;
+
+// composables
+const { login, state, valid } = useLogin();
+
+// actions
+function fbRedirect(): void {
+  authService.fbRedirect();
+}
+</script>
+
 <template>
-  <div class='w-100 h-100 d-grid justify-center align-content-center'>
-    <v-form class='px-4 py-4 mx-4 my-4 glass-background'>
-      <img
-        :src='require(`@/assets/login.jpg`)'
-        class='vertical h-auto'
-      >
-      <img
-        :src='require(`@/assets/login-horizontal.jpg`)'
-        class='horizontal w-100 h-auto'
-      >
-      <div class='ml-sm-4 form-container'>
-        <h1>
-          Zaloguj się
-        </h1>
+  <div class="w-100 h-100 d-grid justify-center align-content-center px-4">
+    <v-form class="px-4 py-4 my-4 glass-background">
+      <img :src="loginVertical" class="vertical h-auto" />
+      <img :src="loginHorizontal" class="horizontal w-100 h-auto" />
+      <div class="form-container w-100 px-2">
+        <h1>Zaloguj się</h1>
         <v-text-field
-          v-model='email'
-          :counter='emailLength'
-          :counter-value='v => v.length'
-          :maxlength='emailLength'
-          color='indigo darken-4'
-          hide-details='auto'
-          label='E-mail'
-          type='email'
+          v-model="state.email"
+          :counter="emailLength"
+          :maxlength="emailLength"
+          label="E-mail"
+          type="email"
         />
         <v-text-field
-          v-model='password'
-          :counter='passwordLength'
-          :counter-value='v => v.length'
-          :maxlength='passwordLength'
-          class='mb-2'
-          color='indigo darken-4'
-          hide-details='auto'
-          label='Hasło'
-          type='password'
+          v-model="state.password"
+          :counter="passwordLength"
+          :maxlength="passwordLength"
+          class="mb-2"
+          label="Hasło"
+          type="password"
         />
-        <v-btn
-          :disabled='!valid'
-          block
-          class='glass-background'
-          type='button'
-          @click='submit'
-        >
-          Zaloguj się
-        </v-btn>
-        <v-divider />
-        <v-btn
-          block
-          class='mb-1 glass-background blue-glass'
-          type='button'
-          @click='fbRedirect'
-        >
-          <v-icon left>
-            mdi-facebook
-          </v-icon>
+        <v-btn :disabled="!valid" block class="glass-background" type="button" @click="login">Zaloguj się</v-btn>
+        <v-btn block class="mb-1 glass-background blue-glass mt-2 mb-2" type="button" @click="fbRedirect">
+          <v-icon class="mr-2">mdi-facebook</v-icon>
           Zaloguj przez FB
         </v-btn>
-        <p class='mb-0'>
+        <p>
           Nie masz konta?
-          <router-link :to='{ name: registerPath }'>
-            <span class='c-pointer text--white'>
-              Zarejestruj się
-            </span>
+          <router-link :to="{ name: registerPath }">
+            <span class="c-pointer text-white">Zarejestruj się</span>
           </router-link>
         </p>
         <p>
-          <router-link :to='{ name: resetPasswordPath }'>
-            <span class='c-pointer text--white'>
-              Nie pamiętasz hasła?
-            </span>
+          <router-link :to="{ name: resetPasswordPath }">
+            <span class="c-pointer text-white">Nie pamiętasz hasła?</span>
           </router-link>
         </p>
       </div>
     </v-form>
   </div>
 </template>
-<script>
-import {authService} from '../../services/auth.service';
-import {names} from '../../router/names';
-import lengths from '../../config/lengths';
 
-export default {
-    name: 'LoginForm',
-    data: () => ({
-        email: '',
-        password: '',
-        registerPath: names.register,
-        resetPasswordPath: names.resetPassword,
-        emailLength: lengths.email,
-        passwordLength: lengths.password
-    }),
-    computed: {
-        valid: function () {
-            return this.email !== '' && this.password !== '';
-        }
-    },
-    methods: {
-        submit: function () {
-            authService.login(this.email, this.password);
-        },
-        fbRedirect: () => authService.fbRedirect()
-    }
-};
-</script>
 <style scoped>
 @import 'shared/styles.css';
 </style>

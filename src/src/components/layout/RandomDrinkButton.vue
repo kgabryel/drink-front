@@ -1,29 +1,25 @@
-<template>
-  <router-link to='/random-drink'>
-    <v-btn
-      class='mx-2 glass-background'
-      fab
-      rounded
-      type='button'
-    >
-      <v-icon class='white--text'>
-        fa-glass
-      </v-icon>
-    </v-btn>
-  </router-link>
-</template>
-<script>
-export default {
-    name: 'RandomDrinkButton'
-};
+<script setup lang="ts">
+import { names } from '@/router/names';
 </script>
+
+<template>
+  <v-btn
+    :to="{ name: names.randomDrink }"
+    class="mx-2 glass-background"
+    type="button"
+    size="large"
+    icon="mdi-glass-cocktail"
+    color="white"
+  />
+</template>
+
 <style scoped>
-button {
-    z-index: 10;
-    position: fixed;
-    bottom: 30px;
-    left: calc(50% - 33px);
-    border: 3px solid white !important;
-    border-radius: 100px;
+a {
+  border: 3px solid white;
+  border-radius: 100px;
+  bottom: 30px;
+  left: calc(50% - 33px);
+  position: fixed;
+  z-index: 10;
 }
 </style>
