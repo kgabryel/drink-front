@@ -1,17 +1,24 @@
-import type { UpdateRequest } from '@models/api/update.request';
-import type { Tag } from '@models/store/tag';
+import type { UpdateRequest } from '@models/update.request';
+import type { DrinksStore } from '@store/drinks';
 import type { TagsStore } from '@store/tags';
-import type { Ref } from 'vue';
+import type { ComputedRef, Ref } from 'vue';
 
 import messages from '@config/messages';
+import { computed } from 'vue';
 import { useToast } from 'vue-toastification';
 
-import { useTagsStore } from '@/store';
+import type { Tag } from '@/api/response';
+
+import { useDrinksStore, useTagsStore } from '@/store';
 
 export function useTagPreview(tag: Ref<Tag>) {
   // setup
   const tagsStore: TagsStore = useTagsStore();
+  const drinksStore: DrinksStore = useDrinksStore();
   const toast: ReturnType<typeof useToast> = useToast();
+
+  // computed
+  const drinksCount: ComputedRef<number> = computed(() => drinksStore.drinksForTagId(tag.value.id).length);
 
   // actions
   async function remove(id: number): Promise<void> {
@@ -36,5 +43,5 @@ export function useTagPreview(tag: Ref<Tag>) {
     toast.success(messages.tagUpdated);
   }
 
-  return { changePublic, remove };
+  return { changePublic, drinksCount, remove };
 }

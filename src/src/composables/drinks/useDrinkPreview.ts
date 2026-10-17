@@ -1,5 +1,4 @@
-import type { UpdateRequest } from '@models/api/update.request';
-import type { Drink } from '@models/store/drink';
+import type { UpdateRequest } from '@models/update.request';
 import type { DrinksStore } from '@store/drinks';
 import type { Ref } from 'vue';
 
@@ -7,6 +6,8 @@ import { useDrinkPositions } from '@composables/drinks/useDrinkPositions';
 import messages from '@config/messages';
 import { useRouter } from 'vue-router';
 import { useToast } from 'vue-toastification';
+
+import type { Drink } from '@/api/response';
 
 import { names } from '@/router/names';
 import { useDrinksStore } from '@/store';

@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { DrinksCard } from '@models/store/drinks-card';
-
 import DrinkCardForm from '@components/drinksCards/DrinkCardForm.vue';
 import { useDrinkCardUpdate } from '@composables/drinksCards/useDrinkCardUpdate';
 import { toRef } from 'vue';
+
+import type { DrinksCard } from '@/api/response';
 
 // interfaces
 interface Props {

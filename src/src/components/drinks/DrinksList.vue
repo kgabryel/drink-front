@@ -1,14 +1,13 @@
 <script setup lang="ts">
-import type { FullDrinkResponse } from '@models/api/full-drink.response';
-import type { Drink } from '@models/store/drink';
-
 import PublicDrink from '@components/drinks/PublicDrink.vue';
 import LoadingSpinner from '@components/layout/LoadingSpinner.vue';
-import 'vue-waterfall-plugin-next/dist/style.css';
 import { useChunkedList } from '@composables/drinks/useChunkedList';
+import 'vue-waterfall-plugin-next/dist/style.css';
 import waterfallConfig from '@config/waterfall-config';
 import { toRef } from 'vue';
 import { Waterfall } from 'vue-waterfall-plugin-next';
+
+import type { Drink, FullDrinkResponse } from '@/api/response';
 
 import DrinkPreview from './DrinkPreview.vue';
 

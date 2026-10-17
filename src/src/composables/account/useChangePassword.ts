@@ -1,4 +1,3 @@
-import type { ChangePasswordRequest } from '@models/api/change-password.request';
 import type { SettingsStore } from '@store/settings';
 import type { ComputedRef } from 'vue';
 
@@ -6,6 +5,8 @@ import errors from '@config/errors';
 import messages from '@config/messages';
 import { computed, reactive } from 'vue';
 import { useToast } from 'vue-toastification';
+
+import type { ChangePasswordRequest } from '@/api/request';
 
 import { useSettingsStore } from '@/store';
 import { passwordMath } from '@/utils/form.utils';
@@ -65,10 +66,8 @@ export function useChangePassword() {
     }
 
     const data: ChangePasswordRequest = {
-      newPassword: {
-        first: state.newPassword,
-        second: state.newPasswordRepeat,
-      },
+      newPassword: state.newPassword,
+      newPasswordRepeat: state.newPasswordRepeat,
       oldPassword: state.oldPassword,
     };
 

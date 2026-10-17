@@ -5,6 +5,8 @@ import messages from '@config/messages';
 import { reactive, toRef } from 'vue';
 import { useToast } from 'vue-toastification';
 
+import type { CreateTagRequest } from '@/api/request';
+
 import { useTagsStore } from '@/store';
 
 interface State {
@@ -32,7 +34,12 @@ export function useTagCreate() {
       return;
     }
 
-    const success: boolean = await tagsStore.addTag(state.name, state.publicTag);
+    const data: CreateTagRequest = {
+      name: state.name,
+      public: state.publicTag,
+    };
+
+    const success: boolean = await tagsStore.addTag(data);
 
     if (!success) {
       return;

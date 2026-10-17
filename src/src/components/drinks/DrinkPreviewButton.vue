@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Drink } from '@models/store/drink';
+import type { Drink } from '@/api/response';
 
 import { names } from '@/router/names';
 

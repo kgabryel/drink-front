@@ -1,5 +1,3 @@
-import type { ChangePasswordRequest } from '@models/api/change-password.request';
-import type { Settings } from '@models/store/settings';
 import type { IngredientsStore } from '@store/ingredients';
 import type { OzaSuppliesStore } from '@store/oza-supplies';
 import type { AxiosResponse } from 'axios';
@@ -12,12 +10,16 @@ import { useOzaSuppliesStore } from '@store/oza-supplies';
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 
+import type { ChangePasswordRequest } from '@/api/request';
+import type { Settings } from '@/api/response';
+import type UserType from '@/api/user-type';
+
 export const useSettingsStore = defineStore('settings', () => {
   // state
   const loaded: Ref<boolean> = ref(false);
   const onlyAvailable: Ref<boolean> = ref(false);
   const ozaKey: Ref<string | null> = ref(null);
-  const userType: Ref<'standard' | 'facebook'> = ref('standard');
+  const userType: Ref<UserType> = ref('standard');
 
   // actions
   async function ensureLoaded(): Promise<void> {
@@ -69,6 +71,7 @@ export const useSettingsStore = defineStore('settings', () => {
         errorHandler.catch(error);
       });
   }
+
   function reset(): void {
     loaded.value = false;
     onlyAvailable.value = false;

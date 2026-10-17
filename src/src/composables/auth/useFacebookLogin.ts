@@ -1,10 +1,11 @@
-import type { TokensResponse } from '@models/api/tokens.response';
 import type { Result } from '@models/result';
 
 import messages from '@config/messages';
 import { authService } from '@services/auth.service';
 import { useRouter } from 'vue-router';
 import { useToast } from 'vue-toastification';
+
+import type { TokensResponse } from '@/api/response';
 
 import { names } from '@/router/names';
 

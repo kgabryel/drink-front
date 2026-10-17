@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import type { Photo } from '@models/store/photo';
 import type { Ref } from 'vue';
 
 import { useOriginalPhoto } from '@composables/drinks/useOriginalPhoto';
 import { PhotoSize } from '@config/photo-size';
 import { photoService } from '@services/photo.service';
 import { ref, watch } from 'vue';
+
+import type { Photo } from '@/api/response';
 
 // interfaces
 interface Props {

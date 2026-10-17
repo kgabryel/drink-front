@@ -1,14 +1,15 @@
-import type { DrinksCardRequest } from '@models/api/drinks-card.request';
-import type { Drink } from '@models/store/drink';
-import type { DrinkPosition } from '@models/store/drink-position';
-import type { Ingredient } from '@models/store/ingredient';
-import type { Tag } from '@models/store/tag';
 import type { DrinksStore } from '@store/drinks';
 import type { IngredientsStore } from '@store/ingredients';
 import type { TagsStore } from '@store/tags';
 import type { ComputedRef } from 'vue';
 
 import { computed, reactive } from 'vue';
+
+import type { DrinksCardRequest } from '@/api/request';
+import type { Drink } from '@/api/response';
+import type { DrinkPosition } from '@/api/response';
+import type { Ingredient } from '@/api/response';
+import type { Tag } from '@/api/response';
 
 import { useDrinksStore, useIngredientsStore, useTagsStore } from '@/store';
 

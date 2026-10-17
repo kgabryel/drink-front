@@ -1,5 +1,4 @@
-import type { UpdateRequest } from '@models/api/update.request';
-import type { Tag } from '@models/store/tag';
+import type { UpdateRequest } from '@models/update.request';
 import type { AxiosResponse } from 'axios';
 import type { ComputedRef, Ref } from 'vue';
 
@@ -8,6 +7,9 @@ import { stringsService } from '@services/strings.service';
 import { tagsService } from '@services/tags.service';
 import { defineStore } from 'pinia';
 import { computed, ref } from 'vue';
+
+import type { CreateTagRequest } from '@/api/request';
+import type { Tag } from '@/api/response';
 
 import { pushItem, removeById, replaceById } from '@/utils/store.utils';
 
@@ -44,9 +46,9 @@ export const useTagsStore = defineStore('tags', () => {
     await loadTags();
   }
 
-  function addTag(name: string, publicTag: boolean): Promise<boolean> {
+  function addTag(payload: CreateTagRequest): Promise<boolean> {
     return tagsService
-      .add(name, publicTag)
+      .add(payload)
       .then((tag: Tag) => pushItem(data.value, tag))
       .catch((error: AxiosResponse) => errorHandler.catch(error));
   }
@@ -81,6 +83,7 @@ export const useTagsStore = defineStore('tags', () => {
     addTag,
     deleteTag,
     ensureLoaded,
+    loadTags,
     reset,
     tagById,
     tagByName,

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { Tag } from '@models/store/tag';
-
 import { useTagEdit } from '@composables/tags/useTagEdit';
 import lengths from '@config/lengths';
+
+import type { Tag } from '@/api/response';
 
 // interfaces
 interface Events {

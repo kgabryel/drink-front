@@ -1,9 +1,10 @@
-import type { Photo } from '@models/store/photo';
 import type { Ref } from 'vue';
 
 import { PhotoSize } from '@config/photo-size';
 import { photoService } from '@services/photo.service';
 import { ref } from 'vue';
+
+import type { Photo } from '@/api/response';
 
 // Singleton state — współdzielony między komponentami celowo
 const photo: Ref<Photo | null> = ref<Photo | null>(null);

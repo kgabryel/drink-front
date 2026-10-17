@@ -1,6 +1,4 @@
-import type { DrinksCardRequest } from '@models/api/drinks-card.request';
-import type { UpdateRequest } from '@models/api/update.request';
-import type { DrinksCard } from '@models/store/drinks-card';
+import type { UpdateRequest } from '@models/update.request';
 import type { AxiosResponse } from 'axios';
 import type { Ref } from 'vue';
 
@@ -9,6 +7,9 @@ import { errorHandler } from '@services/errorHandler';
 import { stringsService } from '@services/strings.service';
 import { defineStore } from 'pinia';
 import { computed, type ComputedRef, ref } from 'vue';
+
+import type { DrinksCardRequest } from '@/api/request';
+import type { DrinksCard } from '@/api/response';
 
 import { pushItem, removeById, replaceById } from '@/utils/store.utils';
 
@@ -62,9 +63,9 @@ export const useDrinksCardsStore = defineStore('drinksCards', () => {
       .catch((error: AxiosResponse) => errorHandler.catch(error));
   }
 
-  function modifyDrinksCardActivity(id: number, active: boolean): Promise<boolean> {
+  function updateDrinksCardActivity(payload: UpdateRequest<boolean>): Promise<boolean> {
     return drinksCardsService
-      .modifyActivity(id, active)
+      .updateActivity(payload)
       .then((updated: DrinksCard) => replaceById(data.value, updated))
       .catch((error: AxiosResponse) => errorHandler.catch(error));
   }
@@ -80,9 +81,9 @@ export const useDrinksCardsStore = defineStore('drinksCards', () => {
     drinksCardById,
     drinksCards,
     ensureLoaded,
-    modifyDrinksCardActivity,
     reset,
     updateDrinksCard,
+    updateDrinksCardActivity,
   };
 });
 

@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import type { Ingredient } from '@models/store/ingredient';
-import type { OzaSupply } from '@models/store/oza-supply';
 import type { OzaSuppliesStore } from '@store/oza-supplies';
 import type { ComputedRef } from 'vue';
 
 import AutocompleteSingle from '@components/layout/AutocompleteSingle.vue';
 import { useIngredientEditOza } from '@composables/ingredients/useIngredientEditOza';
 import { computed } from 'vue';
+
+import type { OzaSupply } from '@/api/response';
+import type { Ingredient } from '@/api/response';
 
 import { useOzaSuppliesStore } from '@/store';
 

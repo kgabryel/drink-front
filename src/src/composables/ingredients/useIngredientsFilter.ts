@@ -1,11 +1,12 @@
 import type { IngredientsSearch } from '@models/search/ingredients.search';
-import type { Ingredient } from '@models/store/ingredient';
 import type { IngredientsStore } from '@store/ingredients';
 import type { SearchStore } from '@store/search';
 import type { ComputedRef } from 'vue';
 
 import { stringsService } from '@services/strings.service';
 import { computed } from 'vue';
+
+import type { Ingredient } from '@/api/response';
 
 import { useIngredientsStore, useSearchStore } from '@/store';
 

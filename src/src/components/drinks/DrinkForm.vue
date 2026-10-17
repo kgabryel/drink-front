@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import type { DrinkRequest } from '@models/api/drink.request';
-import type { Drink } from '@models/store/drink';
-
 import AutocompleteSingle from '@components/layout/AutocompleteSingle.vue';
 import { useDrinkForm } from '@composables/drinks/useDrinkForm';
 import lengths from '@config/lengths';
+
+import type { DrinkRequest } from '@/api/request';
+import type { Drink } from '@/api/response';
 
 import { filterName } from '@/utils/form.utils';
 
@@ -12,7 +12,7 @@ import { filterName } from '@/utils/form.utils';
 interface Props {
   drink: Drink | null;
   btnText: string;
-  submitAction: (data: DrinkRequest) => void;
+  submitAction: (data: DrinkRequest, newTag: boolean) => void;
 }
 
 // setup

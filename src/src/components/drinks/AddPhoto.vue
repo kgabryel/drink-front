@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import type { Drink } from '@models/store/drink';
-
 import 'vue-advanced-cropper/dist/style.css';
 import type { Ref } from 'vue';
 
@@ -8,6 +6,8 @@ import { useAddPhoto } from '@composables/drinks/useAddPhoto';
 import modalConfig from '@config/modal-config';
 import { useTemplateRef } from 'vue';
 import { Cropper } from 'vue-advanced-cropper';
+
+import type { Drink } from '@/api/response';
 
 // interfaces
 interface Props {

@@ -1,12 +1,13 @@
-import type { ReorderPhotoRequest } from '@models/api/reorder-photo.request';
-import type { UpdateRequest } from '@models/api/update.request';
-import type { Photo } from '@models/store/photo';
+import type { UpdateRequest } from '@models/update.request';
 import type { DrinksStore } from '@store/drinks';
 import type { Ref } from 'vue';
 
 import messages from '@config/messages';
 import { ref, watch } from 'vue';
 import { useToast } from 'vue-toastification';
+
+import type { ReorderPhotoRequest } from '@/api/request';
+import type { Photo } from '@/api/response';
 
 import { useDrinksStore } from '@/store';
 

@@ -1,0 +1,1760 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Drink API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/login_check": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokensResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/refresh_token": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": ["refresh_token"],
+                "properties": {
+                  "refresh_token": {
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokensResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/api-keys/{id}": {
+      "delete": {
+        "operationId": "delete_apiKey.deleteKey",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "\\d+"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "patch": {
+        "operationId": "patch_apiKey.switchKey",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "\\d+"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiKeyResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/api-keys": {
+      "get": {
+        "operationId": "get_apiKey.getKeys",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiKeyListResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "post_apiKey.generateKey",
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiKeyResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/register": {
+      "post": {
+        "operationId": "post_auth.register",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/drinks-cards/{id}": {
+      "put": {
+        "operationId": "put_drinksCards.update",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "\\d+"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DrinksCardRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DrinksCardResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "delete_drinksCards.destroy",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "\\d+"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "patch": {
+        "operationId": "patch_drinksCards.modify",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "\\d+"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyDrinksCardRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DrinksCardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/drinks-cards": {
+      "get": {
+        "operationId": "get_drinksCards.index",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DrinksCardListResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "post_drinksCards.store",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DrinksCardRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DrinksCardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/drinks/{id}": {
+      "put": {
+        "operationId": "put_drinks.update",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "\\d+"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DrinkRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DrinkResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "delete_drinks.destroy",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "\\d+"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "patch": {
+        "operationId": "patch_drinks.modify",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "\\d+"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyDrinkRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DrinkResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/drinks": {
+      "get": {
+        "operationId": "get_drinks.index",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DrinkListResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "post_drinks.store",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DrinkRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DrinkResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/facebook/redirect": {
+      "get": {
+        "operationId": "get_auth.fbRedirect",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RedirectUrlResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/facebook/login": {
+      "post": {
+        "operationId": "post_auth.fbLogin",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthTokenRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokensResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ingredients/{id}": {
+      "delete": {
+        "operationId": "delete_ingredients.destroy",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "\\d+"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "patch": {
+        "operationId": "patch_ingredients.modify",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "\\d+"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyIngredientRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IngredientResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ingredients/oza-supplies": {
+      "get": {
+        "operationId": "get_ingredients.getOzaSupplies",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OzaSupplyListResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ingredients": {
+      "get": {
+        "operationId": "get_ingredients.index",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IngredientListResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "post_ingredients.store",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateIngredientRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IngredientResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/oza/supplies/{id}": {
+      "delete": {
+        "operationId": "delete_ozaSupplies.destroy",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "\\d+"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "patch": {
+        "operationId": "patch_ozaSupplies.modify",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "\\d+"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/drinks/{drinkId}/photos/{photoId}": {
+      "delete": {
+        "operationId": "delete_photos.destroy",
+        "parameters": [
+          {
+            "name": "drinkId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "\\d+"
+            }
+          },
+          {
+            "name": "photoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "\\d+"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DrinkResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/drinks/{id}/photos": {
+      "post": {
+        "operationId": "post_photos.store",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "\\d+"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PhotoRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DrinkResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "patch_photos.reorderPhotos",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "\\d+"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReorderPhotoRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DrinkResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/drinks/{drinkId}/photos/{photoId}/{type}": {
+      "get": {
+        "operationId": "get_photos.show",
+        "parameters": [
+          {
+            "name": "drinkId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "\\d+"
+            }
+          },
+          {
+            "name": "photoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "\\d+"
+            }
+          },
+          {
+            "name": "type",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "image/*": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/public/drinks/{publicId}": {
+      "get": {
+        "operationId": "get_public.drink",
+        "parameters": [
+          {
+            "name": "publicId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "[0-9a-f]{8}-[0-9a-f]{4}-[13-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FullDrinkResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/public/drinks-cards/{publicId}": {
+      "get": {
+        "operationId": "get_public.drinksCard",
+        "parameters": [
+          {
+            "name": "publicId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "[0-9a-f]{8}-[0-9a-f]{4}-[13-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FullDrinkListResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/change-password/{token}": {
+      "post": {
+        "operationId": "post_resetPassword.changePassword",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResetPasswordRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/check-token/{token}": {
+      "get": {
+        "operationId": "get_resetPassword.checkToken",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/reset-password": {
+      "post": {
+        "operationId": "post_resetPassword.sendEmail",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResetPasswordEmailRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/settings/change-oza-key": {
+      "patch": {
+        "operationId": "patch_settings.changeOzaKey",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OzaKeyRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SettingsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/settings/change-password": {
+      "post": {
+        "operationId": "post_settings.changePassword",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangePasswordRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/settings": {
+      "get": {
+        "operationId": "get_settings.getSettings",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SettingsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/settings/switch-only-available": {
+      "patch": {
+        "operationId": "patch_settings.switchOnlyAvailable",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SettingsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tags/{id}": {
+      "delete": {
+        "operationId": "delete_tags.destroy",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "\\d+"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "patch": {
+        "operationId": "patch_tags.modify",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "\\d+"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModifyTagRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TagResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tags": {
+      "get": {
+        "operationId": "get_tags.index",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TagListResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "post_tags.store",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTagRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TagResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "LoginRequest": {
+        "required": ["username", "password"],
+        "properties": {
+          "username": {
+            "type": "string",
+            "format": "email"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "RegisterRequest": {
+        "required": ["email", "password", "passwordRepeat"],
+        "properties": {
+          "email": {
+            "type": "string",
+            "maxLength": 180
+          },
+          "password": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "passwordRepeat": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "ModifyDrinksCardRequest": {
+        "properties": {
+          "active": {
+            "type": "boolean",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "DrinksCardRequest": {
+        "required": ["active", "name"],
+        "properties": {
+          "active": {
+            "type": "boolean"
+          },
+          "availableDrinks": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            },
+            "default": []
+          },
+          "availableIngredients": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            },
+            "default": []
+          },
+          "availableTags": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            },
+            "default": []
+          },
+          "excludedDrinks": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            },
+            "default": []
+          },
+          "excludedIngredients": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            },
+            "default": []
+          },
+          "excludedTags": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            },
+            "default": []
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 255
+          }
+        },
+        "type": "object"
+      },
+      "ModifyDrinkRequest": {
+        "properties": {
+          "favourite": {
+            "type": "boolean",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "DrinkPositionRequest": {
+        "required": ["amount", "ingredient"],
+        "properties": {
+          "amount": {
+            "type": "string",
+            "maxLength": 30
+          },
+          "ingredient": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "DrinkRequest": {
+        "required": ["description", "favourite", "name", "public"],
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "favourite": {
+            "type": "boolean"
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "positions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DrinkPositionRequest"
+            },
+            "default": []
+          },
+          "public": {
+            "type": "boolean"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "default": []
+          }
+        },
+        "type": "object"
+      },
+      "AuthTokenRequest": {
+        "required": ["authToken"],
+        "properties": {
+          "authToken": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "ModifyIngredientRequest": {
+        "properties": {
+          "available": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "ozaId": {
+            "type": "integer",
+            "nullable": true,
+            "minimum": 0
+          }
+        },
+        "type": "object"
+      },
+      "CreateIngredientRequest": {
+        "required": ["available", "description", "name"],
+        "properties": {
+          "available": {
+            "type": "boolean"
+          },
+          "description": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "ozaId": {
+            "type": "integer",
+            "nullable": true,
+            "minimum": 0,
+            "exclusiveMinimum": true
+          }
+        },
+        "type": "object"
+      },
+      "PhotoOrderRequest": {
+        "required": ["id", "index"],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
+          },
+          "index": {
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
+          }
+        },
+        "type": "object"
+      },
+      "ReorderPhotoRequest": {
+        "properties": {
+          "order": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PhotoOrderRequest"
+            },
+            "default": [],
+            "minItems": 1
+          }
+        },
+        "type": "object"
+      },
+      "PhotoRequest": {
+        "required": ["photo", "decoded"],
+        "properties": {
+          "photo": {
+            "type": "string"
+          },
+          "decoded": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "ResetPasswordRequest": {
+        "required": ["newPassword", "newPasswordRepeat"],
+        "properties": {
+          "newPassword": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "newPasswordRepeat": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "ResetPasswordEmailRequest": {
+        "required": ["email"],
+        "properties": {
+          "email": {
+            "type": "string",
+            "maxLength": 180
+          }
+        },
+        "type": "object"
+      },
+      "OzaKeyRequest": {
+        "properties": {
+          "key": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 128
+          }
+        },
+        "type": "object"
+      },
+      "ChangePasswordRequest": {
+        "required": ["newPassword", "newPasswordRepeat", "oldPassword"],
+        "properties": {
+          "newPassword": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "newPasswordRepeat": {
+            "type": "string"
+          },
+          "oldPassword": {
+            "type": "string",
+            "maxLength": 255
+          }
+        },
+        "type": "object"
+      },
+      "ModifyTagRequest": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "public": {
+            "type": "boolean",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "CreateTagRequest": {
+        "required": ["name", "public"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 50
+          },
+          "public": {
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "ApiKeyResponse": {
+        "required": ["active", "id", "key"],
+        "properties": {
+          "active": {
+            "type": "boolean"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "key": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "ApiKeyListResponse": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/ApiKeyResponse"
+        }
+      },
+      "IdList": {
+        "type": "array",
+        "items": {
+          "type": "integer"
+        }
+      },
+      "DrinksCardResponse": {
+        "required": [
+          "active",
+          "availableDrinks",
+          "availableIngredients",
+          "availableTags",
+          "excludedDrinks",
+          "excludedIngredients",
+          "excludedTags",
+          "id",
+          "name",
+          "publicId"
+        ],
+        "properties": {
+          "active": {
+            "type": "boolean"
+          },
+          "availableDrinks": {
+            "$ref": "#/components/schemas/IdList"
+          },
+          "availableIngredients": {
+            "$ref": "#/components/schemas/IdList"
+          },
+          "availableTags": {
+            "$ref": "#/components/schemas/IdList"
+          },
+          "excludedDrinks": {
+            "$ref": "#/components/schemas/IdList"
+          },
+          "excludedIngredients": {
+            "$ref": "#/components/schemas/IdList"
+          },
+          "excludedTags": {
+            "$ref": "#/components/schemas/IdList"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "publicId": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "DrinksCardListResponse": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/DrinksCardResponse"
+        }
+      },
+      "PhotoResponse": {
+        "required": ["height", "id", "type", "width"],
+        "properties": {
+          "height": {
+            "type": "integer"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "type": {
+            "type": "string"
+          },
+          "width": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "PhotoListResponse": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/PhotoResponse"
+        }
+      },
+      "DrinkPosition": {
+        "required": ["amount", "id", "ingredientId"],
+        "properties": {
+          "amount": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "ingredientId": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "DrinkPositionList": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/DrinkPosition"
+        }
+      },
+      "DrinkResponse": {
+        "required": ["description", "favourite", "id", "name", "photos", "positions", "public", "publicId", "tags"],
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "favourite": {
+            "type": "boolean"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "photos": {
+            "$ref": "#/components/schemas/PhotoListResponse"
+          },
+          "positions": {
+            "$ref": "#/components/schemas/DrinkPositionList"
+          },
+          "public": {
+            "type": "boolean"
+          },
+          "publicId": {
+            "type": "string"
+          },
+          "tags": {
+            "$ref": "#/components/schemas/IdList"
+          }
+        },
+        "type": "object"
+      },
+      "DrinkListResponse": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/DrinkResponse"
+        }
+      },
+      "RedirectUrlResponse": {
+        "required": ["url"],
+        "properties": {
+          "url": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "TokensResponse": {
+        "required": ["refresh_token", "token"],
+        "properties": {
+          "refresh_token": {
+            "type": "string"
+          },
+          "token": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "IngredientResponse": {
+        "required": ["available", "description", "id", "name", "ozaId"],
+        "properties": {
+          "available": {
+            "type": "boolean"
+          },
+          "description": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "ozaId": {
+            "type": "integer",
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "OzaSupplyResponse": {
+        "required": ["amount", "available", "id", "name"],
+        "properties": {
+          "amount": {
+            "type": "string"
+          },
+          "available": {
+            "type": "boolean"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "OzaSupplyListResponse": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/OzaSupplyResponse"
+        }
+      },
+      "IngredientListResponse": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/IngredientResponse"
+        }
+      },
+      "FullDrinkPosition": {
+        "required": ["amount", "id", "ingredient", "ingredientDescription"],
+        "properties": {
+          "amount": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "ingredient": {
+            "type": "string"
+          },
+          "ingredientDescription": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "FullDrinkPositionList": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/FullDrinkPosition"
+        }
+      },
+      "StringList": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "FullDrinkResponse": {
+        "required": ["description", "id", "name", "photos", "positions", "tags"],
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "photos": {
+            "$ref": "#/components/schemas/PhotoListResponse"
+          },
+          "positions": {
+            "$ref": "#/components/schemas/FullDrinkPositionList"
+          },
+          "tags": {
+            "$ref": "#/components/schemas/StringList"
+          }
+        },
+        "type": "object"
+      },
+      "FullDrinkListResponse": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/FullDrinkResponse"
+        }
+      },
+      "UserType": {
+        "type": "string",
+        "enum": ["facebook", "standard"]
+      },
+      "SettingsResponse": {
+        "required": ["onlyAvailable", "ozaKey", "userType"],
+        "properties": {
+          "onlyAvailable": {
+            "type": "boolean"
+          },
+          "ozaKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "userType": {
+            "$ref": "#/components/schemas/UserType"
+          }
+        },
+        "type": "object"
+      },
+      "TagResponse": {
+        "required": ["id", "name", "public"],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "public": {
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "TagListResponse": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/TagResponse"
+        }
+      }
+    }
+  }
+}

@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import type { Drink } from '@models/store/drink';
 import type { Ref } from 'vue';
 
 import RandomDrinkIngredientsActions from '@components/drinks/RandomDrinkIngredientsActions.vue';
 import RandomDrinkStats from '@components/drinks/RandomDrinkStats.vue';
 import { useRandomDrink } from '@composables/drinks/useRandomDrink';
 import { ref } from 'vue';
+
+import type { Drink } from '@/api/response';
 
 import DrinkPreview from './DrinkPreview.vue';
 

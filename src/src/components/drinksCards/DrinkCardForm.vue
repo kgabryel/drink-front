@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { State } from '@composables/drinksCards/useDrinksCardForm';
-import type { DrinksCardRequest } from '@models/api/drinks-card.request';
 import type { Ref } from 'vue';
 
 import DrinksList from '@components/drinks/DrinksList.vue';
@@ -9,6 +8,8 @@ import AutocompleteMultiple from '@components/layout/AutocompleteMultiple.vue';
 import { useDrinksCardForm } from '@composables/drinksCards/useDrinksCardForm';
 import lengths from '@config/lengths';
 import { ref } from 'vue';
+
+import type { DrinksCardRequest } from '@/api/request';
 
 // interfaces
 interface Events {

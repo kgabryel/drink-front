@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import type { FullDrinkResponse } from '@models/api/full-drink.response';
-import type { Photo } from '@models/store/photo';
 import type { Ref } from 'vue';
 
 import { useCardHeight } from '@composables/drinks/useCardHeight';
 import { useOriginalPhoto } from '@composables/drinks/useOriginalPhoto';
 import photoConfig from '@config/photo-config';
 import { useTemplateRef } from 'vue';
+
+import type { FullDrinkResponse, Photo } from '@/api/response';
 
 import { routes } from '@/router/routes';
 

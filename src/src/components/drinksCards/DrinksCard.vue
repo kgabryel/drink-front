@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import type { DrinksCard } from '@models/store/drinks-card';
 import type { Ref } from 'vue';
 
 import DeleteModal from '@components/layout/DeleteModal.vue';
 import { useDrinksCard } from '@composables/drinksCards/useDrinksCard';
 import { ref, toRef } from 'vue';
+
+import type { DrinksCard } from '@/api/response';
 
 import { names } from '@/router/names';
 

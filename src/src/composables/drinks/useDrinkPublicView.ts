@@ -1,4 +1,3 @@
-import type { FullDrinkResponse } from '@models/api/full-drink.response';
 import type { ComputedRef, Ref } from 'vue';
 import type { RouteLocationNormalizedLoaded } from 'vue-router';
 
@@ -6,6 +5,8 @@ import { drinksService } from '@services/drinks.service';
 import { computed } from 'vue';
 import { ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+
+import type { FullDrinkResponse } from '@/api/response';
 
 import { names } from '@/router/names';
 

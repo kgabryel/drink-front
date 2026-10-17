@@ -1,11 +1,12 @@
 import type { DrinksCardsSearch } from '@models/search/drinks-cards.search';
-import type { DrinksCard } from '@models/store/drinks-card';
 import type { DrinksCardsStore } from '@store/drinks-cards';
 import type { SearchStore } from '@store/search';
 import type { ComputedRef } from 'vue';
 
 import { stringsService } from '@services/strings.service';
 import { computed } from 'vue';
+
+import type { DrinksCard } from '@/api/response';
 
 import { useDrinksCardsStore, useSearchStore } from '@/store';
 

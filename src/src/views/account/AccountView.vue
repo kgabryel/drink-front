@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { ApiKey as ApiKeyModel } from '@models/store/api-key';
 import type { ApiKeysStore } from '@store/api-keys';
 import type { SettingsStore } from '@store/settings';
 import type { ComputedRef } from 'vue';
@@ -10,6 +9,8 @@ import ChangePasswordForm from '@components/account/ChangePasswordForm.vue';
 import GenerateKeyButton from '@components/account/GenerateKeyButton.vue';
 import LogoutButton from '@components/account/LogoutButton.vue';
 import { computed } from 'vue';
+
+import type { ApiKey as ApiKeyModel } from '@/api/response';
 
 import { useApiKeysStore, useSettingsStore } from '@/store';
 

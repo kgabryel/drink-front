@@ -1,10 +1,12 @@
-import type { DrinksCard } from '@models/store/drinks-card';
+import type { UpdateRequest } from '@models/update.request';
 import type { DrinksCardsStore } from '@store/drinks-cards';
 import type { ComputedRef, Ref } from 'vue';
 
 import messages from '@config/messages';
 import { computed } from 'vue';
 import { useToast } from 'vue-toastification';
+
+import type { DrinksCard } from '@/api/response';
 
 import { base } from '@/router/routes';
 import { useDrinksCardsStore } from '@/store';
@@ -19,10 +21,12 @@ export function useDrinksCard(drinksCard: Ref<DrinksCard>) {
 
   // actions
   async function changeActivity(): Promise<void> {
-    const success: boolean = await drinksCardsStore.modifyDrinksCardActivity(
-      drinksCard.value.id,
-      !drinksCard.value.active,
-    );
+    const data: UpdateRequest<boolean> = {
+      data: !drinksCard.value.active,
+      id: drinksCard.value.id,
+    };
+
+    const success: boolean = await drinksCardsStore.updateDrinksCardActivity(data);
 
     if (!success) {
       return;

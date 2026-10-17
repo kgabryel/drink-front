@@ -1,7 +1,3 @@
-import type { Drink } from '@models/store/drink';
-import type { DrinkPosition } from '@models/store/drink-position';
-import type { Ingredient } from '@models/store/ingredient';
-import type { Tag } from '@models/store/tag';
 import type { IngredientsStore } from '@store/ingredients';
 import type { TagsStore } from '@store/tags';
 import type { ComputedRef, Ref } from 'vue';
@@ -9,6 +5,10 @@ import type { ComputedRef, Ref } from 'vue';
 import { useIngredientsStore } from '@store/ingredients';
 import { useTagsStore } from '@store/tags';
 import { computed } from 'vue';
+
+import type { Drink } from '@/api/response';
+import type { DrinkPosition } from '@/api/response';
+import type { Ingredient, Tag } from '@/api/response';
 
 interface FullDrinkPosition {
   id: number;

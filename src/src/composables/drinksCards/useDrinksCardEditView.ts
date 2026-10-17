@@ -1,10 +1,11 @@
-import type { DrinksCard } from '@models/store/drinks-card';
 import type { DrinksCardsStore } from '@store/drinks-cards';
 import type { Ref } from 'vue';
 
 import { useRouteId } from '@composables/useRouteId';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+
+import type { DrinksCard } from '@/api/response';
 
 import { names } from '@/router/names';
 import { useDrinksCardsStore } from '@/store';

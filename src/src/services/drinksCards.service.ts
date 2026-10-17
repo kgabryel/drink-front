@@ -1,10 +1,11 @@
-import type { DrinksCardRequest } from '@models/api/drinks-card.request';
-import type { FullDrinkResponse } from '@models/api/full-drink.response';
-import type { UpdateRequest } from '@models/api/update.request';
-import type { DrinksCard } from '@models/store/drinks-card';
+import type { UpdateRequest } from '@models/update.request';
 import type { AxiosResponse } from 'axios';
 
 import axios from 'axios';
+
+import type { DrinksCardRequest } from '@/api/request';
+import type { FullDrinkResponse } from '@/api/response';
+import type { DrinksCard } from '@/api/response';
 
 import { routes } from '@/router/routes';
 
@@ -12,7 +13,7 @@ interface DrinksCardsService {
   delete(id: number): Promise<AxiosResponse>;
   find(id: string): Promise<FullDrinkResponse[]>;
   load(): Promise<DrinksCard[]>;
-  modifyActivity(id: number, active: boolean): Promise<DrinksCard>;
+  updateActivity(data: UpdateRequest<boolean>): Promise<DrinksCard>;
   add(data: DrinksCardRequest): Promise<DrinksCard>;
   update(data: UpdateRequest<DrinksCardRequest>): Promise<DrinksCard>;
 }
@@ -30,14 +31,14 @@ export const drinksCardsService: DrinksCardsService = {
   load(): Promise<DrinksCard[]> {
     return axios.get(routes.drinksCards).then((response: AxiosResponse<DrinksCard[]>) => response.data);
   },
-  modifyActivity(id: number, active: boolean): Promise<DrinksCard> {
-    return axios
-      .patch(routes.modifyActivityDrinksCard(id, active ? 'activate' : 'deactivate'))
-      .then((response: AxiosResponse<DrinksCard>) => response.data);
-  },
   update(data: UpdateRequest<DrinksCardRequest>): Promise<DrinksCard> {
     return axios
       .put(routes.drinksCardById(data.id), data.data)
+      .then((response: AxiosResponse<DrinksCard>) => response.data);
+  },
+  updateActivity(data: UpdateRequest<boolean>): Promise<DrinksCard> {
+    return axios
+      .patch(routes.drinksCardById(data.id), { active: data.data })
       .then((response: AxiosResponse<DrinksCard>) => response.data);
   },
 };

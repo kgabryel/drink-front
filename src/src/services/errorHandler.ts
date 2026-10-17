@@ -17,7 +17,7 @@ export const errorHandler: ErrorHandler = {
   handle(error: AxiosResponse): void {
     const toast: ReturnType<typeof useToast> = useToast();
 
-    if (error.status === 400 || error.status === 404) {
+    if (error.status === 422 || error.status === 404) {
       toast.error(messages.invalidData);
     } else {
       toast.error(messages.serverError);

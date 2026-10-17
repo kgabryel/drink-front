@@ -1,16 +1,18 @@
-import type { DrinkRequest } from '@models/api/drink.request';
-import type { ReorderPhotoRequest } from '@models/api/reorder-photo.request';
-import type { UpdateRequest } from '@models/api/update.request';
-import type { Drink } from '@models/store/drink';
-import type { DrinkPosition } from '@models/store/drink-position';
+import type { UpdateRequest } from '@models/update.request';
 import type { AxiosResponse } from 'axios';
 import type { ComputedRef, Ref } from 'vue';
 
 import { drinksService } from '@services/drinks.service';
 import { errorHandler } from '@services/errorHandler';
 import { stringsService } from '@services/strings.service';
+import { type TagsStore, useTagsStore } from '@store/tags';
 import { defineStore } from 'pinia';
 import { computed, ref } from 'vue';
+
+import type { DrinkRequest } from '@/api/request';
+import type { ReorderPhotoRequest } from '@/api/request';
+import type { Drink } from '@/api/response';
+import type { DrinkPosition } from '@/api/response';
 
 import { removeById, replaceById } from '@/utils/store.utils';
 
@@ -18,6 +20,7 @@ export const useDrinksStore = defineStore('drinks', () => {
   // state
   const data: Ref<Drink[]> = ref([]);
   const loaded: Ref<boolean> = ref(false);
+  const tagsStore: TagsStore = useTagsStore();
 
   // getters
   const drinks: ComputedRef<Drink[]> = computed(() =>
@@ -39,10 +42,14 @@ export const useDrinksStore = defineStore('drinks', () => {
   }
 
   // actions
-  function addDrink(payload: DrinkRequest): Promise<Drink | false> {
+  function addDrink(payload: DrinkRequest, tagAdded: boolean): Promise<Drink | false> {
     return drinksService
       .add(payload)
-      .then((drink: Drink) => {
+      .then(async (drink: Drink) => {
+        if (tagAdded) {
+          await tagsStore.loadTags();
+        }
+
         data.value.push(drink);
 
         return drink;
@@ -92,12 +99,19 @@ export const useDrinksStore = defineStore('drinks', () => {
       .catch((error: AxiosResponse) => errorHandler.catch(error));
   }
 
-  function updateDrink(payload: UpdateRequest<DrinkRequest>): Promise<boolean> {
+  function updateDrink(payload: UpdateRequest<DrinkRequest>, tagAdded: boolean): Promise<boolean> {
     return drinksService
       .update(payload)
-      .then((updated: Drink) => replaceById(data.value, updated))
+      .then(async (updated: Drink) => {
+        if (tagAdded) {
+          await tagsStore.loadTags();
+        }
+
+        return replaceById(data.value, updated);
+      })
       .catch((error: AxiosResponse) => errorHandler.catch(error));
   }
+
   function photosReorder(payload: UpdateRequest<ReorderPhotoRequest>): Promise<boolean> {
     return drinksService
       .photosReorder(payload)

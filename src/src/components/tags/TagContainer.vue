@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import type { Tag } from '@models/store/tag';
 import type { Ref } from 'vue';
 
 import { ref } from 'vue';
+
+import type { Tag } from '@/api/response';
 
 import TagEditForm from './TagEditForm.vue';
 import TagPreview from './TagPreview.vue';

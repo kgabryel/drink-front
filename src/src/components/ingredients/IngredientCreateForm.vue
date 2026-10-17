@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { OzaSupply } from '@models/store/oza-supply';
 import type { OzaSuppliesStore } from '@store/oza-supplies';
 import type { ComputedRef } from 'vue';
 
@@ -7,6 +6,8 @@ import AutocompleteSingle from '@components/layout/AutocompleteSingle.vue';
 import { useIngredientCreate } from '@composables/ingredients/useIngredientCreate';
 import lengths from '@config/lengths';
 import { computed } from 'vue';
+
+import type { OzaSupply } from '@/api/response';
 
 import { useOzaSuppliesStore } from '@/store';
 

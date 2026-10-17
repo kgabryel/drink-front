@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import type { Tag } from '@models/store/tag';
 import type { Ref } from 'vue';
 
 import DeleteModal from '@components/layout/DeleteModal.vue';
 import { useTagPreview } from '@composables/tags/useTagPreview';
 import { toRef } from 'vue';
 import { ref } from 'vue';
+
+import type { Tag } from '@/api/response';
 
 import { tagDrinksHref } from '@/utils/route.utils';
 
@@ -27,7 +28,7 @@ defineOptions({ inheritAttrs: false });
 const showed: Ref<boolean> = ref(false);
 
 // composables
-const { changePublic, remove } = useTagPreview(toRef(() => props.tag));
+const { changePublic, drinksCount, remove } = useTagPreview(toRef(() => props.tag));
 
 // actions
 function startEdit(): void {
@@ -51,8 +52,8 @@ function showDelete(): void {
           <v-btn icon="mdi-menu" type="button" v-bind="activatorProps" />
         </template>
         <v-list class="px-2 py-2">
-          <v-list-item v-if="tag.drinksCount > 0" :href="tagDrinksHref(tag)">
-            <template #title>Lista drinków ({{ tag.drinksCount }})</template>
+          <v-list-item v-if="drinksCount > 0" :href="tagDrinksHref(tag)">
+            <template #title>Lista drinków ({{ drinksCount }})</template>
           </v-list-item>
           <v-list-item @click="startEdit">
             <template #title>Edytuj</template>

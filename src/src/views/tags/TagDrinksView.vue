@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import type { Drink } from '@models/store/drink';
 import type { DrinksStore } from '@store/drinks';
 import type { ComputedRef } from 'vue';
 
 import DrinksList from '@components/drinks/DrinksList.vue';
 import { useRouteId } from '@composables/useRouteId';
 import { computed } from 'vue';
+
+import type { Drink } from '@/api/response';
 
 import { useDrinksStore } from '@/store';
 

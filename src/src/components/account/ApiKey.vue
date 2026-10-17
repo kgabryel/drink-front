@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { ApiKey } from '@models/store/api-key';
 import type { Ref } from 'vue';
 
 import DeleteButton from '@components/layout/DeleteButton.vue';
@@ -7,6 +6,8 @@ import { useApiKey } from '@composables/account/useApiKey';
 import { useClipboard } from '@composables/useClipboard';
 import messages from '@config/messages';
 import { ref, toRef } from 'vue';
+
+import type { ApiKey } from '@/api/response';
 
 // interfaces
 interface Props {

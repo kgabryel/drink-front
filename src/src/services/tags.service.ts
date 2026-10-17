@@ -1,13 +1,15 @@
-import type { UpdateRequest } from '@models/api/update.request';
-import type { Tag } from '@models/store/tag';
+import type { UpdateRequest } from '@models/update.request';
 import type { AxiosResponse } from 'axios';
 
 import axios from 'axios';
 
+import type { CreateTagRequest } from '@/api/request';
+import type { Tag } from '@/api/response';
+
 import { routes } from '@/router/routes';
 
 interface TagsService {
-  add(name: string, publicTag: boolean): Promise<Tag>;
+  add(request: CreateTagRequest): Promise<Tag>;
   delete(id: number): Promise<AxiosResponse>;
   load(): Promise<Tag[]>;
   update(data: UpdateRequest<string>): Promise<Tag>;
@@ -15,8 +17,8 @@ interface TagsService {
 }
 
 export const tagsService: TagsService = {
-  add(name: string, publicTag: boolean): Promise<Tag> {
-    return axios.post(routes.tags, { name, public: publicTag }).then((response: AxiosResponse<Tag>) => response.data);
+  add(request: CreateTagRequest): Promise<Tag> {
+    return axios.post(routes.tags, request).then((response: AxiosResponse<Tag>) => response.data);
   },
   delete(id: number): Promise<AxiosResponse> {
     return axios.delete(routes.tagById(id));
@@ -31,7 +33,7 @@ export const tagsService: TagsService = {
   },
   updatePublic(data: UpdateRequest<boolean>): Promise<Tag> {
     return axios
-      .patch(routes.tagById(data.id), { public: data.data ? '1' : '0' })
+      .patch(routes.tagById(data.id), { public: data.data })
       .then((response: AxiosResponse<Tag>) => response.data);
   },
 };

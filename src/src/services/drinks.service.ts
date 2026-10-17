@@ -1,11 +1,12 @@
-import type { DrinkRequest } from '@models/api/drink.request';
-import type { FullDrinkResponse } from '@models/api/full-drink.response';
-import type { ReorderPhotoRequest } from '@models/api/reorder-photo.request';
-import type { UpdateRequest } from '@models/api/update.request';
-import type { Drink } from '@models/store/drink';
+import type { UpdateRequest } from '@models/update.request';
 import type { AxiosResponse } from 'axios';
 
 import axios from 'axios';
+
+import type { DrinkRequest } from '@/api/request';
+import type { ReorderPhotoRequest } from '@/api/request';
+import type { FullDrinkResponse } from '@/api/response';
+import type { Drink } from '@/api/response';
 
 import { routes } from '@/router/routes';
 

@@ -1,6 +1,4 @@
 import type { DrinksSearch } from '@models/search/drinks.search';
-import type { Drink } from '@models/store/drink';
-import type { DrinkPosition } from '@models/store/drink-position';
 import type { DrinksStore } from '@store/drinks';
 import type { IngredientsStore } from '@store/ingredients';
 import type { SearchStore } from '@store/search';
@@ -8,6 +6,9 @@ import type { ComputedRef } from 'vue';
 
 import { stringsService } from '@services/strings.service';
 import { computed } from 'vue';
+
+import type { Drink } from '@/api/response';
+import type { DrinkPosition } from '@/api/response';
 
 import { useDrinksStore, useIngredientsStore, useSearchStore } from '@/store';
 

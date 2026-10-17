@@ -1,5 +1,3 @@
-# drink-front
-
 ## Wymagania
 - Docker (v20.10+ z wbudowanym Compose v2)
 
@@ -17,16 +15,17 @@ docker compose up -d
 
 ## Wejście do kontenera Vue:
 ```
-docker exec -it vue bash
+docker exec -it drink_vue bash
 ```
 
 ## Instalacja
 ```
-docker exec -it vue bash
+docker exec -it drink_vue bash
 npm ci
 ```
 
 ## Skrypty pomocnicze
+- `generate-schema.sh` – Generuje DTOsy na podstawie schemy OpenAPI
 - `lint.sh` – Sprawdza błędy lintingu (eslint)
 - `lint-fix.sh` – Automatycznie poprawia błędy lintingu (eslint --fix)
 - `prettier.sh` – Formatuje cały projekt przy użyciu prettier

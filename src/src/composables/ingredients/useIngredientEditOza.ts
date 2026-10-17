@@ -1,11 +1,12 @@
-import type { UpdateRequest } from '@models/api/update.request';
-import type { Ingredient } from '@models/store/ingredient';
+import type { UpdateRequest } from '@models/update.request';
 import type { IngredientsStore } from '@store/ingredients';
 import type { Ref } from 'vue';
 
 import messages from '@config/messages';
 import { computed, type ComputedRef, ref } from 'vue';
 import { useToast } from 'vue-toastification';
+
+import type { Ingredient } from '@/api/response';
 
 import { useIngredientsStore } from '@/store';
 

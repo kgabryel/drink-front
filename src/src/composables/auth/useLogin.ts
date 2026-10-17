@@ -1,10 +1,11 @@
-import type { LoginRequest } from '@models/api/login.request';
 import type { ComputedRef } from 'vue';
 
 import messages from '@config/messages';
 import { authService } from '@services/auth.service';
 import { computed, reactive } from 'vue';
 import { useToast } from 'vue-toastification';
+
+import type { LoginRequest } from '@/api/request';
 
 import router from '@/router';
 import { names } from '@/router/names';

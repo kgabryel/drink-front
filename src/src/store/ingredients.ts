@@ -1,7 +1,4 @@
-import type { AddIngredientRequest } from '@models/api/add-ingredient.request';
-import type { UpdateIngredientRequest } from '@models/api/update-ingredient.request';
-import type { UpdateRequest } from '@models/api/update.request';
-import type { Ingredient } from '@models/store/ingredient';
+import type { UpdateRequest } from '@models/update.request';
 import type { AxiosResponse } from 'axios';
 import type { Ref } from 'vue';
 
@@ -10,6 +7,9 @@ import { ingredientsService } from '@services/ingredients.service';
 import { stringsService } from '@services/strings.service';
 import { defineStore } from 'pinia';
 import { computed, type ComputedRef, ref } from 'vue';
+
+import type { CreateIngredientRequest, ModifyIngredientRequest } from '@/api/request';
+import type { Ingredient } from '@/api/response';
 
 import { pushItem, removeById, replaceById } from '@/utils/store.utils';
 
@@ -32,7 +32,7 @@ export const useIngredientsStore = defineStore('ingredients', () => {
   }
 
   // actions
-  function addIngredient(payload: AddIngredientRequest): Promise<boolean> {
+  function addIngredient(payload: CreateIngredientRequest): Promise<boolean> {
     return ingredientsService
       .add(payload)
       .then((ingredient: Ingredient) => pushItem(data.value, ingredient))
@@ -65,7 +65,7 @@ export const useIngredientsStore = defineStore('ingredients', () => {
       .catch((error: AxiosResponse) => errorHandler.catch(error));
   }
 
-  function updateIngredient(payload: UpdateRequest<UpdateIngredientRequest>): Promise<boolean> {
+  function updateIngredient(payload: UpdateRequest<ModifyIngredientRequest>): Promise<boolean> {
     return ingredientsService
       .update(payload)
       .then((updated: Ingredient) => replaceById(data.value, updated))

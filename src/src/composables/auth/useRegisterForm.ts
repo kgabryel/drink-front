@@ -1,5 +1,3 @@
-import type { LoginRequest } from '@models/api/login.request';
-import type { RegisterRequest } from '@models/api/register.request';
 import type { ComputedRef } from 'vue';
 
 import messages from '@config/messages';
@@ -7,6 +5,8 @@ import { authService } from '@services/auth.service';
 import { computed, reactive } from 'vue';
 import { useRouter } from 'vue-router';
 import { useToast } from 'vue-toastification';
+
+import type { LoginRequest, RegisterRequest } from '@/api/request';
 
 import { names } from '@/router/names';
 import { passwordMath } from '@/utils/form.utils';
@@ -48,10 +48,8 @@ export function useRegisterForm() {
 
     const data: RegisterRequest = {
       email: state.email,
-      password: {
-        first: state.password,
-        second: state.passwordRepeat,
-      },
+      password: state.password,
+      passwordRepeat: state.passwordRepeat,
     };
 
     const success: boolean = await authService.register(data);

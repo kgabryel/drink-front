@@ -1,8 +1,3 @@
-import type { DrinkRequest } from '@models/api/drink.request';
-import type { Drink } from '@models/store/drink';
-import type { DrinkPosition } from '@models/store/drink-position';
-import type { Ingredient } from '@models/store/ingredient';
-import type { Tag } from '@models/store/tag';
 import type { IngredientsStore } from '@store/ingredients';
 import type { TagsStore } from '@store/tags';
 import type { ComputedRef, Ref } from 'vue';
@@ -10,6 +5,12 @@ import type { ComputedRef, Ref } from 'vue';
 import { useIngredientsStore } from '@store/ingredients';
 import { useTagsStore } from '@store/tags';
 import { computed, reactive, ref, watch } from 'vue';
+
+import type { DrinkRequest } from '@/api/request';
+import type { Drink } from '@/api/response';
+import type { DrinkPosition } from '@/api/response';
+import type { Ingredient } from '@/api/response';
+import type { Tag } from '@/api/response';
 
 interface Position {
   amount: string;
@@ -132,12 +133,15 @@ export function useDrinkForm(drink: Drink | null = null) {
     };
   }
 
-  function submit(submitAction: (data: DrinkRequest) => void): void {
+  function submit(submitAction: (data: DrinkRequest, newTag: boolean) => void): void {
     if (!valid.value) {
       return;
     }
 
-    submitAction(getData());
+    const data: DrinkRequest = getData();
+    const newTag: boolean = data.tags.some((name: string) => tagsStore.tagByName(name) === undefined);
+
+    submitAction(data, newTag);
   }
 
   function mapDrinkPositions(drink: Drink | null): Position[] {

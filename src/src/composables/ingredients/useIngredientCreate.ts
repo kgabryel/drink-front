@@ -1,10 +1,11 @@
-import type { AddIngredientRequest } from '@models/api/add-ingredient.request';
 import type { IngredientsStore } from '@store/ingredients';
 
 import { useIngredientNameValidation } from '@composables/ingredients/useIngredientNameValidation';
 import messages from '@config/messages';
 import { reactive, toRef } from 'vue';
 import { useToast } from 'vue-toastification';
+
+import type { CreateIngredientRequest } from '@/api/request';
 
 import { useIngredientsStore } from '@/store';
 
@@ -44,7 +45,7 @@ export function useIngredientCreate() {
       return;
     }
 
-    const data: AddIngredientRequest = {
+    const data: CreateIngredientRequest = {
       available: state.available,
       description: state.description,
       name: state.name,

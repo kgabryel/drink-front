@@ -1,10 +1,11 @@
-import type { Drink } from '@models/store/drink';
 import type { DrinksStore } from '@store/drinks';
 import type { ComputedRef } from 'vue';
 
 import { useRouteId } from '@composables/useRouteId';
 import { computed, watch } from 'vue';
 import { useRouter } from 'vue-router';
+
+import type { Drink } from '@/api/response';
 
 import { names } from '@/router/names';
 import { useDrinksStore } from '@/store';

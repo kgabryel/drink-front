@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { Drink } from '@models/store/drink';
 import type { ComputedRef } from 'vue';
 
 import DeleteIcon from '@components/layout/DeleteIcon.vue';
@@ -9,6 +8,8 @@ import { useClipboard } from '@composables/useClipboard';
 import messages from '@config/messages';
 import photoConfig from '@config/photo-config';
 import { computed, type Ref, toRef, useTemplateRef } from 'vue';
+
+import type { Drink } from '@/api/response';
 
 import { names } from '@/router/names';
 import { base } from '@/router/routes';

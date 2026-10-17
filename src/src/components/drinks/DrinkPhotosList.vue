@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import type { Photo } from '@models/store/photo';
-
 import DeleteIcon from '@components/layout/DeleteIcon.vue';
 import { useOriginalPhoto } from '@composables/drinks/useOriginalPhoto';
 import { usePhotosReorder } from '@composables/drinksCards/usePhotosReorder';
 import { toRef } from 'vue';
 import draggable from 'vuedraggable';
+
+import type { Photo } from '@/api/response';
 
 import DrinkThumbnail from './DrinkThumbnail.vue';
 

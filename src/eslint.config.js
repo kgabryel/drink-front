@@ -120,4 +120,10 @@ module.exports = tseslint.config(
       '@typescript-eslint/prefer-function-type': 'off',
     },
   },
+  {
+    files: ['src/api/schema.d.ts'],
+    rules: {
+      'max-lines': 'off',
+    },
+  },
 );

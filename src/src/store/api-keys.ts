@@ -1,4 +1,3 @@
-import type { ApiKey } from '@models/store/api-key';
 import type { AxiosResponse } from 'axios';
 import type { ComputedRef, Ref } from 'vue';
 
@@ -6,6 +5,8 @@ import { apiKeysService } from '@services/apiKeys.service';
 import { errorHandler } from '@services/errorHandler';
 import { defineStore } from 'pinia';
 import { computed, ref } from 'vue';
+
+import type { ApiKey } from '@/api/response';
 
 import { pushItem, removeById, replaceById } from '@/utils/store.utils';
 

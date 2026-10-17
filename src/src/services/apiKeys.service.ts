@@ -1,7 +1,8 @@
-import type { ApiKey } from '@models/store/api-key';
 import type { AxiosResponse } from 'axios';
 
 import axios from 'axios';
+
+import type { ApiKey } from '@/api/response';
 
 import { routes } from '@/router/routes';
 

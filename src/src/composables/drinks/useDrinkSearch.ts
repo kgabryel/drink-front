@@ -1,6 +1,4 @@
 import type { DrinksSearch } from '@models/search/drinks.search';
-import type { Ingredient } from '@models/store/ingredient';
-import type { Tag } from '@models/store/tag';
 import type { IngredientsStore } from '@store/ingredients';
 import type { SearchStore } from '@store/search';
 import type { SettingsStore } from '@store/settings';
@@ -10,6 +8,9 @@ import type { ComputedRef } from 'vue';
 import { useSearchBase } from '@composables/useSearchBase';
 import { isDrinksSearchModified } from '@store/search';
 import { computed, reactive } from 'vue';
+
+import type { Ingredient } from '@/api/response';
+import type { Tag } from '@/api/response';
 
 import { useIngredientsStore, useSearchStore, useSettingsStore, useTagsStore } from '@/store';
 

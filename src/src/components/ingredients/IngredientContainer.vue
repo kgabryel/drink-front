@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import type { Ingredient } from '@models/store/ingredient';
 import type { Ref } from 'vue';
 
 import { ref } from 'vue';
+
+import type { Ingredient } from '@/api/response';
 
 import IngredientEditForm from './IngredientEditForm.vue';
 import IngredientOzaEditForm from './IngredientOzaEditForm.vue';

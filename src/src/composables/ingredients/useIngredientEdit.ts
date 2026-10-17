@@ -1,12 +1,13 @@
-import type { UpdateIngredientRequest } from '@models/api/update-ingredient.request';
-import type { UpdateRequest } from '@models/api/update.request';
-import type { Ingredient } from '@models/store/ingredient';
+import type { UpdateRequest } from '@models/update.request';
 import type { IngredientsStore } from '@store/ingredients';
 
 import { useIngredientNameValidation } from '@composables/ingredients/useIngredientNameValidation';
 import messages from '@config/messages';
 import { reactive, toRef } from 'vue';
 import { useToast } from 'vue-toastification';
+
+import type { ModifyIngredientRequest } from '@/api/request';
+import type { Ingredient } from '@/api/response';
 
 import { useIngredientsStore } from '@/store';
 
@@ -35,7 +36,7 @@ export function useIngredientEdit(ingredient: Ingredient) {
       return;
     }
 
-    const data: UpdateRequest<UpdateIngredientRequest> = {
+    const data: UpdateRequest<ModifyIngredientRequest> = {
       data: {
         description: state.description,
         name: state.name,

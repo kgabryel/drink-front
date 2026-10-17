@@ -1,4 +1,3 @@
-import type { OzaSupply } from '@models/store/oza-supply';
 import type { SettingsStore } from '@store/settings';
 import type { Ref } from 'vue';
 
@@ -8,6 +7,8 @@ import { useSettingsStore } from '@store/settings';
 import { defineStore } from 'pinia';
 import { computed, type ComputedRef, ref } from 'vue';
 import { useToast } from 'vue-toastification';
+
+import type { OzaSupply } from '@/api/response';
 
 export const useOzaSuppliesStore = defineStore('ozaSupplies', () => {
   // state

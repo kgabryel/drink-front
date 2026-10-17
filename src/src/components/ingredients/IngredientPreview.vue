@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import type { Ingredient } from '@models/store/ingredient';
 import type { Ref } from 'vue';
 
 import DeleteModal from '@components/layout/DeleteModal.vue';
 import { useIngredientPreview } from '@composables/ingredients/useIngredientPreview';
 import { ref, toRef } from 'vue';
+
+import type { Ingredient } from '@/api/response';
 
 import { ingredientDrinksHref } from '@/utils/route.utils';
 
@@ -26,7 +27,7 @@ defineOptions({ inheritAttrs: false });
 const showed: Ref<boolean> = ref(false);
 
 // composables
-const { changeAvailable, remove, supplies, suppliesReady, supply } = useIngredientPreview(
+const { changeAvailable, drinksCount, remove, supplies, suppliesReady, supply } = useIngredientPreview(
   toRef(() => props.ingredient),
 );
 
@@ -64,8 +65,8 @@ function showModel(): void {
           <v-btn icon="mdi-menu" type="button" v-bind="activatorProps" />
         </template>
         <v-list class="px-2 py-2">
-          <v-list-item v-if="ingredient.drinksCount > 0" :href="ingredientDrinksHref(ingredient)">
-            <template #title>Lista drinków ({{ ingredient.drinksCount }})</template>
+          <v-list-item v-if="drinksCount > 0" :href="ingredientDrinksHref(ingredient)">
+            <template #title>Lista drinków ({{ drinksCount }})</template>
           </v-list-item>
           <v-list-item @click="startEdit(false)">
             <template #title>Edytuj</template>

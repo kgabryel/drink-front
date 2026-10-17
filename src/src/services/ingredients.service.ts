@@ -1,25 +1,25 @@
-import type { AddIngredientRequest } from '@models/api/add-ingredient.request';
-import type { UpdateIngredientRequest } from '@models/api/update-ingredient.request';
-import type { UpdateRequest } from '@models/api/update.request';
-import type { Ingredient } from '@models/store/ingredient';
-import type { OzaSupply } from '@models/store/oza-supply';
+import type { UpdateRequest } from '@models/update.request';
 
 import axios, { type AxiosResponse } from 'axios';
+
+import type { CreateIngredientRequest, ModifyIngredientRequest } from '@/api/request';
+import type { Ingredient } from '@/api/response';
+import type { OzaSupply } from '@/api/response';
 
 import { routes } from '@/router/routes';
 
 interface IngredientsService {
-  add(data: AddIngredientRequest): Promise<Ingredient>;
+  add(data: CreateIngredientRequest): Promise<Ingredient>;
   delete(id: number): Promise<AxiosResponse>;
   load(): Promise<Ingredient[]>;
   loadSupplies(): Promise<OzaSupply[]>;
-  update(data: UpdateRequest<UpdateIngredientRequest>): Promise<Ingredient>;
+  update(data: UpdateRequest<ModifyIngredientRequest>): Promise<Ingredient>;
   updateAvailable(data: UpdateRequest<boolean>): Promise<Ingredient>;
   updateOzaId(data: UpdateRequest<number | null>): Promise<Ingredient>;
 }
 
 export const ingredientsService: IngredientsService = {
-  add(data: AddIngredientRequest): Promise<Ingredient> {
+  add(data: CreateIngredientRequest): Promise<Ingredient> {
     return axios.post(routes.ingredients, data).then((response: AxiosResponse<Ingredient>) => response.data);
   },
   delete(id: number): Promise<AxiosResponse> {
@@ -31,7 +31,7 @@ export const ingredientsService: IngredientsService = {
   loadSupplies(): Promise<OzaSupply[]> {
     return axios.get(routes.supplies).then((response: AxiosResponse<OzaSupply[]>) => response.data);
   },
-  update(data: UpdateRequest<UpdateIngredientRequest>): Promise<Ingredient> {
+  update(data: UpdateRequest<ModifyIngredientRequest>): Promise<Ingredient> {
     return axios
       .patch(routes.ingredientById(data.id), data.data)
       .then((response: AxiosResponse<Ingredient>) => response.data);
@@ -39,7 +39,7 @@ export const ingredientsService: IngredientsService = {
   updateAvailable(data: UpdateRequest<boolean>): Promise<Ingredient> {
     return axios
       .patch(routes.ingredientById(data.id), {
-        available: data.data ? '1' : '0',
+        available: data.data,
       })
       .then((response: AxiosResponse<Ingredient>) => response.data);
   },

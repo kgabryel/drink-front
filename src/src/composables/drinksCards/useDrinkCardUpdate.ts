@@ -1,11 +1,12 @@
-import type { DrinksCardRequest } from '@models/api/drinks-card.request';
-import type { UpdateRequest } from '@models/api/update.request';
-import type { DrinksCard } from '@models/store/drinks-card';
+import type { UpdateRequest } from '@models/update.request';
 import type { DrinksCardsStore } from '@store/drinks-cards';
 import type { Ref } from 'vue';
 
 import messages from '@config/messages';
 import { useToast } from 'vue-toastification';
+
+import type { DrinksCardRequest } from '@/api/request';
+import type { DrinksCard } from '@/api/response';
 
 import { useDrinksCardsStore } from '@/store';
 

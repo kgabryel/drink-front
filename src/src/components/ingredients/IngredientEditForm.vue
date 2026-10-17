@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { Ingredient } from '@models/store/ingredient';
-
 import { useIngredientEdit } from '@composables/ingredients/useIngredientEdit';
 import lengths from '@config/lengths';
+
+import type { Ingredient } from '@/api/response';
 
 // interfaces
 interface Events {

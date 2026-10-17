@@ -1,7 +1,7 @@
-import type { Ingredient } from '@models/store/ingredient';
-import type { Tag } from '@models/store/tag';
 import type { NavigationGuard } from 'vue-router';
 
+import type { Ingredient } from '@/api/response';
+import type { Tag } from '@/api/response';
 import type { Loadable } from '@/utils/store.utils';
 
 import router from '@/router';

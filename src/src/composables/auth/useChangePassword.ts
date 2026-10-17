@@ -1,4 +1,3 @@
-import type { ChangePasswordTokenRequest } from '@models/api/change-password-token.request';
 import type { ComputedRef } from 'vue';
 
 import messages from '@config/messages';
@@ -7,6 +6,8 @@ import { watch } from 'vue';
 import { computed, reactive } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useToast } from 'vue-toastification';
+
+import type { ResetPasswordRequest } from '@/api/request';
 
 import { names } from '@/router/names';
 import { passwordMath } from '@/utils/form.utils';
@@ -50,15 +51,12 @@ export function useChangePassword() {
       return;
     }
 
-    const data: ChangePasswordTokenRequest = {
-      newPassword: {
-        first: state.password,
-        second: state.passwordRepeat,
-      },
-      token: token.value,
+    const data: ResetPasswordRequest = {
+      newPassword: state.password,
+      newPasswordRepeat: state.passwordRepeat,
     };
 
-    const success: boolean = await authService.changePassword(data);
+    const success: boolean = await authService.changePassword(token.value, data);
 
     if (!success) {
       toast.error(messages.invalidData);

@@ -1,8 +1,3 @@
-import type { ChangePasswordTokenRequest } from '@models/api/change-password-token.request';
-import type { FbRedirectResponse } from '@models/api/fb-redirect.response';
-import type { LoginRequest } from '@models/api/login.request';
-import type { RegisterRequest } from '@models/api/register.request';
-import type { TokensResponse } from '@models/api/tokens.response';
 import type { Result } from '@models/result';
 import type { AxiosResponse } from 'axios';
 import type { JwtPayload } from 'jwt-decode';
@@ -12,6 +7,10 @@ import { errorHandler } from '@services/errorHandler';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 import { useToast } from 'vue-toastification';
+
+import type { RegisterRequest, ResetPasswordRequest } from '@/api/request';
+import type { LoginRequest } from '@/api/request';
+import type { FbRedirectResponse, TokensResponse } from '@/api/response';
 
 import router from '@/router';
 import { names } from '@/router/names';
@@ -31,7 +30,7 @@ const ACCESS_TOKEN: string = 'access-token';
 const REFRESH_TOKEN: string = 'refresh-token';
 
 interface AuthService {
-  changePassword(data: ChangePasswordTokenRequest): Promise<boolean>;
+  changePassword(token: string, data: ResetPasswordRequest): Promise<boolean>;
   checkAccessToken(): boolean;
   checkToken(token: string): Promise<boolean>;
   clearTokens(): void;
@@ -47,8 +46,8 @@ interface AuthService {
 }
 
 export const authService: AuthService = {
-  changePassword(data: ChangePasswordTokenRequest): Promise<boolean> {
-    return axios.post(routes.changePassword(data.token), { newPassword: data.newPassword }).then(() => true);
+  changePassword(token: string, data: ResetPasswordRequest): Promise<boolean> {
+    return axios.post(routes.changePassword(token), data).then(() => true);
   },
   checkAccessToken(): boolean {
     try {
@@ -162,7 +161,7 @@ export const authService: AuthService = {
   },
   register(data: RegisterRequest): Promise<boolean> {
     const loginRequest: LoginRequest = {
-      password: data.password.first,
+      password: data.password,
       username: data.email,
     };
 

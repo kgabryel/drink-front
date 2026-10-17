@@ -1,10 +1,11 @@
-import type { Tag } from '@models/store/tag';
 import type { TagsStore } from '@store/tags';
 import type { ComputedRef, Ref } from 'vue';
 
 import errors from '@config/errors';
 import { useTagsStore } from '@store/tags';
 import { computed } from 'vue';
+
+import type { Tag } from '@/api/response';
 
 export function useTagNameValidation(name: Ref<string>, excludeId: number | null) {
   // setup

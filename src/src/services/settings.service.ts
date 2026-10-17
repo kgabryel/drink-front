@@ -1,8 +1,9 @@
-import type { ChangePasswordRequest } from '@models/api/change-password.request';
-import type { Settings } from '@models/store/settings';
 import type { AxiosResponse } from 'axios';
 
 import axios from 'axios';
+
+import type { ChangePasswordRequest } from '@/api/request';
+import type { Settings } from '@/api/response';
 
 import { routes } from '@/router/routes';
 

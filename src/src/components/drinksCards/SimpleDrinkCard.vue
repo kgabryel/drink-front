@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { Drink } from '@models/store/drink';
-
 import { useDrinkPositions } from '@composables/drinks/useDrinkPositions';
 import { toRef } from 'vue';
+
+import type { Drink } from '@/api/response';
 
 import { tagDrinksHref } from '@/utils/route.utils';
 

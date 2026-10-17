@@ -1,9 +1,10 @@
-import type { Ingredient } from '@models/store/ingredient';
 import type { IngredientsStore } from '@store/ingredients';
 import type { ComputedRef, Ref } from 'vue';
 
 import errors from '@config/errors';
 import { computed } from 'vue';
+
+import type { Ingredient } from '@/api/response';
 
 import { useIngredientsStore } from '@/store';
 

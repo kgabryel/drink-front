@@ -1,4 +1,3 @@
-import type { FullDrinkResponse } from '@models/api/full-drink.response';
 import type { AxiosResponse } from 'axios';
 import type { ComputedRef, Ref } from 'vue';
 import type { RouteLocationNormalizedLoaded } from 'vue-router';
@@ -9,6 +8,8 @@ import { computed } from 'vue';
 import { ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useToast } from 'vue-toastification';
+
+import type { FullDrinkResponse } from '@/api/response';
 
 import { names } from '@/router/names';
 

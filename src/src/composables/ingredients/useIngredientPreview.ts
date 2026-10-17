@@ -1,6 +1,5 @@
-import type { UpdateRequest } from '@models/api/update.request';
-import type { Ingredient } from '@models/store/ingredient';
-import type { OzaSupply } from '@models/store/oza-supply';
+import type { UpdateRequest } from '@models/update.request';
+import type { DrinksStore } from '@store/drinks';
 import type { IngredientsStore } from '@store/ingredients';
 import type { OzaSuppliesStore } from '@store/oza-supplies';
 import type { ComputedRef, Ref } from 'vue';
@@ -9,15 +8,23 @@ import messages from '@config/messages';
 import { computed } from 'vue';
 import { useToast } from 'vue-toastification';
 
-import { useIngredientsStore, useOzaSuppliesStore } from '@/store';
+import type { Ingredient } from '@/api/response';
+import type { OzaSupply } from '@/api/response';
+
+import { useDrinksStore, useIngredientsStore, useOzaSuppliesStore } from '@/store';
 
 export function useIngredientPreview(ingredient: Ref<Ingredient>) {
   // setup
+  const drinksStore: DrinksStore = useDrinksStore();
   const ingredientsStore: IngredientsStore = useIngredientsStore();
   const ozaSuppliesStore: OzaSuppliesStore = useOzaSuppliesStore();
   const toast: ReturnType<typeof useToast> = useToast();
 
   // computed
+  const drinksCount: ComputedRef<number> = computed(
+    () => drinksStore.drinksForIngredientId(ingredient.value.id).length,
+  );
+
   const supply: ComputedRef<OzaSupply | undefined> = computed(() =>
     ozaSuppliesStore.supplyById(ingredient.value.ozaId ?? 0),
   );
@@ -49,5 +56,5 @@ export function useIngredientPreview(ingredient: Ref<Ingredient>) {
     toast.success(messages.ingredientUpdated);
   }
 
-  return { changeAvailable, remove, supplies, suppliesReady, supply };
+  return { changeAvailable, drinksCount, remove, supplies, suppliesReady, supply };
 }

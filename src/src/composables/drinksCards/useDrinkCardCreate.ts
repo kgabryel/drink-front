@@ -1,9 +1,10 @@
-import type { DrinksCardRequest } from '@models/api/drinks-card.request';
 import type { DrinksCardsStore } from '@store/drinks-cards';
 
 import messages from '@config/messages';
 import { useRouter } from 'vue-router';
 import { useToast } from 'vue-toastification';
+
+import type { DrinksCardRequest } from '@/api/request';
 
 import { names } from '@/router/names';
 import { useDrinksCardsStore } from '@/store';

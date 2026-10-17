@@ -1,9 +1,10 @@
-import type { ApiKey } from '@models/store/api-key';
 import type { ApiKeysStore } from '@store/api-keys';
 import type { Ref } from 'vue';
 
 import messages from '@config/messages';
 import { useToast } from 'vue-toastification';
+
+import type { ApiKey } from '@/api/response';
 
 import { useApiKeysStore } from '@/store';
 

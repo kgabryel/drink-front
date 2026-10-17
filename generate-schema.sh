@@ -1,0 +1,1 @@
+docker exec -it drink_vue sh -c 'npx openapi-typescript ./api-schema.json -o src/api/schema.d.ts'

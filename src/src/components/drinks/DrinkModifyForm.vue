@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { Drink } from '@models/store/drink';
-
 import { useDrinkUpdate } from '@composables/drinks/useDrinkUpdate';
 import { toRef } from 'vue';
+
+import type { Drink } from '@/api/response';
 
 import DrinkForm from './DrinkForm.vue';
 
