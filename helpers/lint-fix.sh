@@ -1,0 +1,1 @@
+docker exec -it drink_vue sh -c 'npx eslint src --fix'

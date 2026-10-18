@@ -1,9 +1,6 @@
 {
+  "extends": "@kgabryel-dev/code-quality/tsconfig/vue.json",
   "compilerOptions": {
-    "target": "ES2022",
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
@@ -14,28 +11,7 @@
       "@composables/*": ["./src/composables/*"],
       "@services/*": ["./src/services/*"],
       "@config/*": ["./src/config/*"]
-    },
-    "strict": true,
-    "strictNullChecks": true,
-    "strictPropertyInitialization": true,
-    "noImplicitAny": true,
-    "noImplicitReturns": true,
-    "noImplicitOverride": true,
-    "noFallthroughCasesInSwitch": true,
-    "noUnusedLocals": true,
-    "noUncheckedIndexedAccess": true,
-    "noPropertyAccessFromIndexSignature": true,
-    "exactOptionalPropertyTypes": true,
-    "alwaysStrict": true,
-    "forceConsistentCasingInFileNames": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "sourceMap": true,
-    "declaration": false,
-    "skipLibCheck": true,
-    "useDefineForClassFields": true,
-    "jsx": "preserve",
-    "isolatedModules": true
+    }
   },
   "include": ["src/**/*.ts", "src/**/*.vue", "env.d.ts"],
   "exclude": ["node_modules", "dist"]

@@ -1,1 +1,0 @@
-docker exec -it drink_vue sh -c 'npx eslint src --ext .ts,.vue --fix'
