@@ -13,6 +13,7 @@ interface Props {
   drinkId: number;
   photo: Photo;
 }
+
 // setup
 const props: Props = defineProps<Props>();
 

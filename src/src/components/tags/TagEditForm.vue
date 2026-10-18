@@ -5,9 +5,7 @@ import lengths from '@config/lengths';
 import type { Tag } from '@/api/response';
 
 // interfaces
-interface Events {
-  (e: 'stopEdit'): void;
-}
+type Events = (e: 'stopEdit') => void;
 
 interface Props {
   tag: Tag;
@@ -31,7 +29,11 @@ function stopEdit(): void {
 <template>
   <v-list-item class="w-100">
     <template #prepend>
-      <v-btn icon="mdi-close" type="button" @click="stopEdit" />
+      <v-btn
+        icon="mdi-close"
+        type="button"
+        @click="stopEdit"
+      />
     </template>
     <template #default>
       <v-text-field
@@ -45,7 +47,12 @@ function stopEdit(): void {
       />
     </template>
     <template #append>
-      <v-btn icon="mdi-content-save" type="button" :disabled="!valid" @click="update(stopEdit)" />
+      <v-btn
+        icon="mdi-content-save"
+        type="button"
+        :disabled="!valid"
+        @click="update(stopEdit)"
+      />
     </template>
   </v-list-item>
 </template>

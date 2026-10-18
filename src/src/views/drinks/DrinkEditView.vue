@@ -14,6 +14,9 @@ const { drink } = useDrinkByRoute();
     <DrinkPreviewButton :drink="drink" />
     <DrinkModifyForm :drink="drink" />
     <AddPhoto :drink="drink" />
-    <DrinkPhotosList :drink-id="drink.id" :photos="drink.photos" />
+    <DrinkPhotosList
+      :drink-id="drink.id"
+      :photos="drink.photos"
+    />
   </div>
 </template>

@@ -46,9 +46,6 @@ const routes: RouteRecordRaw[] = [
 const router: Router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes,
-  scrollBehavior() {
-    return { behavior: 'smooth', top: 0 };
-  },
 });
 
 router.beforeEach(async (to: RouteLocationNormalizedGeneric) => {

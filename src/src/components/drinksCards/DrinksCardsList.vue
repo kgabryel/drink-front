@@ -9,7 +9,10 @@ const { filteredDrinksCards } = useDrinksCardsFilter();
 
 <template>
   <div class="content-container px-2">
-    <v-list v-if="filteredDrinksCards.length > 0" class="glass-background">
+    <v-list
+      v-if="filteredDrinksCards.length > 0"
+      class="glass-background"
+    >
       <DrinksCard
         v-for="drinksCard in filteredDrinksCards"
         :key="drinksCard.id"

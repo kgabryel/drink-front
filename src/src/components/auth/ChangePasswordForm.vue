@@ -17,8 +17,14 @@ const { change, passwordErrors, state, valid } = useChangePassword();
 <template>
   <div class="w-100 h-100 d-grid justify-center align-content-center px-4">
     <v-form class="px-4 py-4 my-4 glass-background">
-      <img :src="loginVertical" class="vertical h-auto" />
-      <img :src="loginHorizontal" class="horizontal w-100 h-auto" />
+      <img
+        :src="loginVertical"
+        class="vertical h-auto"
+      />
+      <img
+        :src="loginHorizontal"
+        class="horizontal w-100 h-auto"
+      />
       <div class="ml-sm-4 form-container">
         <h1>Zmień hasło</h1>
         <v-text-field
@@ -37,7 +43,15 @@ const { change, passwordErrors, state, valid } = useChangePassword();
           label="Powtórz hasło"
           type="password"
         />
-        <v-btn :disabled="!valid" block class="glass-background" type="button" @click="change">Zmień hasło</v-btn>
+        <v-btn
+          :disabled="!valid"
+          block
+          class="glass-background"
+          type="button"
+          @click="change"
+        >
+          Zmień hasło
+        </v-btn>
         <p>
           <router-link :to="{ name: loginPath }">
             <span class="c-pointer text-white">Powrót</span>

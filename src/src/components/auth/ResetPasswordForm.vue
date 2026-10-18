@@ -17,8 +17,14 @@ const { email, resetPassword, valid } = useResetPassword();
 <template>
   <div class="w-100 h-100 d-grid justify-center align-content-center px-4">
     <v-form class="px-4 py-4 my-4 glass-background">
-      <img :src="loginVertical" class="vertical h-auto" />
-      <img :src="loginHorizontal" class="horizontal w-100 h-auto" />
+      <img
+        :src="loginVertical"
+        class="vertical h-auto"
+      />
+      <img
+        :src="loginHorizontal"
+        class="horizontal w-100 h-auto"
+      />
       <div class="form-container w-100 px-2">
         <h1>Reset hasła</h1>
         <v-text-field
@@ -29,7 +35,13 @@ const { email, resetPassword, valid } = useResetPassword();
           label="E-mail"
           type="email"
         />
-        <v-btn :disabled="!valid" block class="glass-background mb-2" type="button" @click="resetPassword">
+        <v-btn
+          :disabled="!valid"
+          block
+          class="glass-background mb-2"
+          type="button"
+          @click="resetPassword"
+        >
           Resetuj hasło
         </v-btn>
         <p>

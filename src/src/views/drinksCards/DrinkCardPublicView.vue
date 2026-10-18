@@ -22,15 +22,27 @@ onMounted(load);
 <template>
   <v-toolbar class="glass-background header">
     <v-spacer />
-    <v-btn class="glass-background square-button" icon type="button" @click="showed = true">
+    <v-btn
+      class="glass-background square-button"
+      icon
+      type="button"
+      @click="showed = true"
+    >
       <v-icon color="black">mdi-qrcode</v-icon>
     </v-btn>
     <v-spacer />
   </v-toolbar>
   <div class="content">
-    <DrinksList v-show="loaded" :drinks="drinks" :public="true" />
+    <DrinksList
+      v-show="loaded"
+      :drinks="drinks"
+      :public="true"
+    />
   </div>
-  <QrCodeModal v-model="showed" :url="url" />
+  <QrCodeModal
+    v-model="showed"
+    :url="url"
+  />
 </template>
 
 <style scoped>

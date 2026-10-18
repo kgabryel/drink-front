@@ -36,7 +36,13 @@ const { change, newPasswordErrors, newPasswordRepeatErrors, state, valid } = use
       label="Powtórz hasło"
       type="password"
     />
-    <v-btn :disabled="!valid" block class="text-center glass-background" type="button" @click="change">
+    <v-btn
+      :disabled="!valid"
+      block
+      class="text-center glass-background"
+      type="button"
+      @click="change"
+    >
       Zmień hasło
     </v-btn>
   </div>

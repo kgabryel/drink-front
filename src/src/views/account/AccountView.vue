@@ -28,8 +28,15 @@ const userType: ComputedRef<string> = computed(() => settingsStore.userType);
   <div class="content-container px-2">
     <LogoutButton class="mb-2" />
     <AccountSettings />
-    <div v-if="apiKeys.length > 0" class="glass-background mt-2">
-      <div v-for="apiKey in apiKeys" :key="apiKey.id" class="api-key">
+    <div
+      v-if="apiKeys.length > 0"
+      class="glass-background mt-2"
+    >
+      <div
+        v-for="apiKey in apiKeys"
+        :key="apiKey.id"
+        class="api-key"
+      >
         <ApiKey :api-key="apiKey" />
         <v-divider class="mx-4" />
       </div>

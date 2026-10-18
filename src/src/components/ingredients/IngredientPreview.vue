@@ -10,9 +10,7 @@ import type { Ingredient } from '@/api/response';
 import { ingredientDrinksHref } from '@/utils/route.utils';
 
 // interfaces
-interface Events {
-  (e: 'startEdit', oza: boolean): void;
-}
+type Events = (e: 'startEdit', oza: boolean) => void;
 
 interface Props {
   ingredient: Ingredient;
@@ -21,6 +19,7 @@ interface Props {
 // setup
 const props: Props = defineProps<Props>();
 const emit: Events = defineEmits<Events>();
+
 defineOptions({ inheritAttrs: false });
 
 // state
@@ -42,7 +41,10 @@ function showModel(): void {
 </script>
 
 <template>
-  <v-list-item class="w-100" v-bind="$attrs">
+  <v-list-item
+    class="w-100"
+    v-bind="$attrs"
+  >
     <template #prepend>
       <v-switch
         :model-value="ingredient.available"
@@ -62,16 +64,26 @@ function showModel(): void {
     <template #append>
       <v-menu location="bottom">
         <template #activator="{ props: activatorProps }">
-          <v-btn icon="mdi-menu" type="button" v-bind="activatorProps" />
+          <v-btn
+            icon="mdi-menu"
+            type="button"
+            v-bind="activatorProps"
+          />
         </template>
         <v-list class="px-2 py-2">
-          <v-list-item v-if="drinksCount > 0" :href="ingredientDrinksHref(ingredient)">
+          <v-list-item
+            v-if="drinksCount > 0"
+            :href="ingredientDrinksHref(ingredient)"
+          >
             <template #title>Lista drinków ({{ drinksCount }})</template>
           </v-list-item>
           <v-list-item @click="startEdit(false)">
             <template #title>Edytuj</template>
           </v-list-item>
-          <v-list-item :disabled="supplies.length === 0" @click="startEdit(true)">
+          <v-list-item
+            :disabled="supplies.length === 0"
+            @click="startEdit(true)"
+          >
             <template #title>Zapas OZA</template>
           </v-list-item>
           <v-list-item @click="showModel">
@@ -81,7 +93,10 @@ function showModel(): void {
       </v-menu>
     </template>
   </v-list-item>
-  <DeleteModal v-model="showed" @remove="remove(ingredient.id)" />
+  <DeleteModal
+    v-model="showed"
+    @remove="remove(ingredient.id)"
+  />
 </template>
 
 <style scoped>

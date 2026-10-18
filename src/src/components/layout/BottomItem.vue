@@ -14,8 +14,12 @@ defineProps<Props>();
   <div class="item">
     <router-link :to="{ name: href }">
       <div class="d-inline-block c-pointer">
-        <v-icon color="white">{{ icon }}</v-icon>
-        <p class="white-text">{{ name }}</p>
+        <v-icon color="white">
+          {{ icon }}
+        </v-icon>
+        <p class="white-text">
+          {{ name }}
+        </p>
       </div>
     </router-link>
   </div>

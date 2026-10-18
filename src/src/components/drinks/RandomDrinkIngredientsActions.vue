@@ -40,7 +40,13 @@ function onDeselectAll(): void {
     >
       Zaznacz wszystkie
     </v-btn>
-    <v-btn class="glass-background blue-glass mt-2" type="button" @click="onNext">Dalej</v-btn>
+    <v-btn
+      class="glass-background blue-glass mt-2"
+      type="button"
+      @click="onNext"
+    >
+      Dalej
+    </v-btn>
     <v-btn
       class="glass-background mt-2"
       type="button"

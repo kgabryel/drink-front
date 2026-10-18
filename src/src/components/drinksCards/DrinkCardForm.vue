@@ -12,9 +12,7 @@ import { ref } from 'vue';
 import type { DrinksCardRequest } from '@/api/request';
 
 // interfaces
-interface Events {
-  (e: 'submitted', data: DrinksCardRequest): void;
-}
+type Events = (e: 'submitted', data: DrinksCardRequest) => void;
 
 interface Props {
   buttonText: string;
@@ -74,9 +72,23 @@ function onSubmit(data: DrinksCardRequest): void {
   <div class="content-container px-2">
     <div class="glass-background my-2 pa-2">
       <div class="d-flex my-2">
-        <v-switch v-model="showSelectedDrinks" class="ml-1 mr-4" label="Pokaż" />
-        <v-text-field v-model="state.name" :counter="maxNameLength" :maxlength="maxNameLength" label="Nazwa" required />
-        <v-switch v-model="state.active" class="ml-4 mr-1" label="Aktywna" />
+        <v-switch
+          v-model="showSelectedDrinks"
+          class="ml-1 mr-4"
+          label="Pokaż"
+        />
+        <v-text-field
+          v-model="state.name"
+          :counter="maxNameLength"
+          :maxlength="maxNameLength"
+          label="Nazwa"
+          required
+        />
+        <v-switch
+          v-model="state.active"
+          class="ml-4 mr-1"
+          label="Aktywna"
+        />
       </div>
       <AutocompleteMultiple
         v-model="state.availableTags"
@@ -114,14 +126,26 @@ function onSubmit(data: DrinksCardRequest): void {
         :items="drinksForExcluded"
         class="mb-2"
       />
-      <v-btn :disabled="!valid" block class="glass-background" type="button" @click="submit(onSubmit)">
+      <v-btn
+        :disabled="!valid"
+        block
+        class="glass-background"
+        type="button"
+        @click="submit(onSubmit)"
+      >
         {{ buttonText }}
       </v-btn>
     </div>
   </div>
-  <DrinksList v-if="showSelectedDrinks" :drinks="selectedDrinks">
+  <DrinksList
+    v-if="showSelectedDrinks"
+    :drinks="selectedDrinks"
+  >
     <template #item="{ item }">
-      <SimpleDrinkCard :drink="item" @remove="remove(item)" />
+      <SimpleDrinkCard
+        :drink="item"
+        @remove="remove(item)"
+      />
     </template>
   </DrinksList>
 </template>

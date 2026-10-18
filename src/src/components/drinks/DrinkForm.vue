@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import AutocompleteSingle from '@components/layout/AutocompleteSingle.vue';
+import TooltipIconButton from '@components/layout/TooltipIconButton.vue';
 import { useDrinkForm } from '@composables/drinks/useDrinkForm';
 import lengths from '@config/lengths';
 
@@ -44,27 +45,31 @@ const {
   <div class="content-container px-2">
     <div class="glass-background my-2 pa-2">
       <div class="d-flex align-center pt-2">
-        <v-text-field v-model="state.name" :counter="maxDrinkLength" class="mb-2 mt-2" label="Nazwa" required />
-        <v-tooltip>
-          <template #activator="{ props: activatorProps }">
-            <v-btn icon type="button" v-bind="activatorProps" @click="changeFavourite">
-              <v-icon v-if="!state.isFavourite" color="black">mdi-star-outline</v-icon>
-              <v-icon v-else color="amber-darken-2">mdi-star</v-icon>
-            </v-btn>
-          </template>
-          <span>Ulubione</span>
-        </v-tooltip>
-        <v-tooltip>
-          <template #activator="{ props: activatorProps }">
-            <v-btn icon type="button" v-bind="activatorProps" @click="changePublic">
-              <v-icon v-if="!state.isPublic" color="black">mdi-share-variant</v-icon>
-              <v-icon v-else color="amber-darken-2">mdi-share-variant</v-icon>
-            </v-btn>
-          </template>
-          <span>Publiczny</span>
-        </v-tooltip>
+        <v-text-field
+          v-model="state.name"
+          :counter="maxDrinkLength"
+          class="mb-2 mt-2"
+          label="Nazwa"
+          required
+        />
+        <TooltipIconButton
+          :icon="!state.isFavourite ? 'mdi-star-outline' : 'mdi-star'"
+          :color="!state.isFavourite ? 'black' : 'amber-darken-2'"
+          tooltip="Ulubione"
+          @click="changeFavourite"
+        />
+        <TooltipIconButton
+          icon="mdi-share-variant"
+          :color="!state.isPublic ? 'black' : 'amber-darken-2'"
+          tooltip="Publiczny"
+          @click="changePublic"
+        />
       </div>
-      <v-textarea v-model="state.description" class="mb-2" label="Opis" />
+      <v-textarea
+        v-model="state.description"
+        class="mb-2"
+        label="Opis"
+      />
       <v-combobox
         v-model="state.tags"
         v-model:search="tagSearch"
@@ -82,17 +87,30 @@ const {
         <template #no-data>
           <span class="px-2 py-2">
             Brak rezultatów dla: "
-            <strong class="c-pointer" @click="addTag">{{ tagSearch }}</strong>
+            <strong
+              class="c-pointer"
+              @click="addTag"
+            >
+              {{ tagSearch }}
+            </strong>
             ". Naciśnij
             <kbd>enter</kbd>
             żeby dodać.
           </span>
         </template>
         <template #item="{ item, props: itemProps }">
-          <v-list-item v-bind="itemProps" :title="item.toUpperCase()" />
+          <v-list-item
+            v-bind="itemProps"
+            :title="item.toUpperCase()"
+          />
         </template>
         <template #chip="{ item, index }">
-          <v-chip size="small" class="glass-background--opaque" closable @click:close="removeTag(index)">
+          <v-chip
+            size="small"
+            class="glass-background--opaque"
+            closable
+            @click:close="removeTag(index)"
+          >
             {{ item.toUpperCase() }}
           </v-chip>
         </template>
@@ -123,17 +141,38 @@ const {
           />
         </v-col>
         <v-col cols="auto">
-          <v-btn class="glass-background red-glass mb-4" icon type="button" @click="removePosition(counter)">
+          <v-btn
+            class="glass-background red-glass mb-4"
+            icon
+            type="button"
+            @click="removePosition(counter)"
+          >
             <v-icon>mdi-close</v-icon>
           </v-btn>
         </v-col>
       </v-row>
-      <v-row class="mt-2" density="compact">
+      <v-row
+        class="mt-2"
+        density="compact"
+      >
         <v-col>
-          <v-btn block class="glass-background green-glass" type="button" @click="addPosition">Dodaj składnik</v-btn>
+          <v-btn
+            block
+            class="glass-background green-glass"
+            type="button"
+            @click="addPosition"
+          >
+            Dodaj składnik
+          </v-btn>
         </v-col>
         <v-col>
-          <v-btn :disabled="!valid" block class="glass-background" type="button" @click="submit(submitAction)">
+          <v-btn
+            :disabled="!valid"
+            block
+            class="glass-background"
+            type="button"
+            @click="submit(submitAction)"
+          >
             {{ btnText }}
           </v-btn>
         </v-col>

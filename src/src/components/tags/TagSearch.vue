@@ -16,10 +16,34 @@ onMounted(searchIfModified);
 <template>
   <div>
     <div class="d-flex ga-2">
-      <v-btn class="glass-background flex-1-1" type="button" @click="clear">Wyczyść</v-btn>
-      <v-btn class="glass-background flex-1-1" type="button" @click="close">Zamknij</v-btn>
+      <v-btn
+        class="glass-background flex-1-1"
+        type="button"
+        @click="clear"
+      >
+        Wyczyść
+      </v-btn>
+      <v-btn
+        class="glass-background flex-1-1"
+        type="button"
+        @click="close"
+      >
+        Zamknij
+      </v-btn>
     </div>
-    <v-text-field v-model="draft.name" :maxlength="maxLength" class="mb-2 mt-3 pt-1" label="Nazwa" required />
-    <v-btn class="glass-background w-100" type="button" @click="search">Szukaj</v-btn>
+    <v-text-field
+      v-model="draft.name"
+      :maxlength="maxLength"
+      class="mb-2 mt-3 pt-1"
+      label="Nazwa"
+      required
+    />
+    <v-btn
+      class="glass-background w-100"
+      type="button"
+      @click="search"
+    >
+      Szukaj
+    </v-btn>
   </div>
 </template>

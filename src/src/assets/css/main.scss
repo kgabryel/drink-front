@@ -1,17 +1,4 @@
-// ============================================================
-// Variables
-// ============================================================
-
-$glass-color: rgba(255, 255, 255, 0.3);
-$glass-color-light: rgb(255 255 255 / 40%);
-$glass-color-opaque: rgb(255 255 255 / 80%);
-$glass-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
-$glass-radius: 5px;
-$blue-glass-color: rgba(42, 212, 248, 0.6);
-$available-color: rgba(13, 253, 22, 0.8);
-$unavailable-color: rgba(255, 49, 0, 0.8);
-$available-color-vivid: rgb(13, 253, 22);
-$unavailable-color-vivid: rgb(255, 49, 0);
+@use 'variables' as *;
 
 // ============================================================
 // Base / Reset
@@ -128,26 +115,6 @@ input:-webkit-autofill:active {
 
 .in-waterfall > .v-card.glass-background {
   transition: background-color 0.4s ease-in-out;
-}
-
-// ============================================================
-// Icons
-// ============================================================
-
-.available-icon {
-  color: $available-color;
-}
-
-.available-icon-vivid {
-  color: $available-color-vivid;
-}
-
-.unavailable-icon {
-  color: $unavailable-color;
-}
-
-.unavailable-icon-vivid {
-  color: $unavailable-color-vivid;
 }
 
 // ============================================================

@@ -13,7 +13,10 @@ onMounted(load);
 
 <template>
   <LoadingSpinner v-if="drink === undefined" />
-  <div v-else class="h-100 d-grid align-center align-content-center">
+  <div
+    v-else
+    class="h-100 d-grid align-center align-content-center"
+  >
     <PublicDrink :drink="drink" />
   </div>
 </template>

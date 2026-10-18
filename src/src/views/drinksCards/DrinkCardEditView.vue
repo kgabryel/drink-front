@@ -11,5 +11,8 @@ onMounted(find);
 </script>
 
 <template>
-  <DrinkCardEditForm v-if="drinksCard !== undefined" :drinks-card="drinksCard" />
+  <DrinkCardEditForm
+    v-if="drinksCard !== undefined"
+    :drinks-card="drinksCard"
+  />
 </template>

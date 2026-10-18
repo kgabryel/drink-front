@@ -1,10 +1,15 @@
-export function replaceById<T extends { id: number }>(arr: T[], updated: T): boolean {
-  const index: number = arr.findIndex((item: T) => item.id === updated.id);
+export interface Loadable {
+  ensureLoaded(): Promise<void>;
+}
 
-  if (index === -1) {
+export function replaceById<T extends { id: number }>(arr: T[], updated: T): boolean {
+  const existing: T | undefined = arr.find((item: T) => item.id === updated.id);
+
+  if (!existing) {
     return false;
   }
-  Object.assign(arr[index]!, updated);
+
+  Object.assign(existing, updated);
 
   return true;
 }
@@ -23,10 +28,6 @@ export function pushItem<T>(array: T[], item: T): boolean {
   array.push(item);
 
   return true;
-}
-
-export interface Loadable {
-  ensureLoaded(): Promise<void>;
 }
 
 export async function loadStores(...stores: Loadable[]): Promise<void> {

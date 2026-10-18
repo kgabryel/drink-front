@@ -20,6 +20,7 @@ interface Props {
 const props: Props = defineProps<Props>();
 
 const drinksCardEdit: string = names.editDrinksCard;
+
 defineOptions({ inheritAttrs: false });
 
 // state
@@ -42,17 +43,34 @@ function showQrModal(): void {
 <template>
   <v-list-item v-bind="$attrs">
     <template #prepend>
-      <v-switch :model-value="drinksCard.active" class="mr-4 ml-1" @update:model-value="changeActivity" />
+      <v-switch
+        :model-value="drinksCard.active"
+        class="mr-4 ml-1"
+        @update:model-value="changeActivity"
+      />
     </template>
-    <template #title>{{ drinksCard.name }}</template>
+    <template #title>
+      {{ drinksCard.name }}
+    </template>
     <template #append>
-      <v-btn icon="mdi-qrcode" type="button" @click="showQrModal" />
+      <v-btn
+        icon="mdi-qrcode"
+        type="button"
+        @click="showQrModal"
+      />
       <v-menu location="bottom">
         <template #activator="{ props: activatorProps }">
-          <v-btn icon="mdi-menu" type="button" v-bind="activatorProps" />
+          <v-btn
+            icon="mdi-menu"
+            type="button"
+            v-bind="activatorProps"
+          />
         </template>
         <v-list class="px-2 py-2">
-          <v-list-item :to="{ name: drinksCardEdit, params: { id: drinksCard.id } }" class="black-text">
+          <v-list-item
+            :to="{ name: drinksCardEdit, params: { id: drinksCard.id } }"
+            class="black-text"
+          >
             <template #title>Edytuj</template>
           </v-list-item>
           <v-list-item @click="showDeleteModal">
@@ -62,8 +80,14 @@ function showQrModal(): void {
       </v-menu>
     </template>
   </v-list-item>
-  <DeleteModal v-model="showedDelete" @remove="remove" />
-  <QrCodeModal v-model="showedQrCode" :url="url" />
+  <DeleteModal
+    v-model="showedDelete"
+    @remove="remove"
+  />
+  <QrCodeModal
+    v-model="showedQrCode"
+    :url="url"
+  />
 </template>
 
 <style scoped>

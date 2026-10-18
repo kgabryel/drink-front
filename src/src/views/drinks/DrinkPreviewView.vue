@@ -8,6 +8,10 @@ const { drink } = useDrinkByRoute();
 
 <template>
   <div class="content-container">
-    <DrinkPreview v-if="drink !== undefined" :drink="drink" :preview-available="false" />
+    <DrinkPreview
+      v-if="drink !== undefined"
+      :drink="drink"
+      :preview-available="false"
+    />
   </div>
 </template>

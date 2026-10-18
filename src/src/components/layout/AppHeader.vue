@@ -47,8 +47,19 @@ async function redirectToAccount(): Promise<void> {
         name="Szukaj"
         @click="openSearch"
       />
-      <ActionButton v-if="addUrl !== ''" class="mr-3" icon="mdi-plus-circle" name="Dodaj" @click="redirectToCreate" />
-      <ActionButton v-if="showAccountBtn" icon="mdi-account" name="Konto" @click="redirectToAccount" />
+      <ActionButton
+        v-if="addUrl !== ''"
+        class="mr-3"
+        icon="mdi-plus-circle"
+        name="Dodaj"
+        @click="redirectToCreate"
+      />
+      <ActionButton
+        v-if="showAccountBtn"
+        icon="mdi-account"
+        name="Konto"
+        @click="redirectToAccount"
+      />
     </div>
   </v-toolbar>
 </template>

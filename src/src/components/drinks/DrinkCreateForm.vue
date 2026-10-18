@@ -8,5 +8,9 @@ const { create } = useDrinkCreate();
 </script>
 
 <template>
-  <DrinkForm :drink="null" btn-text="Dodaj" :submit-action="create" />
+  <DrinkForm
+    :drink="null"
+    btn-text="Dodaj"
+    :submit-action="create"
+  />
 </template>

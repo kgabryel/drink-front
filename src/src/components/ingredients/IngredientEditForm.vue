@@ -5,9 +5,7 @@ import lengths from '@config/lengths';
 import type { Ingredient } from '@/api/response';
 
 // interfaces
-interface Events {
-  (e: 'stopEdit'): void;
-}
+type Events = (e: 'stopEdit') => void;
 
 interface Props {
   ingredient: Ingredient;
@@ -31,7 +29,11 @@ function stopEdit(): void {
 <template>
   <v-list-item>
     <template #prepend>
-      <v-btn icon="mdi-close" type="button" @click="stopEdit" />
+      <v-btn
+        icon="mdi-close"
+        type="button"
+        @click="stopEdit"
+      />
     </template>
     <template #default>
       <v-text-field
@@ -43,10 +45,20 @@ function stopEdit(): void {
         required
         class="mt-2"
       />
-      <v-textarea v-model="state.description" class="mb-2" label="Opis" rows="2" />
+      <v-textarea
+        v-model="state.description"
+        class="mb-2"
+        label="Opis"
+        rows="2"
+      />
     </template>
     <template #append>
-      <v-btn :disabled="!valid" icon type="button" @click="update(stopEdit)">
+      <v-btn
+        :disabled="!valid"
+        icon
+        type="button"
+        @click="update(stopEdit)"
+      >
         <v-icon color="black">mdi-content-save</v-icon>
       </v-btn>
     </template>

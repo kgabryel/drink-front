@@ -31,8 +31,17 @@ function stopEdit(): void {
 
 <template>
   <div>
-    <TagEditForm v-if="edit" :tag="tag" @stop-edit="stopEdit" />
-    <TagPreview v-else :tag="tag" class="pt-0 pb-0" @start-edit="startEdit" />
+    <TagEditForm
+      v-if="edit"
+      :tag="tag"
+      @stop-edit="stopEdit"
+    />
+    <TagPreview
+      v-else
+      :tag="tag"
+      class="pt-0 pb-0"
+      @start-edit="startEdit"
+    />
   </div>
 </template>
 

@@ -35,8 +35,20 @@ function startEdit(isOza: boolean): void {
 
 <template>
   <div>
-    <IngredientEditForm v-if="edit && !oza" :ingredient="ingredient" @stop-edit="stopEdit" />
-    <IngredientOzaEditForm v-if="edit && oza" :ingredient="ingredient" @stop-edit="stopEdit" />
-    <IngredientPreview v-if="!edit" :ingredient="ingredient" @start-edit="startEdit" />
+    <IngredientEditForm
+      v-if="edit && !oza"
+      :ingredient="ingredient"
+      @stop-edit="stopEdit"
+    />
+    <IngredientOzaEditForm
+      v-if="edit && oza"
+      :ingredient="ingredient"
+      @stop-edit="stopEdit"
+    />
+    <IngredientPreview
+      v-if="!edit"
+      :ingredient="ingredient"
+      @start-edit="startEdit"
+    />
   </div>
 </template>

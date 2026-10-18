@@ -18,7 +18,7 @@ export const photoService: PhotoService = {
           new Uint8Array(response.data).reduce((data: string, byte: number) => data + String.fromCharCode(byte), ''),
         );
 
-        const contentType: string = response.headers['content-type'] ?? 'image/jpeg';
+        const contentType: string = String(response.headers['content-type'] ?? 'image/jpeg');
 
         return `data:${contentType};base64,${base64}`;
       });

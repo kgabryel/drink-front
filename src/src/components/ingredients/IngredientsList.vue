@@ -9,7 +9,10 @@ const { filteredIngredients } = useIngredientsFilter();
 
 <template>
   <div class="content-container px-2">
-    <div v-if="filteredIngredients.length > 0" class="glass-background">
+    <div
+      v-if="filteredIngredients.length > 0"
+      class="glass-background"
+    >
       <IngredientContainer
         v-for="ingredient in filteredIngredients"
         :key="ingredient.id"

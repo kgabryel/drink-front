@@ -204,5 +204,6 @@ export const vueOrderConfig = {
   ...baseConfig,
   configs: [...baseConfig.configs, utils, services, stores],
   customRecognizers: [...baseConfig.customRecognizers, serviceObjectRecognizer, storeRecognizer],
+  ignoredTypes: [...baseConfig.ignoredTypes, NodeType.Expression],
   params: { ...baseConfig.params, storeFactory: 'defineStore' },
 };

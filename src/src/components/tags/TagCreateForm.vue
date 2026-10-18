@@ -22,9 +22,21 @@ const { create, formErrors, state, valid } = useTagCreate();
           label="Nazwa"
           required
         />
-        <v-switch v-model="state.publicTag" class="mt-1 ml-2" label="Publiczny" />
+        <v-switch
+          v-model="state.publicTag"
+          class="mt-1 ml-2"
+          label="Publiczny"
+        />
       </div>
-      <v-btn :disabled="!valid" block class="glass-background" type="button" @click="create">Dodaj</v-btn>
+      <v-btn
+        :disabled="!valid"
+        block
+        class="glass-background"
+        type="button"
+        @click="create"
+      >
+        Dodaj
+      </v-btn>
     </div>
   </div>
 </template>

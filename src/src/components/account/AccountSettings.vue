@@ -19,8 +19,17 @@ const { onlyAvailable, ozaKey, switchOnlyAvailable, updateOzaKey } = useAccountS
       @update:model-value="switchOnlyAvailable"
     />
     <div class="d-flex">
-      <v-text-field v-model="ozaKey" :counter="maxKeyLength" class="mt-2" label="Klucz OZA" />
-      <v-btn icon="mdi-content-save" type="button" @click="updateOzaKey" />
+      <v-text-field
+        v-model="ozaKey"
+        :counter="maxKeyLength"
+        class="mt-2"
+        label="Klucz OZA"
+      />
+      <v-btn
+        icon="mdi-content-save"
+        type="button"
+        @click="updateOzaKey"
+      />
     </div>
   </div>
 </template>

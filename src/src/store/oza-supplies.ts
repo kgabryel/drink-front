@@ -11,20 +11,22 @@ import { useToast } from 'vue-toastification';
 import type { OzaSupply } from '@/api/response';
 
 export const useOzaSuppliesStore = defineStore('ozaSupplies', () => {
+  // setup
+  const toast: ReturnType<typeof useToast> = useToast();
+
   // state
   const data: Ref<OzaSupply[]> = ref([]);
   const loaded: Ref<boolean> = ref(false);
   const success: Ref<boolean> = ref(false);
 
-  // setup
-  const toast: ReturnType<typeof useToast> = useToast();
-
   // getters
   const supplies: ComputedRef<OzaSupply[]> = computed(() => data.value);
 
-  function supplyById(id: number): OzaSupply | undefined {
-    return data.value.find((supply: OzaSupply) => supply.id === id);
-  }
+  const supplyById: ComputedRef<(id: number) => OzaSupply | undefined> = computed(
+    () =>
+      (id: number): OzaSupply | undefined =>
+        data.value.find((supply: OzaSupply) => supply.id === id),
+  );
 
   // actions
   function reset(): void {

@@ -27,9 +27,16 @@ const { remove, switchKey } = useApiKey(toRef(props, 'apiKey'));
 
 <template>
   <div class="pa-2">
-    <p class="mb-1">{{ apiKey.key }}</p>
+    <p class="mb-1">
+      {{ apiKey.key }}
+    </p>
     <div class="active-small mb-2 justify-center">
-      <v-switch v-model="active" class="mt-0" label="Aktywny" @update:model-value="switchKey" />
+      <v-switch
+        v-model="active"
+        class="mt-0"
+        label="Aktywny"
+        @update:model-value="switchKey"
+      />
     </div>
     <div class="d-flex justify-space-between align-center actions">
       <v-btn
@@ -41,7 +48,12 @@ const { remove, switchKey } = useApiKey(toRef(props, 'apiKey'));
         Kopiuj
       </v-btn>
       <div class="active-big">
-        <v-switch v-model="active" class="mt-0" label="Aktywny" @update:model-value="switchKey" />
+        <v-switch
+          v-model="active"
+          class="mt-0"
+          label="Aktywny"
+          @update:model-value="switchKey"
+        />
       </div>
       <DeleteButton @remove="remove" />
     </div>

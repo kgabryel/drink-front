@@ -42,9 +42,23 @@ async function redirectToCreate(): Promise<void> {
 <template>
   <v-app-bar class="glass-background menu pr-3 pl-3">
     <div class="d-flex w-50">
-      <UpperItem :href="randomDrink" icon="mdi-glass-cocktail" name="Losowy" />
-      <UpperItem :href="allDrinks" class="ml-10" icon="mdi-format-list-numbered" name="Drinki" />
-      <UpperItem :href="allDrinksCards" class="ml-10" icon="mdi-clipboard-list" name="Karty" />
+      <UpperItem
+        :href="randomDrink"
+        icon="mdi-glass-cocktail"
+        name="Losowy"
+      />
+      <UpperItem
+        :href="allDrinks"
+        class="ml-10"
+        icon="mdi-format-list-numbered"
+        name="Drinki"
+      />
+      <UpperItem
+        :href="allDrinksCards"
+        class="ml-10"
+        icon="mdi-clipboard-list"
+        name="Karty"
+      />
     </div>
     <v-btn
       v-if="addUrl !== ''"
@@ -64,9 +78,23 @@ async function redirectToCreate(): Promise<void> {
       <v-icon color="black">mdi-magnify</v-icon>
     </v-btn>
     <div class="d-flex w-50 justify-end">
-      <UpperItem :href="ingredients" icon="mdi-liquor" name="Składniki" />
-      <UpperItem :href="tags" class="ml-10" icon="mdi-tag-multiple" name="Tagi" />
-      <UpperItem :href="account" class="ml-10" icon="mdi-account" name="Konto" />
+      <UpperItem
+        :href="ingredients"
+        icon="mdi-liquor"
+        name="Składniki"
+      />
+      <UpperItem
+        :href="tags"
+        class="ml-10"
+        icon="mdi-tag-multiple"
+        name="Tagi"
+      />
+      <UpperItem
+        :href="account"
+        class="ml-10"
+        icon="mdi-account"
+        name="Konto"
+      />
     </div>
   </v-app-bar>
 </template>

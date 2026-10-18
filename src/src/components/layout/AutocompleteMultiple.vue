@@ -50,10 +50,17 @@ function remove(item: Item): void {
       <span class="px-2 py-2">Brak rezultatów dla: "{{ search }}".</span>
     </template>
     <template #item="{ item, props: itemProps }">
-      <v-list-item v-bind="itemProps" :title="item.name.toUpperCase()" />
+      <v-list-item
+        v-bind="itemProps"
+        :title="item.name.toUpperCase()"
+      />
     </template>
     <template #selection="{ item }">
-      <v-chip size="small" class="glass-background--opaque" @click="remove(item)">
+      <v-chip
+        size="small"
+        class="glass-background--opaque"
+        @click="remove(item)"
+      >
         {{ item.name.toUpperCase() }}
       </v-chip>
     </template>

@@ -23,13 +23,20 @@ export const useIngredientsStore = defineStore('ingredients', () => {
     data.value.sort((a: Ingredient, b: Ingredient) => stringsService.compareString(a.name, b.name)),
   );
 
-  function ingredientById(id: number): Ingredient | undefined {
-    return data.value.find((ingredient: Ingredient) => ingredient.id === id);
-  }
+  const ingredientById: ComputedRef<(id: number) => Ingredient | undefined> = computed(
+    () =>
+      (id: number): Ingredient | undefined =>
+        data.value.find((ingredient: Ingredient) => ingredient.id === id),
+  );
 
-  function ingredientByName(name: string): Ingredient | undefined {
-    return data.value.find((ingredient: Ingredient) => ingredient.name.toLowerCase() === name.toLowerCase());
-  }
+  const ingredientByName: ComputedRef<(name: string) => Ingredient | undefined> = computed(
+    () =>
+      (name: string): Ingredient | undefined => {
+        const lowerName: string = name.toLowerCase();
+
+        return data.value.find((ingredient: Ingredient) => ingredient.name.toLowerCase() === lowerName);
+      },
+  );
 
   // actions
   function addIngredient(payload: CreateIngredientRequest): Promise<boolean> {

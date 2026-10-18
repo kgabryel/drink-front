@@ -36,9 +36,20 @@ const { loaded, ready } = useChunkedList<Drink | FullDrinkResponse>(toRef(props,
       background-color="transparent"
     >
       <template #item="{ item }">
-        <slot name="item" :item="item">
-          <PublicDrink v-if="public" :drink="item" :full-width="false" />
-          <DrinkPreview v-else :drink="item" :full-width="false" />
+        <slot
+          name="item"
+          :item="item"
+        >
+          <PublicDrink
+            v-if="public"
+            :drink="item"
+            :full-width="false"
+          />
+          <DrinkPreview
+            v-else
+            :drink="item"
+            :full-width="false"
+          />
         </slot>
       </template>
     </Waterfall>

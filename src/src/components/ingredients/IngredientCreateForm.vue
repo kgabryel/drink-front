@@ -13,6 +13,7 @@ import { useOzaSuppliesStore } from '@/store';
 
 // setup
 const ozaSuppliesStore: OzaSuppliesStore = useOzaSuppliesStore();
+
 const maxLength: number = lengths.ingredientName;
 
 // composables
@@ -35,9 +36,18 @@ const supplies: ComputedRef<OzaSupply[]> = computed(() => ozaSuppliesStore.suppl
           label="Nazwa"
           required
         />
-        <v-switch v-model="state.available" class="mt-1 ml-2" label="Dostępne" />
+        <v-switch
+          v-model="state.available"
+          class="mt-1 ml-2"
+          label="Dostępne"
+        />
       </div>
-      <v-textarea v-model="state.description" class="mb-2" label="Opis" rows="2" />
+      <v-textarea
+        v-model="state.description"
+        class="mb-2"
+        label="Opis"
+        rows="2"
+      />
       <AutocompleteSingle
         v-if="supplies.length > 0"
         v-model="state.ozaId"
@@ -45,7 +55,15 @@ const supplies: ComputedRef<OzaSupply[]> = computed(() => ozaSuppliesStore.suppl
         :items="supplies"
         class="mb-2"
       />
-      <v-btn :disabled="!valid" block class="glass-background" type="button" @click="create">Dodaj</v-btn>
+      <v-btn
+        :disabled="!valid"
+        block
+        class="glass-background"
+        type="button"
+        @click="create"
+      >
+        Dodaj
+      </v-btn>
     </div>
   </div>
 </template>

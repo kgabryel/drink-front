@@ -17,29 +17,37 @@ import type { DrinkPosition } from '@/api/response';
 import { removeById, replaceById } from '@/utils/store.utils';
 
 export const useDrinksStore = defineStore('drinks', () => {
+  // setup
+  const tagsStore: TagsStore = useTagsStore();
+
   // state
   const data: Ref<Drink[]> = ref([]);
   const loaded: Ref<boolean> = ref(false);
-  const tagsStore: TagsStore = useTagsStore();
 
   // getters
   const drinks: ComputedRef<Drink[]> = computed(() =>
     data.value.sort((a: Drink, b: Drink) => stringsService.compareString(a.name, b.name)),
   );
 
-  function drinkById(id: number): Drink | undefined {
-    return data.value.find((drink: Drink) => drink.id === id);
-  }
+  const drinkById: ComputedRef<(id: number) => Drink | undefined> = computed(
+    () =>
+      (id: number): Drink | undefined =>
+        data.value.find((drink: Drink) => drink.id === id),
+  );
 
-  function drinksForTagId(tagId: number): Drink[] {
-    return data.value.filter((drink: Drink) => drink.tags.includes(tagId));
-  }
+  const drinksForTagId: ComputedRef<(tagId: number) => Drink[]> = computed(
+    () =>
+      (tagId: number): Drink[] =>
+        data.value.filter((drink: Drink) => drink.tags.includes(tagId)),
+  );
 
-  function drinksForIngredientId(ingredientId: number): Drink[] {
-    return data.value.filter((drink: Drink) =>
-      drink.positions.some((position: DrinkPosition) => position.ingredientId === ingredientId),
-    );
-  }
+  const drinksForIngredientId: ComputedRef<(ingredientId: number) => Drink[]> = computed(
+    () =>
+      (ingredientId: number): Drink[] =>
+        data.value.filter((drink: Drink) =>
+          drink.positions.some((position: DrinkPosition) => position.ingredientId === ingredientId),
+        ),
+  );
 
   // actions
   function addDrink(payload: DrinkRequest, tagAdded: boolean): Promise<Drink | false> {

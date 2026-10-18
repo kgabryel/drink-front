@@ -10,8 +10,13 @@ defineProps<Props>();
 </script>
 
 <template>
-  <v-btn class="text-center white-text glass-background" type="button">
-    <v-icon class="mr-3 icon">{{ icon }}</v-icon>
+  <v-btn
+    class="text-center white-text glass-background"
+    type="button"
+  >
+    <v-icon class="mr-3 icon">
+      {{ icon }}
+    </v-icon>
     {{ name }}
   </v-btn>
 </template>

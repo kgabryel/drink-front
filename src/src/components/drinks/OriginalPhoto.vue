@@ -7,8 +7,19 @@ const { clear, photo, photoData } = useOriginalPhoto();
 </script>
 
 <template>
-  <div v-if="photo" class="overlay pa-2 d-flex justify-center align-center" @click.stop="clear">
-    <v-img :height="'100%'" :max-height="photo.height" :max-width="photo.width" :src="photoData" :width="'100%'" cover>
+  <div
+    v-if="photo"
+    class="overlay pa-2 d-flex justify-center align-center"
+    @click.stop="clear"
+  >
+    <v-img
+      :height="'100%'"
+      :max-height="photo.height"
+      :max-width="photo.width"
+      :src="photoData"
+      :width="'100%'"
+      cover
+    >
       <template #placeholder>
         <LoadingSpinner />
       </template>

@@ -23,13 +23,17 @@ export const useTagsStore = defineStore('tags', () => {
     data.value.sort((a: Tag, b: Tag) => stringsService.compareString(a.name, b.name)),
   );
 
-  function tagById(id: number): Tag | undefined {
-    return data.value.find((tag: Tag) => tag.id === id);
-  }
+  const tagById: ComputedRef<(id: number) => Tag | undefined> = computed(
+    () =>
+      (id: number): Tag | undefined =>
+        data.value.find((tag: Tag) => tag.id === id),
+  );
 
-  function tagByName(name: string): Tag | undefined {
-    return data.value.find((tag: Tag) => tag.name.toLowerCase() === name.toLowerCase());
-  }
+  const tagByName: ComputedRef<(name: string) => Tag | undefined> = computed(
+    () =>
+      (name: string): Tag | undefined =>
+        data.value.find((tag: Tag) => tag.name.toLowerCase() === name.toLowerCase()),
+  );
 
   // actions
   function loadTags(): Promise<void> {

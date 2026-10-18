@@ -35,11 +35,11 @@ class AxiosInterceptor {
     axios.interceptors.response.use(
       (response: AxiosResponse) => response,
       (error: AxiosError) => {
-        if (!error.response || error.response.status !== 401) {
+        const originalRequest: InternalAxiosRequestConfig | undefined = error.config;
+
+        if (!error.response || error.response.status !== 401 || !originalRequest) {
           return Promise.reject(error.response);
         }
-
-        const originalRequest: InternalAxiosRequestConfig = error.config!;
 
         if (this.isRefreshing) {
           return new Promise((resolve: (value: unknown) => void) => {

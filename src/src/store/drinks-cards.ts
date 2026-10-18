@@ -23,9 +23,11 @@ export const useDrinksCardsStore = defineStore('drinksCards', () => {
     data.value.sort((a: DrinksCard, b: DrinksCard) => stringsService.compareString(a.name, b.name)),
   );
 
-  function drinksCardById(id: number): DrinksCard | undefined {
-    return data.value.find((drinksCard: DrinksCard) => drinksCard.id === id);
-  }
+  const drinksCardById: ComputedRef<(id: number) => DrinksCard | undefined> = computed(
+    () =>
+      (id: number): DrinksCard | undefined =>
+        data.value.find((drinksCard: DrinksCard) => drinksCard.id === id),
+  );
 
   // actions
   function loadDrinksCards(): Promise<void> {

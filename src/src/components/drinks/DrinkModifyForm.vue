@@ -19,5 +19,9 @@ const { update } = useDrinkUpdate(toRef(props, 'drink'));
 </script>
 
 <template>
-  <DrinkForm :drink="drink" btn-text="Aktualizuj" :submit-action="update" />
+  <DrinkForm
+    :drink="drink"
+    btn-text="Aktualizuj"
+    :submit-action="update"
+  />
 </template>

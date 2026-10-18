@@ -1,7 +1,7 @@
 import 'vuetify/styles';
 import '@mdi/font/css/materialdesignicons.css';
 import { createVuetify } from 'vuetify';
-import { VStepperVertical, VStepperVerticalItem } from 'vuetify/labs/VStepperVertical';
+import { VStepperVertical, VStepperVerticalItem } from 'vuetify/components';
 import { pl } from 'vuetify/locale';
 
 export default createVuetify({

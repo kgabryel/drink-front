@@ -29,7 +29,12 @@ const { change, cropAvailable, hideModal, image, loading, onFileChange, open, sh
 
 <template>
   <div class="content-container px-2">
-    <v-btn block class="text-center glass-background" type="button" @click="open">
+    <v-btn
+      block
+      class="text-center glass-background"
+      type="button"
+      @click="open"
+    >
       <v-icon class="mr-3 icon">mdi-upload</v-icon>
       Dodaj zdjęcie
     </v-btn>
@@ -37,23 +42,56 @@ const { change, cropAvailable, hideModal, image, loading, onFileChange, open, sh
       v-model="showed"
       :max-width="image.src ? modalConfig.addPhoto.maxWidth : modalConfig.addPhoto.maxWidthNoImage"
     >
-      <v-card :disabled="loading" :loading="loading" class="glass-background">
+      <v-card
+        :disabled="loading"
+        :loading="loading"
+        class="glass-background"
+      >
         <v-toolbar>
           <v-toolbar-title>Dodawanie</v-toolbar-title>
-          <v-btn icon="mdi-close" type="button" @click="hideModal" />
+          <v-btn
+            icon="mdi-close"
+            type="button"
+            @click="hideModal"
+          />
         </v-toolbar>
         <div class="pa-3 overflow-hidden">
           <v-row density="compact">
             <v-col>
-              <v-btn block class="upload-button glass-background" type="button">
-                <input ref="file" accept="image/*" type="file" @change="onFileChange" />
-                <v-icon class="mr-2" size="22">mdi-upload</v-icon>
+              <v-btn
+                block
+                class="upload-button glass-background"
+                type="button"
+              >
+                <input
+                  ref="file"
+                  accept="image/*"
+                  type="file"
+                  @change="onFileChange"
+                />
+                <v-icon
+                  class="mr-2"
+                  size="22"
+                >
+                  mdi-upload
+                </v-icon>
                 Wybierz zdjęcie
               </v-btn>
             </v-col>
             <v-col>
-              <v-btn :disabled="!cropAvailable" block class="glass-background" type="button" @click="upload">
-                <v-icon class="mr-2" size="22">mdi-content-save</v-icon>
+              <v-btn
+                :disabled="!cropAvailable"
+                block
+                class="glass-background"
+                type="button"
+                @click="upload"
+              >
+                <v-icon
+                  class="mr-2"
+                  size="22"
+                >
+                  mdi-content-save
+                </v-icon>
                 Dodaj
               </v-btn>
             </v-col>

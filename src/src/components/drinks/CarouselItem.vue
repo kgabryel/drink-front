@@ -32,5 +32,9 @@ watch(
 </script>
 
 <template>
-  <v-carousel-item :src="photoData" class="c-pointer" @click="load(photo, drinkId)" />
+  <v-carousel-item
+    :src="photoData"
+    class="c-pointer"
+    @click="load(photo, drinkId)"
+  />
 </template>

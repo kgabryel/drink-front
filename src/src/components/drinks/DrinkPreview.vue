@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import type { ComputedRef } from 'vue';
 
+import AvailableIcon from '@components/layout/AvailableIcon.vue';
 import DeleteIcon from '@components/layout/DeleteIcon.vue';
+import TooltipIconButton from '@components/layout/TooltipIconButton.vue';
 import { useCardHeight } from '@composables/drinks/useCardHeight';
 import { useDrinkPreview } from '@composables/drinks/useDrinkPreview';
 import { useClipboard } from '@composables/useClipboard';
@@ -58,58 +60,30 @@ const url: ComputedRef<string> = computed(() => `${base}public/${props.drink.pub
       </v-toolbar>
       <v-toolbar>
         <v-spacer />
-        <v-tooltip>
-          <template #activator="{ props: activatorProps }">
-            <v-btn
-              :disabled="!drink.public"
-              icon
-              type="button"
-              v-bind="activatorProps"
-              @click="copyToClipboard(url, messages.copied)"
-            >
-              <v-icon color="black">mdi-share-variant</v-icon>
-            </v-btn>
-          </template>
-          <span>Udostępnij</span>
-        </v-tooltip>
-        <v-tooltip>
-          <template #activator="{ props: activatorProps }">
-            <v-btn icon type="button" v-bind="activatorProps" @click="updateFavourite">
-              <v-icon v-if="!drink.favourite" color="black">mdi-star-outline</v-icon>
-              <v-icon v-else color="amber-darken-2">mdi-star</v-icon>
-            </v-btn>
-          </template>
-          <span>Ulubione</span>
-        </v-tooltip>
-        <v-tooltip v-if="previewAvailable">
-          <template #activator="{ props: activatorProps }">
-            <v-btn
-              color="black"
-              icon
-              type="button"
-              v-bind="activatorProps"
-              :to="{ name: drinkPreview, params: { id: drink.id } }"
-            >
-              <v-icon>mdi-eye</v-icon>
-            </v-btn>
-          </template>
-          <span>Podgląd</span>
-        </v-tooltip>
+        <TooltipIconButton
+          icon="mdi-share-variant"
+          tooltip="Udostępnij"
+          :disabled="!drink.public"
+          @click="copyToClipboard(url, messages.copied)"
+        />
+        <TooltipIconButton
+          :icon="!drink.favourite ? 'mdi-star-outline' : 'mdi-star'"
+          :color="!drink.favourite ? 'black' : 'amber-darken-2'"
+          tooltip="Ulubione"
+          @click="updateFavourite"
+        />
+        <TooltipIconButton
+          v-if="previewAvailable"
+          icon="mdi-eye"
+          tooltip="Podgląd"
+          :to="{ name: drinkPreview, params: { id: drink.id } }"
+        />
         <DeleteIcon @remove="remove(fullWidth)" />
-        <v-tooltip>
-          <template #activator="{ props: activatorProps }">
-            <v-btn
-              :to="{ name: drinkEdit, params: { id: drink.id } }"
-              color="black"
-              icon
-              type="button"
-              v-bind="activatorProps"
-            >
-              <v-icon>mdi-pencil</v-icon>
-            </v-btn>
-          </template>
-          <span>Edytuj</span>
-        </v-tooltip>
+        <TooltipIconButton
+          icon="mdi-pencil"
+          tooltip="Edytuj"
+          :to="{ name: drinkEdit, params: { id: drink.id } }"
+        />
       </v-toolbar>
       <v-carousel
         v-if="drink.photos.length > 0"
@@ -117,25 +91,54 @@ const url: ComputedRef<string> = computed(() => `${base}public/${props.drink.pub
         :show-arrows="drink.photos.length > 1 ? 'hover' : false"
         hide-delimiters
       >
-        <CarouselItem v-for="photo in drink.photos" :key="photo.id" :drink-id="drink.id" :photo="photo" />
+        <CarouselItem
+          v-for="photo in drink.photos"
+          :key="photo.id"
+          :drink-id="drink.id"
+          :photo="photo"
+        />
       </v-carousel>
       <v-card-text class="pt-0">
-        <p v-if="drink.description !== null && drink.description !== ''" class="text-black">{{ drink.description }}</p>
-        <v-chip v-for="(tag, index) in tags" :key="index" :href="tagDrinksHref(tag)" class="ma-2 glass-background">
+        <p
+          v-if="drink.description !== null && drink.description !== ''"
+          class="text-black"
+        >
+          {{ drink.description }}
+        </p>
+        <v-chip
+          v-for="(tag, index) in tags"
+          :key="index"
+          :href="tagDrinksHref(tag)"
+          class="ma-2 glass-background"
+        >
           {{ tag.name }}
         </v-chip>
         <v-list v-if="positions.length > 0">
-          <v-list-item v-for="position in positions" :key="position.id">
+          <v-list-item
+            v-for="position in positions"
+            :key="position.id"
+          >
             <template #prepend>
-              <v-icon v-if="position.ingredient.available" class="available-icon-vivid">mdi-check-circle</v-icon>
-              <v-icon v-else class="unavailable-icon-vivid">mdi-close-circle</v-icon>
+              <AvailableIcon
+                :vivid="true"
+                :is-available="position.ingredient.available"
+              />
             </template>
-            <template #title>{{ position.ingredient.name }}</template>
-            <template #subtitle>{{ position.amount }}</template>
+            <template #title>
+              {{ position.ingredient.name }}
+            </template>
+            <template #subtitle>
+              {{ position.amount }}
+            </template>
             <template #append>
               <v-tooltip>
                 <template #activator="{ props: activatorProps }">
-                  <v-icon v-if="position.ingredient.description !== ''" v-bind="activatorProps">mdi-help-circle</v-icon>
+                  <v-icon
+                    v-if="position.ingredient.description !== ''"
+                    v-bind="activatorProps"
+                  >
+                    mdi-help-circle
+                  </v-icon>
                 </template>
                 <span>{{ position.ingredient.description }}</span>
               </v-tooltip>

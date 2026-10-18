@@ -11,9 +11,7 @@ import type { Tag } from '@/api/response';
 import { tagDrinksHref } from '@/utils/route.utils';
 
 // interfaces
-interface Events {
-  (e: 'startEdit'): void;
-}
+type Events = (e: 'startEdit') => void;
 
 interface Props {
   tag: Tag;
@@ -22,6 +20,7 @@ interface Props {
 // setup
 const props: Props = defineProps<Props>();
 const emit: Events = defineEmits<Events>();
+
 defineOptions({ inheritAttrs: false });
 
 // state
@@ -41,18 +40,34 @@ function showDelete(): void {
 </script>
 
 <template>
-  <v-list-item class="w-100" v-bind="$attrs">
+  <v-list-item
+    class="w-100"
+    v-bind="$attrs"
+  >
     <template #prepend>
-      <v-switch :model-value="tag.public" class="mr-4 ml-1" @update:model-value="changePublic" />
+      <v-switch
+        :model-value="tag.public"
+        class="mr-4 ml-1"
+        @update:model-value="changePublic"
+      />
     </template>
-    <template #title>{{ tag.name }}</template>
+    <template #title>
+      {{ tag.name }}
+    </template>
     <template #append>
       <v-menu location="bottom">
         <template #activator="{ props: activatorProps }">
-          <v-btn icon="mdi-menu" type="button" v-bind="activatorProps" />
+          <v-btn
+            icon="mdi-menu"
+            type="button"
+            v-bind="activatorProps"
+          />
         </template>
         <v-list class="px-2 py-2">
-          <v-list-item v-if="drinksCount > 0" :href="tagDrinksHref(tag)">
+          <v-list-item
+            v-if="drinksCount > 0"
+            :href="tagDrinksHref(tag)"
+          >
             <template #title>Lista drinków ({{ drinksCount }})</template>
           </v-list-item>
           <v-list-item @click="startEdit">
@@ -65,7 +80,10 @@ function showDelete(): void {
       </v-menu>
     </template>
   </v-list-item>
-  <DeleteModal v-model="showed" @remove="remove(tag.id)" />
+  <DeleteModal
+    v-model="showed"
+    @remove="remove(tag.id)"
+  />
 </template>
 
 <style scoped>

@@ -7,5 +7,8 @@ const { create } = useDrinkCardCreate();
 </script>
 
 <template>
-  <DrinkCardForm :button-text="'Dodaj'" @submitted="create" />
+  <DrinkCardForm
+    :button-text="'Dodaj'"
+    @submitted="create"
+  />
 </template>

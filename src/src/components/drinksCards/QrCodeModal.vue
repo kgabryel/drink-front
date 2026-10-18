@@ -26,15 +26,32 @@ function cancel(): void {
 </script>
 
 <template>
-  <v-dialog v-model="model" :max-width="modalConfig.qrCode.maxWidth">
+  <v-dialog
+    v-model="model"
+    :max-width="modalConfig.qrCode.maxWidth"
+  >
     <v-card class="glass-background">
       <v-toolbar>
         <v-spacer />
-        <v-btn icon="mdi-close" type="button" @click="cancel" />
+        <v-btn
+          icon="mdi-close"
+          type="button"
+          @click="cancel"
+        />
       </v-toolbar>
       <v-card-text class="text-center pb-0">
-        <QrcodeVue :value="url" :size="modalConfig.qrCode.size" level="L" class="pb-5" />
-        <p class="c-pointer" @click="copyToClipboard(url, messages.urlCopied)">{{ url }}</p>
+        <QrcodeVue
+          :value="url"
+          :size="modalConfig.qrCode.size"
+          level="L"
+          class="pb-5"
+        />
+        <p
+          class="c-pointer"
+          @click="copyToClipboard(url, messages.urlCopied)"
+        >
+          {{ url }}
+        </p>
       </v-card-text>
       <v-divider />
     </v-card>

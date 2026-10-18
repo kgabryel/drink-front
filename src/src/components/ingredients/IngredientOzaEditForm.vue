@@ -12,9 +12,7 @@ import type { Ingredient } from '@/api/response';
 import { useOzaSuppliesStore } from '@/store';
 
 // interfaces
-interface Events {
-  (e: 'stopEdit'): void;
-}
+type Events = (e: 'stopEdit') => void;
 
 interface Props {
   ingredient: Ingredient;
@@ -41,7 +39,11 @@ function stopEdit(): void {
 <template>
   <v-list-item>
     <template #prepend>
-      <v-btn icon="mdi-close" type="button" @click="stopEdit" />
+      <v-btn
+        icon="mdi-close"
+        type="button"
+        @click="stopEdit"
+      />
       <v-btn
         :disabled="ingredient.ozaId === 0 || ingredient.ozaId === null"
         icon
@@ -52,10 +54,20 @@ function stopEdit(): void {
       </v-btn>
     </template>
     <template #default>
-      <AutocompleteSingle v-model="ozaId" label="Zapas" :items="supplies" class="ma-2" />
+      <AutocompleteSingle
+        v-model="ozaId"
+        label="Zapas"
+        :items="supplies"
+        class="ma-2"
+      />
     </template>
     <template #append>
-      <v-btn :disabled="!valid" icon type="button" @click="update(stopEdit)">
+      <v-btn
+        :disabled="!valid"
+        icon
+        type="button"
+        @click="update(stopEdit)"
+      >
         <v-icon color="black">mdi-content-save</v-icon>
       </v-btn>
     </template>

@@ -32,7 +32,11 @@ function getUrl(photo: Photo): string {
 </script>
 
 <template>
-  <div ref="card" :class="{ 'in-waterfall': !fullWidth, 'full-width': fullWidth }" class="px-2 py-2">
+  <div
+    ref="card"
+    :class="{ 'in-waterfall': !fullWidth, 'full-width': fullWidth }"
+    class="px-2 py-2"
+  >
     <v-card :class="{ 'glass-background--light': !fullWidth, 'glass-background': fullWidth }">
       <v-toolbar>
         <v-toolbar-title>{{ drink.name }}</v-toolbar-title>
@@ -52,18 +56,39 @@ function getUrl(photo: Photo): string {
         />
       </v-carousel>
       <v-card-text class="pt-0">
-        <p v-if="drink.description" class="text-black">{{ drink.description }}</p>
-        <v-chip v-for="(tag, index) in drink.tags" :key="index" class="ma-2 glass-background">
+        <p
+          v-if="drink.description"
+          class="text-black"
+        >
+          {{ drink.description }}
+        </p>
+        <v-chip
+          v-for="(tag, index) in drink.tags"
+          :key="index"
+          class="ma-2 glass-background"
+        >
           {{ tag }}
         </v-chip>
         <v-list v-if="drink.positions.length > 0">
-          <v-list-item v-for="position in drink.positions" :key="position.id">
-            <template #title>{{ position.ingredient }}</template>
-            <template #subtitle>{{ position.amount }}</template>
+          <v-list-item
+            v-for="position in drink.positions"
+            :key="position.id"
+          >
+            <template #title>
+              {{ position.ingredient }}
+            </template>
+            <template #subtitle>
+              {{ position.amount }}
+            </template>
             <template #append>
               <v-tooltip>
                 <template #activator="{ props: activatorProps }">
-                  <v-icon v-if="position.ingredientDescription" v-bind="activatorProps">mdi-help-circle</v-icon>
+                  <v-icon
+                    v-if="position.ingredientDescription"
+                    v-bind="activatorProps"
+                  >
+                    mdi-help-circle
+                  </v-icon>
                 </template>
                 <span>{{ position.ingredientDescription }}</span>
               </v-tooltip>
