@@ -5,7 +5,7 @@
 - `src/` – kod źródłowy aplikacji
 - `docker/` – środowisko dockerowe
 - `Jenkinsfile` – CI/CD pipeline
-- `*.sh` – skrypty pomocnicze (lint, prettier, stylelint, typecheck, uruchamianie)
+- `helpers/` – skrypty pomocnicze
 
 ## Uruchamianie (Docker)
 ```
